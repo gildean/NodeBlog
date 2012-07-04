@@ -1,7 +1,7 @@
 NodeBlog
 ========
 
-A blog engine made with node.js and express with mongodb backend
+A blog engine made with node.js and express with mongodb database
 
 Make sure that mongodb is running, then install depencies with 
 ``` 
