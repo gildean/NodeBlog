@@ -1,0 +1,19 @@
+!!!
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      a.logo(href="/")= title
+      span.login
+          - if (user)
+            a(href="/logout") Logout #{user.user}
+            span.divider |
+            a(href="/posts/add") New post
+          - else
+            a(href="/login") Login
+
+
+    div#container!= body
+      footer NodeBlog by ok | no rights reserved 2012       

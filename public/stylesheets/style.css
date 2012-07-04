@@ -1,0 +1,156 @@
+/**/
+/* Let's start with some basic stylings */
+
+body {
+	position: relative;
+	padding: 30px 50px;
+	font: 16px "Ubuntu Mono", "Lucida Grande", Monaco, Helvetica, Arial, sans-serif;
+	height: 100%;
+}
+
+a, .deletebutton, .editbutton, .tag {
+	color: #00B7FF;
+	text-decoration: none;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover {
+	text-shadow: 0 -1px 0 #0079A8;
+	text-decoration: underline;
+}
+
+h1 {
+	font-size: 22px;
+}
+
+h1.main {
+	font-size: 28px;
+}
+
+
+/**/
+/* These are the concurring parts */
+
+header {
+	z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #0e0e0e;
+	color: #FFF;
+	width: 100%;
+	padding: 6px 0;
+	box-shadow: 0 2px 1px rgba(0,0,0,0.3);
+}
+
+footer {
+	z-index: 900;
+	position: fixed;
+	bottom: 0;
+	right: 2px;
+	margin: 0;
+	color: #c6c6c6;
+	font-size: 11px;
+}
+
+.logo {
+	color: #fcfcfc;
+	padding: 0 0 0 20px;
+}
+
+.login  {
+	position: absolute;
+	right: 20px;
+}
+
+.divider {
+	padding: 0 5px;
+}
+
+#container {
+	z-index: 100;
+}
+
+
+/**/
+/* Styles to the blogposts */
+
+.body {
+	padding: 20px 0;
+	font: 16px "Ubuntu Mono", "Lucida Grande", Monaco, Helvetica, Arial, sans-serif;
+}
+
+.posted {
+	margin: 5px 0;
+	font-size: 12px;
+}
+
+.edit {
+	display: inline-block;
+	position: absolute;
+	right: 20px;
+	top: 60px;
+}
+
+.items {
+	margin: 15px 0;
+	display: block;
+	overflow: hidden;
+	max-width: 66%;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+} 
+
+.tag {
+	color: #0e0e0e;
+	font-size: 12px;
+	padding: 0 5px 0 0;
+	margin: 5px 5px 5px 0 ;
+	border-right: 1px solid #00B7FF;
+}
+
+
+/**/
+/* Let's style the comments too */
+
+.commentsection {
+	margin: 15px 0 0;
+}
+
+.comment {
+	position: relative;
+	margin: 15px 0;
+	padding: 5px;
+	font-size: 14px;
+	width: 750px;
+}
+
+.comment:nth-of-type(odd) {
+	background-color:#EBFBFF;
+}
+
+.editcomm {
+	text-align: right;
+	width: 750px;
+}
+
+.deletebutton, .editbutton {
+	font-size: 12px;
+	display: inline-block;
+	width: 40px;
+	padding: 5px 0;
+	margin: 0 5px;
+	background-color: transparent;
+	border: 0;
+	border-radius: 1px;
+}
+
+.deletebutton:hover, .editbutton:hover {
+	cursor: pointer;
+}
+.commenteditform {
+	display: inline;
+}

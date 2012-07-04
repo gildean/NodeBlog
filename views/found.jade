@@ -1,0 +1,20 @@
+h1.main Posts by tag - #{querytag}
+
+h3 Found these posts relating to your query:
+
+for bp in foundPosts
+  
+  div.items
+    
+    a(href="/posts/#{bp._id}")
+      h2 #{bp.subject}
+    - var length = 200;
+    - var trimmedBody = bp.body.substring(0, length) + '...'; 
+    p=  trimmedBody
+    
+    p.tags
+      for tag in bp.tags
+        a.tag(href="/posts/tags/#{tag}") #{tag}
+
+    p
+      span.posted Posted: #{moment(bp.created).format('DD.MM.YYYY HH:mm')}
