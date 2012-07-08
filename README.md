@@ -9,9 +9,9 @@ NodeBlog is built on:
 * [MongoDB][MongoDB]
 * [express][express]
 * [mongojs][mongojs]
-* [bcrypt][bcrypt]
+* [node.bcrypt.js][bcrypt]
 * [jade][jade]
-* [moment][moment]
+* [Moment.js][moment]
 
 How to use:
 -----------
