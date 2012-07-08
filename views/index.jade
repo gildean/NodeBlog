@@ -6,7 +6,7 @@ h3 NodeBlog is built using node.js, express, jade, and mongodb with mongojs
   -if (flash.error)
     p.flash.error #{flash.error}
   -if (flash.info)
-    span.flash.info #{flash.info} 
+    p.flash.info #{flash.info} 
 
 for post in blogPosts
   div.items

@@ -42,6 +42,8 @@ function checkLogin(req, res, next) {
 // gets
 app.get('/login', dbaccess.anyoneThere);
 app.get('/logout', checkLogin, routes.logout);
+app.get('/adduser', routes.addNewUser);
+app.get('/loginpage', routes.loginPage);
 
 
 // post the user authentication

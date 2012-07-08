@@ -3,7 +3,7 @@ h1 Login user
   -if (flash.error)
     p.flash.error #{flash.error}
   -if (flash.info)
-    span.flash.info #{flash.info} 
+    p.flash.info #{flash.info} 
 form(name="login-form",method="post",action="/login")
   p
     label Username:

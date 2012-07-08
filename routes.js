@@ -1,6 +1,5 @@
 //ROUTES TO MAIN VIEWS
 
-
 // logout
 exports.logout = function(req, res) {
   req.session.destroy();
@@ -26,9 +25,9 @@ exports.newPost = function(req, res) {
 // edit a post
 exports.editPost = function(req, res) {
    res.render('edit.jade', { 
-      title: 'NodeBlog - Edit post'
-    , post: req.post
-    , flash: req.flash()
+     title: 'NodeBlog - Edit post'
+   , post: req.post
+   , flash: req.flash()
    });
  };
 
@@ -36,8 +35,8 @@ exports.editPost = function(req, res) {
 // show one post
 exports.showPost = function(req, res) {
     res.render('show.jade', {
-      title: 'NodeBlog - ' + req.post.subject
-    , post: req.post
-    , flash: req.flash()  
+     title: 'NodeBlog - ' + req.post.subject
+   , post: req.post
+   , flash: req.flash()  
    });
 };

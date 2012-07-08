@@ -1,31 +1,34 @@
 //DATABASE ACCESS FUNCTIONS
 
 // module dependencies
-var db =  require('mongojs').connect('testblogdb', ['post', 'user']);
+var db =  require('mongojs').connect('testblogdb');
+var userdb = db.collection('user');
+var postdb = db.collection('post');
 var bcrypt = require('bcrypt');
 
 
 // no users? no problem!
 exports.anyoneThere = function (req, res) {
-  var noUsers = db.user.find({ user: { $exists : false } });
-  if (noUsers) {
-    res.render('adduser.jade', { 
-      title: 'NodeBlog - Create a new user'
-    , flash: req.flash()
-    });
-  } else {
-    res.render('login.jade', {
-     title: 'Login user'
-   , flash: req.flash()
+  userdb.count(function(err, users) {
+    if (users === 0) {
+        res.render('adduser.jade', { 
+        title: 'NodeBlog - Create a new user'
+      , flash: req.flash()
+      });
+    } else {
+      res.render('login.jade', { 
+        title: 'Login user'
+      , flash: req.flash()
+      });
+    }
   });
-  }
 };
 
   
 // check that the user doesn't already exist and then create it with a randomly salted password hash
 exports.addNewUser = function(req, res) {
-  var usercheck = db.user.find({'user': req.body.username}).count();
-  if (usercheck > 0) {
+  userdb.count({'user': req.body.username},function(err, usercheck) {
+    if (usercheck > 0) {
       console.log('user found, not creating a new one with the same name');
       req.flash('error', 'User already exists');
       res.redirect('back');
@@ -34,17 +37,19 @@ exports.addNewUser = function(req, res) {
         user: req.body.username
       , pass: bcrypt.hashSync(req.body.password, 8)
       };
-      db.user.insert(values, function(err, post) {
+      userdb.insert(values, function(err, post) {
         req.flash('New user added!')
-        res.redirect('/login');
+        res.redirect('/');
       });
     }
+  });
 };
+
 
 
 // logon with bcrypt hash check
 exports.logon = function(req, res) {
-   db.user.findOne({ user : req.body.username }, function(err, useraccount) {
+   userdb.findOne({ user : req.body.username }, function(err, useraccount) {
       if (!err && useraccount) {
       var password = req.body.password;
       var passhash = useraccount.pass;
@@ -68,7 +73,7 @@ exports.logon = function(req, res) {
 // list all posts
 exports.index = function(req, res) {
   var indexes = { subject: 1, body: 1, tags: 1, created: 1, author: 1 };
-  db.post.find({ state: 'published'}, indexes, function(err, posts) {
+  postdb.find({ state: 'published'}, indexes, function(err, posts) {
     if (!err && posts) {
       res.render('index.jade', { 
         title: 'NodeBlog'
@@ -82,7 +87,7 @@ exports.index = function(req, res) {
 
 // list all by cliecked tag
 exports.postsByTag = function(req, res) {
-  db.post.find({ tags: req.params.tag }, function(err, foundposts) {
+  postdb.find({ tags: req.params.tag }, function(err, foundposts) {
     if (!err) {
       res.render('found.jade', { 
         title: 'NodeBlog - Found these'
@@ -109,7 +114,7 @@ exports.addNewPost = function(req, res) {
     }
   };
 
-  db.post.insert(values, function(err, post) {
+  postdb.insert(values, function(err, post) {
     req.flash('info', 'New post added');
     res.redirect('/posts/' + values._id);
   });
@@ -118,7 +123,7 @@ exports.addNewPost = function(req, res) {
 
 // save an edited post
 exports.savePostEdit = function(req, res) {
-  db.post.update({ _id: db.ObjectId(req.body.id) }, {
+  postdb.update({ _id: db.ObjectId(req.body.id) }, {
   $set: {
   subject: req.body.subject
   , body: req.body.body
@@ -132,7 +137,7 @@ exports.savePostEdit = function(req, res) {
 
 // delete a post
 exports.deletePost = function(req, res) {
-  db.post.remove({ _id: db.ObjectId(req.params.postid) }, function(err, post) {
+  postdb.remove({ _id: db.ObjectId(req.params.postid) }, function(err, post) {
     req.flash('info', 'Post deleted');
     res.redirect('/');
   });
@@ -151,7 +156,7 @@ exports.addComment = function(req, res) {
 
   console.log(data);
 
-  db.post.update({ _id: db.ObjectId(req.body.postid) }, {
+  postdb.update({ _id: db.ObjectId(req.body.postid) }, {
     $push: { comments: data }}, { safe: true }, function(err, post) {
       req.flash('info', 'Comment added')
       res.redirect('/posts/' + req.body.postid);
@@ -169,7 +174,7 @@ exports.editComment = function(req, res) {
   };
 
   console.log(commentvalues);
-db.post.find({'comment.cid': ObjectId(req.params.cid)}, function(err, comment) {
+postdb.find({'comment.cid': ObjectId(req.params.cid)}, function(err, comment) {
     if (!err) {
       res.render('editcomment.jade', { 
         title: 'NodeBlog - Found these'
@@ -192,7 +197,7 @@ exports.saveEditComment = function(req, res) {
 
   console.log(data);
 
-  db.post.update({ _id: db.ObjectId(req.body.id) }, {
+  postdb.update({ _id: db.ObjectId(req.body.id) }, {
     $set: { comments: data }}, { safe: true }, function(err, post) {
       res.redirect('/posts/' + req.body.id);
   });
@@ -210,7 +215,7 @@ exports.deleteComment = function(req, res) {
 
   console.log(data);
 
-  db.post.update({ _id: db.ObjectId(req.body.id) }, {
+  postdb.update({ _id: db.ObjectId(req.body.id) }, {
     $pull: { comments: data }}, function(err, post) {
       res.redirect('/posts/' + req.body.id);
   });
@@ -220,7 +225,7 @@ exports.deleteComment = function(req, res) {
 // validating the post id
 exports.checkPostId = function(req, res, next, id) {
   if (id.length != 24) return next(new Error('The post id length is incorrect'));
-  db.post.findOne({_id: db.ObjectId(id)}, function(err, post) {
+  postdb.findOne({_id: db.ObjectId(id)}, function(err, post) {
     if (err) return next(new Error('Make sure you provided correct post id'));
     if (!post) return next(new Error('Post loading failed'));
     req.post = post;
