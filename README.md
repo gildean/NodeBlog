@@ -5,7 +5,7 @@ A blog engine made with node.js and express with mongodb database
 
 NodeBlog is built on:
 ---------------------
-* [NodeJS][NodeJS]
+* [Node.js][NodeJS]
 * [MongoDB][MongoDB]
 * [express][express]
 * [mongojs][mongojs]
