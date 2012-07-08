@@ -1,3 +1,8 @@
+-if (flash)
+  -if (flash.error)
+    p.flash.error #{flash.error}
+  -if (flash.info)
+    span.flash.info #{flash.info} 
 article
   h1 #{post.subject}
   pre.body #{post.body}

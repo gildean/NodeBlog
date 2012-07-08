@@ -2,6 +2,12 @@ h1.main NodeBlog - A blog in node.js
 
 h3 NodeBlog is built using node.js, express, jade, and mongodb with mongojs
 
+-if (flash)
+  -if (flash.error)
+    p.flash.error #{flash.error}
+  -if (flash.info)
+    span.flash.info #{flash.info} 
+
 for post in blogPosts
   div.items
     a(href="/posts/#{post._id}")

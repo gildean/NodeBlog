@@ -5,7 +5,7 @@
 var express = require('express');
 var app = module.exports = express.createServer();
 var db =  require('mongojs').connect('testblogdb', ['user']);
-var crypto = require('crypto');
+var bcrypt = require('bcrypt');
 
 
 // configs
@@ -20,31 +20,38 @@ app.dynamicHelpers({
 // get a view for adding a new user
 
 app.get('/', function(req, res) {
-  res.render('adduser.jade', { title: 'Create a new user'});
+  res.render('adduser.jade', { 
+    title: 'NodeBlog - Create a new user'
+  , flash: req.flash()
+  });
 });
 
 
-// check that the user doesn't already exist and then create it with a salted password hash
+// check that the user doesn't already exist and then create it with a randomly salted password hash
 
 app.post('/adduser', function(req, res) {
-  var values = {
-      user: req.body.username
-    , pass: crypto.createHash('sha256').update(req.body.password + req.body.salt).digest('hex')
-    };
-db.user.findOne(values, function(err, user) {
-    if (err || user) {
+  var usercheck = db.user.find({'user': req.body.username}).count();
+  if (usercheck > 0) {
+      console.log('user found, not creating a new one with the same name');
+      req.flash('error', 'User already exists');
     	res.redirect('back');
     } else {
+      var values = {
+        user: req.body.username
+      , pass: bcrypt.hashSync(req.body.password, 8)
+      };
   		db.user.insert(values, function(err, post) {
-    		console.log(err, post);
     		res.redirect('/done');
 		});
   	}
-});
+
 });
 
 app.get('/done', function(req, res) {
-  res.render('done.jade', { title: 'User setup done'});
+  res.render('done.jade', { 
+    title: 'User setup done'
+  , flash: req.flash()
+  });
 });
 
 

@@ -1,11 +1,11 @@
 {
-  "name": "nodeblog",
-  "version": "0.0.1",
+  "name": "NodeBlog",
+  "version": "0.0.2",
   "description": "Blog engine with express frontend and mongodb as the database",
   "author": "Olli Kankare",
   "repository": {
     "type": "git",
-    "url": "git://github.com/gildean/nodeblog.git"
+    "url": "git://github.com/gildean/NodeBlog.git"
   },
   "engines": {
     "node": ">=0.6.0"
@@ -13,7 +13,7 @@
   "dependencies": {
     "express": "=2.5.11",
     "moment": ">=1.6.2",
-    "crypto": ">=0.0.3",
+    "bcrypt": ">= 0.7.0",
     "mongojs": ">=0.4.3",
     "jade": ">=0.26.3"
       },

@@ -3,8 +3,13 @@
 // module dependencies.
 var express = require('express')
   , moment = require('moment')
-  , routes = require('./routes');
-var app = module.exports = express.createServer();
+  , routes = require('./routes')
+  , fs = require('fs')
+  , http = require('./httpredirect');
+var app = module.exports = express.createServer({
+  key: fs.readFileSync('./key.key'),
+  cert: fs.readFileSync('./cert.crt')
+});
 
 
 // configuration
@@ -26,6 +31,7 @@ function checkLogin(req, res, next) {
   if (req.session.user) {
     next();
   } else {
+    req.flash('error','Not logged in');
     res.redirect('/login');
   }
 }

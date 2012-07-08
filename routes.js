@@ -2,14 +2,14 @@
 
 // module depencies
 var db =  require('mongojs').connect('testblogdb', ['post', 'user']);
-var crypto = require('crypto');
-var salt = 'somesalt123'; 
+var bcrypt = require('bcrypt');
 
 
 // login
 exports.login = function(req, res) {
   res.render('login.jade', {
-    title: 'Login user'
+     title: 'Login user'
+   , flash: req.flash()
   });
 };
 
@@ -23,21 +23,26 @@ exports.logout = function(req, res) {
 
 // logon
 exports.logon = function(req, res) {
-  var userauth = {
-      user: req.body.username
-    , pass: crypto.createHash('sha256').update(req.body.password + salt).digest('hex')
-  };
-
-  db.user.findOne(userauth, function(err, user) {
-    if (!err && user) {
-      req.session.user = user;
-      res.redirect('/');
+   db.user.findOne({ user : req.body.username }, function(err, useraccount) {
+      if (!err && useraccount) {
+      var password = req.body.password;
+      var passhash = useraccount.pass;
+      bcrypt.compare(password, passhash, function(err, same) {
+        if (!err && same) {
+          req.session.user = useraccount;
+          res.redirect('/');
+        } else {
+          req.flash('error', 'Incorrect login, try again');
+          res.redirect('back');
+      }
+    });
     } else {
-      res.redirect('/login');
-    }
-    
-  });
-};
+          req.flash('error', 'Incorrect login, try again');
+          res.redirect('back');
+        }
+    });
+  
+  };
 
 
 // list all
@@ -49,7 +54,11 @@ exports.index = function(req, res) {
   var indexes = { subject: 1, body: 1, tags: 1, created: 1, author: 1 };
   db.post.find({ state: 'published'}, indexes, function(err, posts) {
     if (!err && posts) {
-      res.render('index.jade', { title: 'NodeBlog', blogPosts: posts });
+      res.render('index.jade', { 
+        title: 'NodeBlog'
+      , blogPosts: posts 
+      , flash: req.flash()  
+      });
     }
   });
 };
@@ -67,7 +76,10 @@ exports.postsByTag = function(req, res) {
 
 // create a new post
 exports.newPost = function(req, res) {
-  res.render('add.jade', { title: 'NodeBlog - New Post '});
+  res.render('add.jade', { 
+    title: 'NodeBlog - New Post'
+  , flash: req.flash() 
+  });
 };
 
 
@@ -88,6 +100,7 @@ exports.addNewPost = function(req, res) {
 
   db.post.insert(values, function(err, post) {
     console.log(err, post);
+    req.flash('info', 'New post added');
     res.redirect('/posts/' + values._id);
   });
 };
@@ -95,7 +108,11 @@ exports.addNewPost = function(req, res) {
 
 // edit a post
 exports.editPost = function(req, res) {
-   res.render('edit.jade', { title: 'NodeBlog - Edit post', post: req.post } );
+   res.render('edit.jade', { 
+      title: 'NodeBlog - Edit post'
+    , post: req.post
+    , flash: req.flash()
+     } );
  };
 
 
@@ -116,6 +133,7 @@ exports.savePostEdit = function(req, res) {
 // delete a post
 exports.deletePost = function(req, res) {
   db.post.remove({ _id: db.ObjectId(req.params.postid) }, function(err, post) {
+    req.flash('info', 'Post deleted');
     res.redirect('/');
   });
 };
@@ -135,6 +153,7 @@ exports.addComment = function(req, res) {
 
   db.post.update({ _id: db.ObjectId(req.body.postid) }, {
     $push: { comments: data }}, { safe: true }, function(err, post) {
+      req.flash('info', 'Comment added')
       res.redirect('/posts/' + req.body.postid);
   });
 };
@@ -150,10 +169,13 @@ exports.editComment = function(req, res) {
   };
 
   console.log(commentvalues);
-db.post.find({'comment.cid': ObjectId(req.body.cid)}, function(err, comment) {
-  
+db.post.find({'comment.cid': ObjectId(req.params.cid)}, function(err, comment) {
     if (!err) {
-      res.render('editcomment.jade', { title: 'NodeBlog - Found these', comment: comment });
+      res.render('editcomment.jade', { 
+        title: 'NodeBlog - Found these'
+      , comment: comment
+      , flash: req.flash() 
+    });
     }
   });
 };
@@ -194,6 +216,7 @@ exports.deleteComment = function(req, res) {
   });
 };
 
+
 // validating the post id
 exports.checkPostId = function(req, res, next, id) {
   if (id.length != 24) return next(new Error('The post id length is incorrect'));
@@ -209,7 +232,8 @@ exports.checkPostId = function(req, res, next, id) {
 // show one post
 exports.showPost = function(req, res) {
     res.render('show.jade', {
-      title: 'NodeBlog - ' + req.post.subject,
-      post: req.post
+      title: 'NodeBlog - ' + req.post.subject
+    , post: req.post
+    , flash: req.flash()  
   });
 };

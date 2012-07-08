@@ -1,6 +1,13 @@
 h2 Create a new user
+
 p  A new user is created for the blog as a superuser, so make sure you do this right.<br>
-  | Also make sure to take the salt and insert it into routes.js or the authentication won't work
+
+-if (flash)
+  -if (flash.error)
+    p.flash.error #{flash.error}
+  -if (flash.info)
+    span.flash.info #{flash.info}
+
 form(name="user-form",method="post",action="/adduser")
   p  
     label Username:
@@ -8,8 +15,5 @@ form(name="user-form",method="post",action="/adduser")
   p  
     label Password:
        input(type="password",name="password", required)
-  p  
-    label Salt:
-       input(type="password",name="salt", required)
   p  
     input(type="submit",name="submit",value="Submit",onClick="return confirm('Are you sure?');")
