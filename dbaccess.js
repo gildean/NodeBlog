@@ -6,15 +6,18 @@ var bcrypt = require('bcrypt');
 
 
 // no users? no problem!
-exports.anyoneThere = function (req, res, next) {
-  var howMany = db.user.find().count();
-  if (howMany===0) {
+exports.anyoneThere = function (req, res) {
+  var noUsers = db.user.find({ user: { $exists : false } });
+  if (noUsers) {
     res.render('adduser.jade', { 
       title: 'NodeBlog - Create a new user'
     , flash: req.flash()
     });
   } else {
-    next();
+    res.render('login.jade', {
+     title: 'Login user'
+   , flash: req.flash()
+  });
   }
 };
 

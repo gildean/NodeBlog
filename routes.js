@@ -1,15 +1,6 @@
 //ROUTES TO MAIN VIEWS
 
 
-// login
-exports.login = function(req, res) {
-  res.render('login.jade', {
-     title: 'Login user'
-   , flash: req.flash()
-  });
-};
-
-
 // logout
 exports.logout = function(req, res) {
   req.session.destroy();
