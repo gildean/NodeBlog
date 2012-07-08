@@ -20,16 +20,11 @@ Make sure that mongodb is running, then install depencies with
 ``` 
 npm install
 ```
-
-Create a new user for the blog with 
-``` 
-node setup
-```
-
-After the setup kill the setup.js and run 
+Then run 
 ``` 
 node app
 ```
+When trying to log in, if no users are detected, a new one is then created (this means the app is vulnerable before a user is created).
 
 Credits:
 --------
