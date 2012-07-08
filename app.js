@@ -4,6 +4,7 @@
 var express = require('express')
   , moment = require('moment')
   , routes = require('./routes')
+  , dbaccess = require('./dbaccess')
   , fs = require('fs')
   , http = require('./httpredirect');
 var app = module.exports = express.createServer({
@@ -34,7 +35,7 @@ function checkLogin(req, res, next) {
     req.flash('error','Not logged in');
     res.redirect('/login');
   }
-}
+};
 
 
 // routes for login-logout
@@ -42,35 +43,37 @@ function checkLogin(req, res, next) {
 app.get('/login', routes.login);
 app.get('/logout', checkLogin, routes.logout);
 
+
 // post the user authentication
-app.post('/login', routes.logon);
+app.post('/login', dbaccess.anyoneThere, dbaccess.logon);
+app.post('/adduser', dbaccess.addNewUser);
 
 
 // routes for views
 // gets
-app.get('/', routes.index);
+app.get('/', dbaccess.index);
 app.get('/posts', routes.posts);
 app.get('/posts/add', checkLogin, routes.newPost);
 app.get('/posts/:postid', routes.showPost);
 app.get('/posts/edit/:postid', checkLogin, routes.editPost);
-app.get('/posts/remove/:postid', checkLogin, routes.deletePost);
+app.get('/posts/remove/:postid', checkLogin, dbaccess.deletePost);
 app.get('/posts/edit/comment/:postid', checkLogin, routes.editComment);
 
 
 //searchs
-app.get('/posts/tags/:tag', routes.postsByTag);
+app.get('/posts/tags/:tag', dbaccess.postsByTag);
 
 
 //posts
-app.post('/posts/remove/comment/:postid', checkLogin, routes.deleteComment);
-app.post('/posts/add', checkLogin, routes.addNewPost);
-app.post('/posts/edit', routes.savePostEdit);
-app.post('/posts/comment', routes.addComment);
-app.post('/posts/edit/comment', checkLogin, routes.saveEditComment);
+app.post('/posts/remove/comment/:postid', checkLogin, dbaccess.deleteComment);
+app.post('/posts/add', checkLogin, dbaccess.addNewPost);
+app.post('/posts/edit', dbaccess.savePostEdit);
+app.post('/posts/comment', dbaccess.addComment);
+app.post('/posts/edit/comment', checkLogin, dbaccess.saveEditComment);
 
 
 // route for postid validation
-app.param('postid', routes.checkPostId);
+app.param('postid', dbaccess.checkPostId);
 
 
 // Start the app, you fool
