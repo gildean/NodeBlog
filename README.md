@@ -1,12 +1,12 @@
 NodeBlog
 ========
 
-A blog engine made with node.js and express with mongodb database
+A blog engine made with node.js and mongodb database
 
 NodeBlog is built on:
 ---------------------
 * [Node.js][NodeJS]
-* [MongoDB][MongoDB]
+* [mongoDB][MongoDB]
 * [express][express]
 * [mongojs][mongojs]
 * [node.bcrypt.js][bcrypt]
@@ -16,11 +16,11 @@ NodeBlog is built on:
 How to use:
 -----------
 
-Make sure that mongodb is running, then install depencies with 
+Make sure that mongodb is running, then install dependencies with 
 ``` 
 npm install
 ```
-Then run 
+Then start the server with
 ``` 
 node app
 ```
