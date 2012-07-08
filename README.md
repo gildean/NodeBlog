@@ -32,7 +32,7 @@ All whom contributed to any part being used.
 
 License:
 --------
-DWTFYW
+Unless stated elsewhere, file headers or otherwise, the license as stated in the LICENSE file.
 
 [NodeJS]: http://nodejs.org
 [MongoDB]: http://www.mongodb.org
