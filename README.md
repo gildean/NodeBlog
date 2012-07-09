@@ -16,11 +16,13 @@ NodeBlog is built on:
 How to use:
 -----------
 
-Make sure that mongodb is running, then install dependencies with 
+Make sure that mongodb is running, then install dependencies:
 ``` 
 npm install
 ```
-Then start the server with
+You need to copy a cert public key(cert.crt) and a private key (key.key) as files to the root of the app-folder, or change that in app.js.
+
+You can then start the server with:
 ``` 
 node app
 ```
