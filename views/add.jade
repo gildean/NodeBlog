@@ -10,7 +10,7 @@ form(name="add-post",method="post",action="/posts/add")
       input(type="text",name="subject", required)
   p
     label Content
-      textarea(class="editbox", name="body", rows="20", cols="95", wrap="hard", required)
+      textarea.rte-zone(name="body", rows="20", cols="95")
   p
     label Tags (comma-separated)
       input(type="text",name="tags")

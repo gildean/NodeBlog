@@ -3,6 +3,9 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='http://code.jquery.com/jquery-1.7.2.min.js')
+
+
   body
     header
       a.logo(href="/")= title
@@ -16,5 +19,11 @@ html
 
 
     div#container!= body
-      footer NodeBlog by ok | no rights reserved 2012 
-            
+      footer NodeBlog by ok | no rights reserved 2012
+script(type='text/javascript', src='/javascripts/editor.jquery.js')
+script(type='text/javascript')
+  $(".rte-zone").rte({
+    content_css_url: "rte.css",
+    media_url: "",
+  });
+ 
