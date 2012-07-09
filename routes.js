@@ -1,4 +1,4 @@
-//ROUTES TO MAIN VIEWS
+// ROUTES TO MAIN VIEWS
 
 // logout
 exports.logout = function(req, res) {
@@ -41,7 +41,8 @@ exports.showPost = function(req, res) {
    });
 };
 
-// show one comment
+
+// edit a comment
 exports.editComment = function(req, res) {
     res.render('editcomment.jade', { 
     title: 'NodeBlog - Found these'

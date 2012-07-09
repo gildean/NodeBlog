@@ -6,7 +6,7 @@ p  A new user is created for the blog as a superuser, so make sure you do this r
   -if (flash.error)
     p.flash.error #{flash.error}
   -if (flash.info)
-    span.flash.info #{flash.info}
+    p.flash.info #{flash.info}
 
 form(name="user-form",method="post",action="/adduser")
   p  

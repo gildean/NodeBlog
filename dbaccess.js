@@ -1,4 +1,4 @@
-//DATABASE ACCESS FUNCTIONS
+// DATABASE ACCESS FUNCTIONS
 
 // module dependencies
 var dbinfo = require('./dbinfo');
@@ -48,28 +48,27 @@ exports.addNewUser = function(req, res) {
 };
 
 
-
 // logon with bcrypt hash check
 exports.logon = function(req, res) {
    userdb.findOne({ user : req.body.username }, function(err, useraccount) {
       if (!err && useraccount) {
-      var password = req.body.password;
-      var passhash = useraccount.pass;
-      bcrypt.compare(password, passhash, function(err, same) {
-        if (!err && same) {
-          req.session.user = useraccount;
-          res.redirect('/');
-        } else {
+        var password = req.body.password;
+        var passhash = useraccount.pass;
+        bcrypt.compare(password, passhash, function(err, same) {
+          if (!err && same) {
+            req.session.user = useraccount;
+            res.redirect('/');
+          } else {
+            req.flash('error', 'Incorrect login, try again');
+            res.redirect('back');
+          }
+        });
+      } else {
           req.flash('error', 'Incorrect login, try again');
           res.redirect('back');
       }
-    });
-    } else {
-          req.flash('error', 'Incorrect login, try again');
-          res.redirect('back');
-        }
-    });
- };
+  });
+};
 
 
 // list all posts
@@ -87,7 +86,7 @@ exports.index = function(req, res) {
 };
 
 
-// list all by cliecked tag
+// list all by selected tag
 exports.postsByTag = function(req, res) {
   postdb.find({ tags: req.params.tag }, function(err, foundposts) {
     if (!err) {
@@ -133,7 +132,7 @@ exports.savePostEdit = function(req, res) {
   }}, function(err, post) {
   res.redirect('/posts/' + req.body.id);
   });
- };
+};
 
 
 // delete a post
@@ -171,7 +170,7 @@ exports.saveCommentEdit = function(req, res) {
   req.flash('info', 'Comment edited!');
   res.redirect('/posts/' + req.body.postid);
   });
- };
+};
 
 
 // delete a comment

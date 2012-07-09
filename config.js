@@ -1,4 +1,4 @@
-//CONFIG
+// CONFIG
 exports.config = function(app, express){
 app.configure(function(){
   app.set('views', __dirname + '/views');

@@ -3,9 +3,9 @@
 // module dependencies.
 var express = require('express')
   , moment = require('moment')
+  , fs = require('fs')
   , routes = require('./routes')
   , dbaccess = require('./dbaccess')
-  , fs = require('fs')
   , http = require('./httpredirect');
 var app = module.exports = express.createServer({
   key: fs.readFileSync('./key.key'),
@@ -16,6 +16,8 @@ var app = module.exports = express.createServer({
 // configuration
 var config = require('./config').config(app, express);
 
+
+// helpful helper is helpful
 app.helpers({
   moment: moment
 });
@@ -62,25 +64,24 @@ app.get('/posts/remove/:postid', checkLogin, dbaccess.deletePost);
 app.get('/posts/edit/comment/:coid', checkLogin, routes.editComment);
 app.get('/posts/remove/comment/:coid', checkLogin, dbaccess.deleteComment);
 
-//searchs
+// searchs
 app.get('/posts/tags/:tag', dbaccess.postsByTag);
 
 
-//posts
+// posts
 app.post('/posts/add', checkLogin, dbaccess.addNewPost);
 app.post('/posts/edit', dbaccess.savePostEdit);
 app.post('/posts/comment', dbaccess.addComment);
 app.post('/posts/edit/comment', checkLogin, dbaccess.saveCommentEdit);
 
 
-// route for postid validation
+// route for parameters
 app.param('postid', dbaccess.checkPostId);
 app.param('coid', dbaccess.checkCId);
 
 
 
-// Start the app, you fool
-
+// Run, you fool!
 app.listen(3004, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });

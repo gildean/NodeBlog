@@ -7,6 +7,6 @@ form(name="edit-post",method="post",action="/posts/edit/comment")
   p email: #{comment.email}
   p
     label Content
-      textarea(name="body", rows="15", cols="95", wrap="hard") #{comment.body}
+      textarea(class="editbox", name="body", rows="15", cols="95", wrap="hard") #{comment.body}
   p  
     input(type="submit",name="post",value="Post")
