@@ -1,7 +1,8 @@
 //DATABASE ACCESS FUNCTIONS
 
 // module dependencies
-var db =  require('mongojs').connect('testblogdb');
+var dbinfo = require('./dbinfo');
+var db =  require('mongojs').connect(dbinfo.dbinfo);
 var userdb = db.collection('user');
 var postdb = db.collection('post');
 var bcrypt = require('bcrypt');
@@ -113,7 +114,6 @@ exports.addNewPost = function(req, res) {
         username: req.session.user.user
     }
   };
-
   postdb.insert(values, function(err, post) {
     req.flash('info', 'New post added');
     res.redirect('/posts/' + values._id);
@@ -166,14 +166,6 @@ exports.addComment = function(req, res) {
 
 // edit a comment
 exports.editComment = function(req, res) {
-   var commentvalues = {  
-      name: req.body.name
-    , email: req.body.email
-    , body: req.body.comment
-    , created: req.body.ts
-  };
-
-  console.log(commentvalues);
 postdb.find({'comment.cid': ObjectId(req.params.cid)}, function(err, comment) {
     if (!err) {
       res.render('editcomment.jade', { 
@@ -229,6 +221,16 @@ exports.checkPostId = function(req, res, next, id) {
     if (err) return next(new Error('Make sure you provided correct post id'));
     if (!post) return next(new Error('Post loading failed'));
     req.post = post;
+    next();
+  });
+};
+
+exports.checkCommentId = function(req, res, next, id) {
+  if (id.length != 24) return next(new Error('The post id length is incorrect'));
+  postdb.findOne({'comment.cid': db.ObjectId(id)}, function(err, post) {
+    if (err) return next(new Error('Make sure you provided correct post id'));
+    if (!post) return next(new Error('Post loading failed'));
+    req.postcid = postcid;
     next();
   });
 };
