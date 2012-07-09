@@ -40,3 +40,12 @@ exports.showPost = function(req, res) {
    , flash: req.flash()  
    });
 };
+
+// show one comment
+exports.editComment = function(req, res) {
+    res.render('editcomment.jade', { 
+    title: 'NodeBlog - Found these'
+  , comment: req.comment
+  , flash: req.flash()
+  });
+};

@@ -5,6 +5,7 @@ var dbinfo = require('./dbinfo');
 var db =  require('mongojs').connect(dbinfo.dbinfo);
 var userdb = db.collection('user');
 var postdb = db.collection('post');
+var commentdb = db.collection('comment');
 var bcrypt = require('bcrypt');
 
 
@@ -147,90 +148,63 @@ exports.deletePost = function(req, res) {
 // add a comment
 exports.addComment = function(req, res) {
   var data = {
-      name: req.body.name
+      _id: new db.bson.ObjectID.createPk()
+    , postid: req.body.postid
+    , name: req.body.name
     , email: req.body.email
-    , body: req.body.comment
+    , body: req.body.body
     , created: new Date()
-    , cid: new db.bson.ObjectID.createPk()
   };
-
-  console.log(data);
-
-  postdb.update({ _id: db.ObjectId(req.body.postid) }, {
-    $push: { comments: data }}, { safe: true }, function(err, post) {
+  commentdb.insert(data, function(err, post) {
       req.flash('info', 'Comment added')
       res.redirect('/posts/' + req.body.postid);
   });
 };
 
 
-// edit a comment
-exports.editComment = function(req, res) {
-postdb.find({'comment.cid': ObjectId(req.params.cid)}, function(err, comment) {
-    if (!err) {
-      res.render('editcomment.jade', { 
-        title: 'NodeBlog - Found these'
-      , comment: comment
-      , flash: req.flash() 
-    });
-    }
+// save an edited comment
+exports.saveCommentEdit = function(req, res) {
+  commentdb.update({ _id: db.ObjectId(req.body.id) }, {
+  $set: {
+     body: req.body.body
+  }}, function(err, post) {
+  req.flash('info', 'Comment edited!');
+  res.redirect('/posts/' + req.body.postid);
   });
-};
-
-
-// save the edited comment
-exports.saveEditComment = function(req, res) {
-  var data = {
-      name: req.body.name
-    , email: req.body.email
-    , body: req.body.comment
-    , created: req.body.ts
-  };
-
-  console.log(data);
-
-  postdb.update({ _id: db.ObjectId(req.body.id) }, {
-    $set: { comments: data }}, { safe: true }, function(err, post) {
-      res.redirect('/posts/' + req.body.id);
-  });
-};
+ };
 
 
 // delete a comment
 exports.deleteComment = function(req, res) {
-  var data = {
-      name: req.body.name
-    , email: req.body.email
-    , body: req.body.comment
-    , created: req.body.ts
-  };
-
-  console.log(data);
-
-  postdb.update({ _id: db.ObjectId(req.body.id) }, {
-    $pull: { comments: data }}, function(err, post) {
-      res.redirect('/posts/' + req.body.id);
+  commentdb.remove({ _id: db.ObjectId(req.params.coid) }, function(err, post) {
+    req.flash('info', 'Comment deleted');
+    res.redirect('back');
   });
 };
 
 
-// validating the post id
+// validating the post id to get a single post
 exports.checkPostId = function(req, res, next, id) {
   if (id.length != 24) return next(new Error('The post id length is incorrect'));
   postdb.findOne({_id: db.ObjectId(id)}, function(err, post) {
     if (err) return next(new Error('Make sure you provided correct post id'));
     if (!post) return next(new Error('Post loading failed'));
-    req.post = post;
-    next();
+    commentdb.find({postid: id}, function(err, comments) {
+      req.post = post;
+      post.comments = comments;
+      next();    
+    });
   });
 };
 
-exports.checkCommentId = function(req, res, next, id) {
-  if (id.length != 24) return next(new Error('The post id length is incorrect'));
-  postdb.findOne({'comment.cid': db.ObjectId(id)}, function(err, post) {
+
+// validating the comment id to get a single comment
+exports.checkCId = function(req, res, next, id) {
+  if (id.length != 24) return next(new Error('The comment id length is incorrect'));
+  commentdb.findOne({_id: db.ObjectId(id)}, function(err, comment) {
     if (err) return next(new Error('Make sure you provided correct post id'));
-    if (!post) return next(new Error('Post loading failed'));
-    req.postcid = postcid;
+    if (!comment) return next(new Error('Comment loading failed'));
+    req.comment = comment;
     next();
   });
 };

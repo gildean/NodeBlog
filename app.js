@@ -59,26 +59,28 @@ app.get('/posts/add', checkLogin, routes.newPost);
 app.get('/posts/:postid', routes.showPost);
 app.get('/posts/edit/:postid', checkLogin, routes.editPost);
 app.get('/posts/remove/:postid', checkLogin, dbaccess.deletePost);
-app.get('/posts/edit/comment/:postid', checkLogin, routes.editComment);
-
+app.get('/posts/edit/comment/:coid', checkLogin, routes.editComment);
+app.get('/posts/remove/comment/:coid', checkLogin, dbaccess.deleteComment);
 
 //searchs
 app.get('/posts/tags/:tag', dbaccess.postsByTag);
 
 
 //posts
-app.post('/posts/remove/comment/:postid', checkLogin, dbaccess.deleteComment);
 app.post('/posts/add', checkLogin, dbaccess.addNewPost);
 app.post('/posts/edit', dbaccess.savePostEdit);
 app.post('/posts/comment', dbaccess.addComment);
-app.post('/posts/edit/comment', checkLogin, dbaccess.saveEditComment);
+app.post('/posts/edit/comment', checkLogin, dbaccess.saveCommentEdit);
 
 
 // route for postid validation
 app.param('postid', dbaccess.checkPostId);
+app.param('coid', dbaccess.checkCId);
+
 
 
 // Start the app, you fool
+
 app.listen(3004, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
