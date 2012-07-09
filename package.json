@@ -1,6 +1,6 @@
 {
   "name": "NodeBlog",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Blog engine with express frontend and mongodb as the database",
   "author": "Olli Kankare",
   "repository": {
