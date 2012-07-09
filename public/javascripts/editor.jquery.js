@@ -69,12 +69,8 @@ if(typeof $.fn.rte === "undefined") {
 
             textarea.after(iframe);
 
-            var css = "";
-            if(opts.content_css_url) {
-                css = "<link type='text/css' rel='stylesheet' href='" + opts.content_css_url + "' />";
-            }
 
-            var doc = "<html><head>"+css+"</head><body class='frameBody'>"+content+"</body></html>";
+            var doc = "<html><head>"+"</head><body class='frameBody'>"+content+"</body></html>";
             tryEnableDesignMode(doc, function() {
                 $("#toolbar-" + element_id).remove();
                 textarea.before(toolbar());
@@ -138,14 +134,14 @@ if(typeof $.fn.rte === "undefined") {
                     </select>\
                 </p>\
                 <p>\
-                    <a href='#' class='bold'><img src='"+opts.media_url+"bold.gif' alt='bold' /></a>\
-                    <a href='#' class='italic'><img src='"+opts.media_url+"italic.gif' alt='italic' /></a>\
+                    <a href='#' class='bold'><img src='"+opts.media_url+"/images/bold.png' alt='bold' /></a>\
+                    <a href='#' class='italic'><img src='"+opts.media_url+"/images/italic.png' alt='italic' /></a>\
                 </p>\
                 <p>\
-                    <a href='#' class='unorderedlist'><img src='"+opts.media_url+"unordered.gif' alt='unordered list' /></a>\
-                    <a href='#' class='link'><img src='"+opts.media_url+"link.png' alt='link' /></a>\
-                    <a href='#' class='image'><img src='"+opts.media_url+"image.png' alt='image' /></a>\
-                    <a href='#' class='disable'><img src='"+opts.media_url+"close.gif' alt='close rte' /></a>\
+                    <a href='#' class='unorderedlist'><img src='"+opts.media_url+"/images/list.png' alt='unordered list' /></a>\
+                    <a href='#' class='link'><img src='"+opts.media_url+"/images/link.png' alt='link' /></a>\
+                    <a href='#' class='image'><img src='"+opts.media_url+"/images/img.png' alt='image' /></a>\
+                    <a href='#' class='disable'><img src='"+opts.media_url+"/images/close.png' alt='close rte' /></a>\
                 </p></div></div>");
 
             $('select', tb).change(function(){
