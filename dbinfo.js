@@ -1,4 +1,4 @@
-//DATABASE INFORMATION
+// DATABASE INFORMATION
 
 // ser your mongoDB database connection info here, the syntax is as follows: 
 // username:password@databaseurl.tld:port/databasename

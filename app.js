@@ -80,7 +80,6 @@ app.param('postid', dbaccess.checkPostId);
 app.param('coid', dbaccess.checkCId);
 
 
-
 // Run, you fool!
 app.listen(3004, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

@@ -4,6 +4,8 @@
 * Copyright (c) 2009 Batiste Bieler
 * Distributed under the GPL Licenses.
 * Distributed under the MIT License.
+*
+* Modified by Olli Kankare 2012 No copyrights
 */
 
 // define the rte light plugin
@@ -13,7 +15,6 @@ if(typeof $.fn.rte === "undefined") {
 
     var defaults = {
         media_url: "",
-        content_css_url: "rte.css",
         dot_net_button_class: null,
         max_height: 350
     };
