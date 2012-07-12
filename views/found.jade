@@ -8,10 +8,8 @@ for bp in foundPosts
     
     a(href="/posts/#{bp._id}")
       h2 #{bp.subject}
-    - var length = 200;
-    - var trimmedBody = bp.body.substring(0, length) + '...'; 
-    p=  trimmedBody
-    
+
+    div.fpblogpost!=  bp.body    
     p.tags
       for tag in bp.tags
         a.tag(href="/posts/tags/#{tag}") #{tag}

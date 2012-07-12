@@ -79,8 +79,8 @@ footer {
 /* Styles to the blogposts */
 
 .body {
-	padding: 20px 0;
-	font: 16px "Ubuntu Mono", "Lucida Grande", Monaco, Helvetica, Arial, sans-serif;
+	padding: 10px 0 20px;
+	font: 16px "Ubuntu Mono", "Lucida Grande", monospace;
 }
 
 .posted {
@@ -103,6 +103,13 @@ footer {
 	text-overflow: ellipsis;
     white-space: nowrap;
 } 
+
+.fpblogpost {
+	height: 200px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
 .tag {
 	color: #0e0e0e;
@@ -165,7 +172,7 @@ footer {
 
 .frameBody
 {
-    font-family:sans-serif;
+    font-family: "Ubuntu Mono", "Lucida Grande", monospace;
     font-size:12px;
     margin:0;
     width:100%;
