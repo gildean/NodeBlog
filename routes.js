@@ -50,3 +50,11 @@ exports.editComment = function(req, res) {
   , flash: req.flash()
   });
 };
+
+
+// 404 Not Found
+exports.notFound = function(req, res) {
+  res.render('404.jade', {
+    title: '404 Not Found'  
+  });
+};

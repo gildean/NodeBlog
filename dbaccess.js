@@ -29,11 +29,11 @@ exports.anyoneThere = function (req, res) {
   
 // check that the user doesn't already exist and then create it with a randomly salted password hash
 exports.addNewUser = function(req, res) {
-  userdb.count({'user': req.body.username},function(err, usercheck) {
+  userdb.count(function(err, usercheck) {
     if (usercheck > 0) {
-      console.log('user found, not creating a new one with the same name');
+      console.log('user found, not creating a new one');
       req.flash('error', 'User already exists');
-      res.redirect('back');
+      res.redirect('/');
     } else {
       var values = {
         user: req.body.username
@@ -76,7 +76,7 @@ exports.index = function(req, res) {
   var indexes = { subject: 1, body: 1, tags: 1, created: 1, author: 1 };
   postdb.find({ state: 'published'}, indexes, function(err, posts) {
     if (!err && posts) {
-      res.render('index.jade', { 
+        res.render('index.jade', { 
         title: 'NodeBlog'
       , blogPosts: posts 
       , flash: req.flash()  

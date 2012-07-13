@@ -80,6 +80,9 @@ app.param('postid', dbaccess.checkPostId);
 app.param('coid', dbaccess.checkCId);
 
 
+// not found handling, this just grabs every other get and sends simply '404 nnt found'
+app.get('*', routes.notFound);
+
 // Run, you fool!
 app.listen(3004, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
