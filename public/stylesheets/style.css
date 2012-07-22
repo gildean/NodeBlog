@@ -334,7 +334,7 @@ input {
 }
 
 .button {
-	margin: 0 0 0 80px;
+	margin: 10px 0 0 100px;
 	padding: 5px 10px;
 }
 
@@ -350,7 +350,7 @@ input {
 
 label {
     display: block;
-    width: 80px;
+    width: 90px;
     float: left;
     margin: 2px 4px 6px 4px;
     text-align: right;
