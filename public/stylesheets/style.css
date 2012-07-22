@@ -100,7 +100,7 @@ header {
 	min-width: 200px;
 	max-width: 300px;
 	height: 100%;
-	box-shadow: inset -2px 0 2px rgba(0,0,0,0.3);
+	box-shadow: inset 2px 0 2px rgba(0,0,0,0.3);
 }
 
 footer {
@@ -126,7 +126,7 @@ footer {
 
 .login  {
 	position: absolute;
-	top: 100px;
+	top: 200px;
 	right: 50px;
 }
 
