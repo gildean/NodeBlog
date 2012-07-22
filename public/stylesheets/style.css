@@ -2,6 +2,7 @@
 /* Let's start with some basic stylings */
 @font-face {
 font-family: DejaVuSerif;
+font-weight: normal;
 src: url('../DejaVuSerif.ttf');
 }
 
@@ -27,6 +28,7 @@ src: url('../DejaVuSerif-BoldItalic.ttf');
 
 @font-face {
 font-family: Arimo;
+font-weight: normal;
 src: url('../Arimo-Regular-Latin.ttf');
 }
 
