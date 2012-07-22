@@ -117,8 +117,17 @@ footer {
 }
 
 .headertext {
-	color: #660000;
-	padding: 0 0 0 20px;
+	color:rgba(0,0,0,0.4);
+	font: 14px "DejaVuSerif", "Georgia", serif;
+	border-bottom:2px #660000;
+	text-align: center;
+}
+
+.mangos {
+	color:rgba(0,0,0,0.4);
+	font: 18px "DejaVuSerif", "Georgia", serif;
+	border-bottom:2px #660000;
+	text-align: center;
 }
 
 .logo {
