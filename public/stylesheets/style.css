@@ -77,6 +77,10 @@ a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover {
 
 h1 {
 	font: 22px "DejaVuSerif", "Georgia", serif;
+	border-bottom:2px #660000;
+	border-bottom-style: groove;
+	width:50%;
+}
 }
 
 h1.main {
@@ -150,9 +154,6 @@ footer {
 .indexheader {
 	padding: 0 0 5px 0;
 	margin: 0 0 20px;
-	border-bottom:2px #660000;
-	border-bottom-style: groove;
-	width:50%;
 }
 
 
@@ -172,7 +173,7 @@ footer {
 .edit {
 	display: inline-block;
 	position: absolute;
-	left: 420px;
+	left: 60px;
 	top: 20px;
 }
 
