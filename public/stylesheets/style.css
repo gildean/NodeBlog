@@ -117,14 +117,20 @@ footer {
 }
 
 .headertext {
-	color:rgba(0,0,0,0.4);
+	position: absolute;
+	top: 5px;
+	left: 50px;
+	color:rgba(10,0,0,0.6);
 	font: 14px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
 	text-align: center;
 }
 
 .mangos {
-	color:rgba(0,0,0,0.4);
+	position: absolute;
+	top: 150px;
+	left: 50px;
+	color:rgba(10,0,0,0.6);
 	font: 18px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
 	text-align: center;
