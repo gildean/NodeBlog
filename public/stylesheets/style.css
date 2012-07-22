@@ -334,7 +334,8 @@ input {
 }
 
 .button {
-	padding: 10px 20px;
+	margin: 0 0 0 20px;
+	padding: 5px 10px;
 }
 
 .button:hover {
@@ -349,7 +350,7 @@ input {
 
 label {
     display: block;
-    width: 150px;
+    width: 50px;
     float: left;
     margin: 2px 4px 6px 4px;
     text-align: right;
