@@ -1,6 +1,9 @@
 // MAIN APP
 
 // module dependencies.
+
+
+"use strict";
 var express = require('express')
   , moment = require('moment')
   , routes = require('./routes')
