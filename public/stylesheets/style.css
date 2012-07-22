@@ -73,7 +73,7 @@ a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover {
 }
 
 h1 {
-	font: 22px;
+	font: 22px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
 	border-bottom-style: groove;
 	width:50%;
@@ -81,7 +81,7 @@ h1 {
 
 
 h1.main {
-	font: 28px;
+	font-size: 28px;
 	padding: 0 0 10px;
 }
 
