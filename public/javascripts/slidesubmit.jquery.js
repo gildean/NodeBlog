@@ -25,7 +25,11 @@
  		slidesubmit: function(options) {
 			var defaults = {
 			    value : 1,
+<<<<<<< HEAD
                 label : 'Fill fields and slide to submit',
+=======
+                label : 'Slide To Submit',
+>>>>>>> 4a3b8aa... Clien side js
                 label_position: 'before',
                 width : '100px',
                 form_wrap: false,

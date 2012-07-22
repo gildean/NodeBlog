@@ -1,4 +1,5 @@
 $(document).ready(function() {
+<<<<<<< HEAD
   $("#submit-slider").addClass("nosubmit");
     $(".email").blur(function(){
       if ($(this).val() != "") {
@@ -16,3 +17,14 @@ $(document).ready(function() {
   });
    
 });
+=======
+   $(".rte-zone").rte({
+      media_url: "",
+   });
+   $( "#submit-slider" ).slidesubmit({
+      form_wrap: false,
+      form_atts: 'action="/posts/comment" method="post"',
+      hidden_field: '.for-bots'
+   });
+ });
+>>>>>>> 4a3b8aa... Clien side js
