@@ -6,10 +6,10 @@ h1 Login user
     p.flash.info #{flash.info} 
 form(name="login-form",method="post",action="/login")
   p
-    label Username:
-      input(type="text",name="username", required)
+  label Username:
+  input(type="text",name="username", required)
   p
-    label Password:
-      input(type="password",name="password", required)
+  label Password:
+  input(type="password",name="password", required)
   p
-    input(type="submit",name="login",value="Login")    
+  input(type="submit", class="button", name="login", value="Login")    

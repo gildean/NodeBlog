@@ -327,17 +327,30 @@ input {
     border:1px #999 solid;
 	background: #fcfcfc;
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
 }
 
-button {
+.button {
 	padding: 10px 20px;
 }
 
-button:hover {
+.button:hover {
 	cursor: pointer;
+	box-shadow: inset 2px 2px 8px rgba(0,0,0,0.2);
 }
 
 #submit-slider{
     margin: 10px;
     width: 150px;
+}
+
+label {
+    display: block;
+    width: 150px;
+    float: left;
+    margin: 2px 4px 6px 4px;
+    text-align: right;
 }
