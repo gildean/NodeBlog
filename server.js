@@ -3,7 +3,6 @@
 // module dependencies.
 var express = require('express')
   , moment = require('moment')
-  , fs = require('fs')
   , routes = require('./routes')
   , dbaccess = require('./dbaccess');
 var app = module.exports = express.createServer();
@@ -88,6 +87,6 @@ app.get('*', dbaccess.settings, routes.notFound);
 var PORT = process.env['app_port'] || 19968;
 // Run, you fool!
 app.listen(PORT), function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+  console.log("server listening");
 });
 
