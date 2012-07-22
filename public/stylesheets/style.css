@@ -38,7 +38,7 @@ src: url('../Arimo-Bold-Latin.ttf');
 
 @font-face {
 font-family: Arimo-Latin;
-font-weight: italic;
+font-style: italic;
 src: url('../Arimo-Italic-Latin.ttf');
 }
 
