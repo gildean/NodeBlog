@@ -10,6 +10,6 @@ server.configure(function(){
   server.use(express.cookieParser());
   server.use(express.session({ secret: 'HJF839hrfsdjufFhj48w3hfsvfhushrfSVHydrg3547fa83yzcvwe' }));
   server.use(express.static(__dirname + '/public'));
-  server.use(app.router);
+  server.use(server.router);
 });
 };
