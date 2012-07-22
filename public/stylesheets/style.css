@@ -55,6 +55,7 @@ body {
 	position: relative;
 	padding: 30px 50px;
 	font: 16px "Arimo-Latin", Helvetica, sans-serif;
+	font-weight: normal;
 	height: 100%;
 	background-color: #FCFBF7;
 }
