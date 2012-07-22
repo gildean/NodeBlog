@@ -24,11 +24,12 @@ a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover {
 }
 
 h1 {
+	font: Georgia, serif;
 	font-size: 22px;
 }
 
 h1.main {
-	font: serif;
+	font: Georgia, serif;
 	font-size: 28px;
 }
 
@@ -84,8 +85,7 @@ footer {
 }
 
 .indexheader {
-	border-bottom:4px #660000;
-    border-style:groove;
+	border-bottom: 4px groove #660000;
 }
 
 
