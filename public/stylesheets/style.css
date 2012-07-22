@@ -88,6 +88,7 @@ h1.main {
 
 h2, h3, h4, h5, h6 {
 	font-family: "Arimo", "Verdana", sans-serif;
+	font-weight: normal;
 }
 
 /**/
