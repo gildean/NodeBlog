@@ -86,7 +86,7 @@ app.get('*', dbaccess.settings, routes.notFound);
 
 var PORT = process.env['app_port'] || 19968;
 // Run, you fool!
-app.listen(PORT), function(){
+app.listen( PORT, function(){
   console.log("server listening");
 });
 
