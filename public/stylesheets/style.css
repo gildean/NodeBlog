@@ -100,7 +100,7 @@ header {
 	min-width: 200px;
 	max-width: 200px;
 	height: 100%;
-	box-shadow: inset 2px 0 2px rgba(0,0,0,0.3);
+	box-shadow: inset 2px 0 4px rgba(0,0,0,0.3);
 	padding: 0 0 60px 0;
 	overflow: hidden;
 }
@@ -172,8 +172,8 @@ footer {
 .edit {
 	display: inline-block;
 	position: absolute;
-	right: 20px;
-	top: 60px;
+	left: 20px;
+	top: 20px;
 }
 
 .items {
@@ -272,7 +272,7 @@ footer {
     height:200px;
     display:block;
     background: #fcfcfc;
-    box-shadow: inset 2px 2px 8px rgba(0,0,0,0.2);
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
 }
 
 .rte-toolbar{ 
