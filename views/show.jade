@@ -4,7 +4,7 @@
   -if (flash.info)
     p.flash.info #{flash.info} 
 article
-- if (user)
+  - if (user)
     div.edit
       a(href="/posts/edit/#{post._id}") Edit post
       span.divider |
