@@ -29,8 +29,7 @@ h1 {
 }
 
 h1.main {
-	font: Georgia, serif;
-	font-size: 28px;
+	font: 28px "Georgia", serif;
 }
 
 
