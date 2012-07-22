@@ -190,7 +190,7 @@ footer {
 } 
 
 .fpblogpost {
-	height: 65px;
+	height: 60px;
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -200,7 +200,7 @@ footer {
 	color: #990000;
 	font-size: 12px;
 	padding: 0 5px 0 0;
-	margin: 10px 5px 5px 0 ;
+	margin: 15px 5px 5px 0 ;
 	border-right: 1px solid #FFB800;
 }
 
