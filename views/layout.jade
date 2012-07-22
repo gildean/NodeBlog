@@ -11,6 +11,9 @@ html
     header
       a.logo(href="/") 
          img(src="/images/mangos.png",alt="mangos")
+      footer 
+         p NodeBlog by ok
+         p no rights reserved 2012
       - if (user)            
          span.login
             p
@@ -23,7 +26,7 @@ html
 
 
     div#container!= body
-    footer NodeBlog by ok | no rights reserved 2012
+    
     script(type='text/javascript', src='/javascripts/editor.jquery.js')
     script(type='text/javascript', src='/javascripts/slidesubmit.jquery.js')
     script(type='text/javascript', src='/javascripts/snippets.jquery.js')
