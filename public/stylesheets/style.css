@@ -145,7 +145,7 @@ footer {
 #container {
 	z-index: 100;
 	width: 84%;
-	margin: 0 10% 0;
+	margin: 5% 10% 0;
 }
 
 .indexheader {
@@ -159,7 +159,6 @@ footer {
 
 .body {
 	width: 64%;
-	padding: 30px 50px 0;
 	position: relative;
 	font: 16px "Arimo-Latin", Helvetica, sans-serif;
 	font-weight: normal;
