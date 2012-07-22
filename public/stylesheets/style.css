@@ -146,10 +146,11 @@ footer {
 }
 
 .login  {
+	text-align: center;
 	z-index: 1000;
 	position: absolute;
-	top:150px;
-	right: 65px;
+	top:170px;
+	right: 55px;
 }
 
 .loginlink {
