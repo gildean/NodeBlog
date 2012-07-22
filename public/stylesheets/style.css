@@ -13,8 +13,15 @@ src: url('../DejaVuSerif-Bold.ttf');
 
 @font-face {
 font-family: DejaVuSerif;
-font-weight: italic;
+font-style: italic;
 src: url('../DejaVuSerif-Italic.ttf');
+}
+
+@font-face {
+font-family: DejaVuSerif;
+font-style: italic;
+font-weight: bold;
+src: url('../DejaVuSerif-BoldItalic.ttf');
 }
 
 
@@ -35,6 +42,13 @@ font-weight: italic;
 src: url('../Arimo-Italic-Latin.ttf');
 }
 
+
+@font-face {
+font-family: Arimo-Latin;
+font-style: italic;
+font-weight: bold;
+src: url('../Arimo-BoldItalic-Latin.ttf');
+}
 
 
 body {
