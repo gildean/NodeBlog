@@ -127,7 +127,7 @@ footer {
 }
 
 .login  {
-	position: absolute;
+	z-index: 1000;
 	top: 200px;
 	right: 50px;
 }
@@ -147,8 +147,10 @@ footer {
 }
 
 .indexheader {
-	margin: 0 0 10px;
-	border-bottom: 1px groove #660000;
+	padding: 0 0 5px 0;
+	margin: 0 0 20px;
+	border: 0 0 1px 0 #660000;
+	border-style: groove;
 	width:50%;
 }
 
