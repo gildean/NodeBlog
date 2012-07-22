@@ -130,6 +130,12 @@ footer {
 	top: 60px;
 }
 
+.loginlink {
+	top:5px;
+	right: 20px;
+	opacity: 0.4;
+}
+
 .divider {
 	padding: 0 5px;
 }

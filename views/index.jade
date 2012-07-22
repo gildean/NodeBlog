@@ -10,11 +10,12 @@ a.login(href="/login") Login
 
 for post in blogPosts
   div.items
+    p
+      span.posted Posted: #{moment(post.created).format('DD.MM.YYYY HH:mm')}
     a(href="/posts/#{post._id}")
       h2 #{post.subject}
     div.fpblogpost!= post.body
     p.tags
       for tag in post.tags
         a.tag(href="/posts/tags/#{tag}") #{tag}
-    p
-      span.posted Posted: #{moment(post.created).format('DD.MM.YYYY HH:mm')}
+    
