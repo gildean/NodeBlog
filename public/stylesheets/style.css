@@ -26,25 +26,25 @@ src: url('../DejaVuSerif-BoldItalic.ttf');
 
 
 @font-face {
-font-family: Arimo-Latin;
+font-family: Arimo;
 src: url('../Arimo-Regular-Latin.ttf');
 }
 
 @font-face {
-font-family: Arimo-Latin;
+font-family: Arimo;
 font-weight: bold;
 src: url('../Arimo-Bold-Latin.ttf');
 }
 
 @font-face {
-font-family: Arimo-Latin;
+font-family: Arimo;
 font-style: italic;
 src: url('../Arimo-Italic-Latin.ttf');
 }
 
 
 @font-face {
-font-family: Arimo-Latin;
+font-family: Arimo;
 font-style: italic;
 font-weight: bold;
 src: url('../Arimo-BoldItalic-Latin.ttf');
@@ -53,8 +53,7 @@ src: url('../Arimo-BoldItalic-Latin.ttf');
 
 body {
 	height: 100%;
-	font: 16px "Arimo-Latin", Helvetica, sans-serif;
-
+	font: 16px "Arimo", "Helvetica", sans-serif;
 }
 
 a, .deletebutton, .editbutton, .tag {
@@ -86,7 +85,7 @@ h1.main {
 }
 
 h2, h3, h4, h5, h6 {
-	font-family: "Arimo-Latin", "Verdana", sans-serif;
+	font: "Arimo-Latin", "Verdana", sans-serif;
 }
 
 /**/
@@ -184,9 +183,8 @@ footer {
 .body {
 	width: 64%;
 	position: relative;
-	font-weight: normal;
-	font-style: normal;
 	height: 100%;
+	font: 16px "Arimo", "Helvetica", sans-serif;
 	line-height: 26px;
 }
 
