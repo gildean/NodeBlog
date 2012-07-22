@@ -105,7 +105,7 @@ footer {
 } 
 
 .fpblogpost {
-	height: 200px;
+	height: 75px;
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -170,6 +170,15 @@ footer {
 	display: inline;
 }
 
+.disclaimer {
+	font-size: 70%;
+	color: #0e0e0e;
+	font-style: italic;
+}
+
+/**/
+/* rte-plugin and the slider */
+
 .frameBody
 {
     font-family: "Ubuntu Mono", "Lucida Grande", monospace;
@@ -196,7 +205,9 @@ footer {
     display:block;
 }
 
-.rte-toolbar{ overflow:hidden; }
+.rte-toolbar{ 
+    overflow:hidden; 
+}
 
 .rte-toolbar a, .rte-toolbar a img {
         border:0;
@@ -206,5 +217,10 @@ footer {
     float:left;
     margin:0;
     padding-right:5px;
+}
+
+#submit-slider{
+    margin: 10px;
+    width: 150px;
 }
 

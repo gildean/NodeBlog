@@ -1,6 +1,6 @@
 h2 Create a new user
 
-p  A new user is created for the blog as a superuser, so make sure you do this right.<br>
+p  Set a username and a password (you can change these settings later).<br>
 
 -if (flash)
   -if (flash.error)
@@ -11,9 +11,12 @@ p  A new user is created for the blog as a superuser, so make sure you do this r
 form(name="user-form",method="post",action="/adduser")
   p  
     label Username:
-       input(type="text",name="username", required)
+    input(type="text",name="username", required)
   p  
     label Password:
-       input(type="password",name="password", required)
+    input(type="password",name="password", required)
+  p  
+    label Confirm :
+    input(type="password",name="passwordconf", required)
   p  
     input(type="submit",name="submit",value="Submit",onClick="return confirm('Are you sure?');")

@@ -15,32 +15,47 @@ div.posted Posted: #{moment(post.created).format('DD.MM.YYYY HH:mm')} by: #{post
     div.edit
       a(href="/posts/edit/#{post._id}") Edit post
       span.divider |
-      a(href="/posts/remove/#{post._id}", onClick="return confirm('Sure about that?')") Delete post
+      a(href="/posts/remove/#{post._id}", onClick="return confirm('Sure about that? All comments will also be removed.')") Delete post
 
 div.commentsection
   h3 Comments
 
   - if (post.comments)
-      for comment in post.comments
+     for comment in post.comments
         div.comment
           - if (user)
               div
-                a(href="/posts/edit/comment/#{comment._id}") Edit comment
-                span.divider |
-                a(href="/posts/remove/comment/#{comment._id}", onClick="return confirm('Sure about that?')") Delete comment
+                 a(href="/posts/hide/comment/#{comment._id}") Hide
+                 span.divider |
+                 a(href="/posts/edit/comment/#{comment._id}") Edit
+                 span.divider |
+                 a(href="/posts/remove/comment/#{comment._id}", onClick="return confirm('Sure about that?')") Delete
           p!= comment.body
           p.posted posted #{moment(comment.created).fromNow()} by #{comment.name}
-
+  - if (user) 
+    - if (post.hidden)
+        for hidden in post.hidden
+           h3 Comments to review:
+           div.comment
+              div
+                 a(href="/posts/publish/comment/#{hidden._id}") Publish
+                 span.divider |
+                 a(href="/posts/edit/comment/#{hidden._id}") Edit
+                 span.divider |
+                 a(href="/posts/remove/comment/#{hidden._id}", onClick="return confirm('Sure about that?')") Delete
+              p!= hidden.body
+              p.posted posted #{moment(hidden.created).fromNow()} by #{hidden.name} from #{hidden.from}
   h3 Add comment
   form(name="add-comment",method="post",action="/posts/comment")
     input(type="hidden",name="postid",value="#{post._id}")
-    p  
-      label Name
-        input(type="text", name="name", required)
-    p  
-      label email
-        input(type="email", name="email", required)
+    p
+       label Name
+       input(type="text", name="name", required)  
+    p
+       label email
+       input(type="email", name="email", required)
     textarea.rte-zone(placeholder="Comment goes here", name="body", rows="6", cols="60", maxlength="550")
-    p
-      input(type="submit",name="post",value="Comment")
-    p
+    input(type="hidden", class="for-bots", name="forbots", value="")
+    div#submit-slider
+   p.disclaimer note that your ip is recorded upon submit, please do not spam
+

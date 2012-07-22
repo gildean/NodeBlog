@@ -71,7 +71,7 @@ if(typeof $.fn.rte === "undefined") {
             textarea.after(iframe);
 
 
-            var doc = "<html><head>"+"</head><body class='frameBody'>"+content+"</body></html>";
+            var doc = "<html><head>"+"</head><body style='font-family: monospace'>"+content+"</body></html>";
             tryEnableDesignMode(doc, function() {
                 $("#toolbar-" + element_id).remove();
                 textarea.before(toolbar());
@@ -277,3 +277,4 @@ if(typeof $.fn.rte === "undefined") {
 } // if
 
 })(jQuery);
+
