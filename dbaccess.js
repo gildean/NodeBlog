@@ -245,7 +245,7 @@ exports.addComment = function(req, res) {
     , from: req.connection.remoteAddress
   };
   commentdb.insert(data, function(err, post) {
-      req.flash('info', 'Comment added')
+      req.flash('info', 'Comment added for reviewing at a later time!')
       res.redirect('/posts/' + req.body.postid);
   });
 };
