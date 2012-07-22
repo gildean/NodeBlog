@@ -1,6 +1,6 @@
 // CONFIG
 exports.config = function(server, express){
-app.configure(function(){
+server.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.set('view options', { pretty: true });
