@@ -52,7 +52,6 @@ src: url('../Arimo-BoldItalic-Latin.ttf');
 
 
 body {
-	line-height: 24px;
 	width: 64%;
 	margin: 0 10% 0;
 	position: relative;
@@ -62,6 +61,7 @@ body {
 	font-style: normal;
 	height: 100%;
 	background-color: #FCFBF7;
+	line-height: 32px;
 }
 
 a, .deletebutton, .editbutton, .tag {
