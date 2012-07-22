@@ -6,10 +6,7 @@ var express = require('express')
   , fs = require('fs')
   , routes = require('./routes')
   , dbaccess = require('./dbaccess');
-var app = module.exports = express.createServer({
-  key: fs.readFileSync('./key.key'),
-  cert: fs.readFileSync('./cert.crt')
-});
+var app = module.exports = express.createServer();
 
 
 // configuration
