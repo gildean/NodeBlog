@@ -108,7 +108,7 @@ footer {
 	z-index: 900;
 	position: fixed;
 	bottom: 0;
-	right: 2px;
+	right: 10px;
 	margin: 0;
 	color: #c6c6c6;
 	font-size: 11px;
@@ -126,8 +126,7 @@ footer {
 }
 
 .login  {
-	right: 20px;
-	top: 60px;
+
 }
 
 .loginlink {
