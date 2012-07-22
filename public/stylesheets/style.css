@@ -164,13 +164,13 @@ footer {
 	margin: 15px 0;
 	display: block;
 	overflow: hidden;
-	max-width: 66%;
+	max-width: 80%;
 	text-overflow: ellipsis;
     white-space: nowrap;
 } 
 
 .fpblogpost {
-	height: 75px;
+	height: 70px;
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
