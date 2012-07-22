@@ -4,7 +4,7 @@
 body {
 	position: relative;
 	padding: 30px 50px;
-	font: 16px "Ubuntu Mono", "Lucida Grande", monospace;
+	font: 16px sans-serif;
 	height: 100%;
 	background-color: #FCFBF7;
 }
@@ -28,6 +28,7 @@ h1 {
 }
 
 h1.main {
+	font: serif;
 	font-size: 28px;
 }
 
@@ -83,7 +84,7 @@ footer {
 }
 
 .indexheader {
-	border:4px #660000;
+	border-bottom:4px #660000;
     border-style:groove;
 }
 
