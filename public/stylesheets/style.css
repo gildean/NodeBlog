@@ -118,7 +118,7 @@ footer {
 
 .headertext {
 	position: absolute;
-	top: 5px;
+	top: 20px;
 	left: 70px;
 	color:rgba(10,0,0,0.4);
 	font: 14px "DejaVuSerif", "Georgia", serif;
@@ -129,7 +129,7 @@ footer {
 
 .mangos {
 	position: absolute;
-	top: 140px;
+	top: 155px;
 	left: 65px;
 	color:rgba(10,0,0,0.4);
 	font: 20px "DejaVuSerif", "Georgia", serif;
@@ -142,14 +142,14 @@ footer {
 .logo {
 	position: absolute;
 	right: 50px;
-	top: 20px;
+	top: 35px;
 }
 
 .login  {
 	text-align: center;
 	z-index: 1000;
 	position: absolute;
-	top:170px;
+	top:185px;
 	right: 55px;
 }
 
