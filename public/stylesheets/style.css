@@ -81,7 +81,7 @@ h1 {
 
 
 h1.main {
-	font-size: 28px;
+	font: 28px "DejaVuSerif", "Georgia", serif;
 	padding: 0 0 10px;
 }
 
