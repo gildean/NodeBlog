@@ -18,6 +18,14 @@ src: url('../DejaVuSerif-Italic.ttf');
 }
 
 @font-face {
+font-family: DejaVuSerif;
+font-style: italic;
+font-weight: bold;
+src: url('../DejaVuSerif-BoldItalic.ttf');
+}
+
+
+@font-face {
 font-family: Arimo-Latin;
 src: url('../Arimo-Regular-Latin.ttf');
 }
@@ -34,11 +42,21 @@ font-weight: italic;
 src: url('../Arimo-Italic-Latin.ttf');
 }
 
+
+@font-face {
+font-family: Arimo-Latin;
+font-style: italic;
+font-weight: bold;
+src: url('../Arimo-BoldItalic-Latin.ttf');
+}
+
+
 body {
 	position: relative;
 	padding: 30px 50px;
 	font: 16px "Arimo-Latin", Helvetica, sans-serif;
 	font-weight: normal;
+	font-style: normal;
 	height: 100%;
 	background-color: #FCFBF7;
 }
@@ -64,6 +82,7 @@ h1 {
 h1.main {
 	font: 28px "DejaVuSerif", "Georgia", serif;
 	font-weight: normal;
+	font-style: normal;
 }
 
 
