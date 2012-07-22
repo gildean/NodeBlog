@@ -184,7 +184,7 @@ footer {
 	margin: 15px 0;
 	display: block;
 	overflow: hidden;
-	max-width: 90%;
+	max-width: 80%;
 	text-overflow: ellipsis;
     white-space: nowrap;
 } 
@@ -199,8 +199,8 @@ footer {
 .tag {
 	color: #990000;
 	font-size: 12px;
-	padding: 5px 5px 0 0;
-	margin: 5px 5px 5px 0 ;
+	padding: 0 5px 0 0;
+	margin: 10px 5px 5px 0 ;
 	border-right: 1px solid #FFB800;
 }
 
