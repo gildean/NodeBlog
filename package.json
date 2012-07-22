@@ -1,11 +1,11 @@
 {
   "author": "gildean",
-  "name": "ok",
+  "name": "toomanymangos",
   "description": "Too many mangos.",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "homepage": "http://toomanymangos.nodester.com",
-  "node": "0.6.12",
+  "node": "0.8.1",
   "repository": {
     "url": "defaultapp"
   },
