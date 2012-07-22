@@ -1,8 +1,8 @@
 // DATABASE ACCESS FUNCTIONS
 
 // module dependencies
-var dbinfo = require('./dbinfo');
-var db = require('mongojs').connect(dbinfo.dbinfo);
+var dbinfo = require('./dbinfo').dbinfo;
+var db = require('mongojs').connect(dbinfo);
 var setupdb = db.collection('setup');
 var userdb = db.collection('user');
 var postdb = db.collection('post');
