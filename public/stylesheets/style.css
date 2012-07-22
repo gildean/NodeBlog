@@ -18,14 +18,6 @@ src: url('../DejaVuSerif-Italic.ttf');
 }
 
 @font-face {
-font-family: DejaVuSerif;
-font-style: italic;
-font-weight: bold;
-src: url('../DejaVuSerif-BoldItalic.ttf');
-}
-
-
-@font-face {
 font-family: Arimo-Latin;
 src: url('../Arimo-Regular-Latin.ttf');
 }
@@ -41,15 +33,6 @@ font-family: Arimo-Latin;
 font-weight: italic;
 src: url('../Arimo-Italic-Latin.ttf');
 }
-
-
-@font-face {
-font-family: Arimo-Latin;
-font-style: italic;
-font-weight: bold;
-src: url('../Arimo-BoldItalic-Latin.ttf');
-}
-
 
 body {
 	position: relative;
