@@ -38,10 +38,10 @@ header {
 	z-index: 1000;
 	position: fixed;
 	top: 0;
-	left: 0;
-	background-color: #0e0e0e;
-	color: #FFF;
-	width: 100%;
+	right: 0;
+	background-color: #fcfcfc;
+	color: #FFF000;
+	width: 20%;
 	padding: 6px 0;
 	box-shadow: 0 2px 1px rgba(0,0,0,0.3);
 }
@@ -72,6 +72,8 @@ footer {
 
 #container {
 	z-index: 100;
+	width: 80%;
+	background-color: #FCFBF7;
 }
 
 
@@ -80,7 +82,7 @@ footer {
 
 .body {
 	padding: 10px 0 20px;
-	font: 16px "Ubuntu Mono", "Lucida Grande", monospace;
+	font: 16px ;
 }
 
 .posted {
