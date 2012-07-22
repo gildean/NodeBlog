@@ -52,6 +52,7 @@ src: url('../Arimo-BoldItalic-Latin.ttf');
 
 
 body {
+	line-height: 120%;
 	width: 64%;
 	margin: 0 10% 0;
 	position: relative;
@@ -185,7 +186,6 @@ footer {
 	margin: 15px 0;
 	display: block;
 	overflow: hidden;
-	max-width: 80%;
 	text-overflow: ellipsis;
     white-space: nowrap;
 } 
