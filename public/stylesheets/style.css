@@ -52,7 +52,7 @@ src: url('../Arimo-BoldItalic-Latin.ttf');
 
 
 body {
-	line-height: 120%;
+	line-height: 24px;
 	width: 64%;
 	margin: 0 10% 0;
 	position: relative;
