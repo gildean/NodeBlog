@@ -102,6 +102,7 @@ header {
     box-shadow: inset 2px 0 5px rgba(0,0,0,0.2);
 	padding: 0 0 60px 0;
 	overflow: hidden;
+	border-left:1px #999 solid;
 }
 
 footer {
@@ -292,7 +293,7 @@ footer {
 }
 
 input {
-	border:0;
+    border:1px #999 solid;
 	background: #fcfcfc;
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
 }
