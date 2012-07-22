@@ -128,7 +128,9 @@ footer {
 
 .login  {
 	z-index: 1000;
-	margin: 200px 0 0 100px;
+	position: absolute;
+	top:200px;
+	right: 50px;
 }
 
 .loginlink {
