@@ -334,7 +334,7 @@ input {
 }
 
 .button {
-	margin: 10px 0 0 100px;
+	margin: 5px 0 15px 100px;
 	padding: 5px 10px;
 }
 
@@ -354,4 +354,8 @@ label {
     float: left;
     margin: 2px 4px 6px 4px;
     text-align: right;
+}
+
+form {
+	margin: 20px 0 0;
 }
