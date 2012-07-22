@@ -52,7 +52,7 @@ src: url('../Arimo-BoldItalic-Latin.ttf');
 
 
 body {
-
+	padding: 10px 0 20px;
 }
 
 a, .deletebutton, .editbutton, .tag {
@@ -159,7 +159,6 @@ footer {
 /* Styles to the blogposts */
 
 .body {
-	padding: 10px 0 20px;
 	width: 64%;
 
 	position: relative;
