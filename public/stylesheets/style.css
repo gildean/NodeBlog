@@ -184,13 +184,13 @@ footer {
 	margin: 15px 0;
 	display: block;
 	overflow: hidden;
-	max-width: 80%;
+	max-width: 90%;
 	text-overflow: ellipsis;
     white-space: nowrap;
 } 
 
 .fpblogpost {
-	height: 70px;
+	height: 65px;
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -199,7 +199,7 @@ footer {
 .tag {
 	color: #990000;
 	font-size: 12px;
-	padding: 0 5px 0 0;
+	padding: 5px 5px 0 0;
 	margin: 5px 5px 5px 0 ;
 	border-right: 1px solid #FFB800;
 }
