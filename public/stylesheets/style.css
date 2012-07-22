@@ -53,6 +53,8 @@ src: url('../Arimo-BoldItalic-Latin.ttf');
 
 body {
 	height: 100%;
+	font: 16px "Arimo-Latin", Helvetica, sans-serif;
+
 }
 
 a, .deletebutton, .editbutton, .tag {
@@ -78,12 +80,14 @@ h1 {
 
 
 h1.main {
-	font: 28px "DejaVuSerif", "Georgia", serif;
+	font: 28px;
 	font-weight: normal;
-	font-style: normal;
 	padding: 0 0 10px;
 }
 
+h2, h3, h4, h5, h6 {
+	font-family: "Arimo-Latin", "Verdana", sans-serif;
+}
 
 /**/
 /* These are the concurring parts */
@@ -180,7 +184,6 @@ footer {
 .body {
 	width: 64%;
 	position: relative;
-	font: 16px "Arimo-Latin", Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	height: 100%;
