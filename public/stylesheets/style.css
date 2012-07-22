@@ -84,6 +84,7 @@ h1.main {
 	font: 28px;
 	font-weight: normal;
 	padding: 0 0 10px;
+	text-shadow: 0 2px 2px rgba(0,0,0,0.2);
 }
 
 h2, h3, h4, h5, h6 {
@@ -156,7 +157,7 @@ footer {
 	z-index: 1000;
 	position: absolute;
 	top:185px;
-	right: 60px;
+	right: 62px;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 
@@ -178,6 +179,7 @@ footer {
 .indexheader {
 	padding: 0 0 5px 0;
 	margin: 0 0 20px;
+	text-shadow: 0 2px 2px rgba(0,0,0,0.2);
 }
 
 
