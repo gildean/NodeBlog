@@ -12,10 +12,10 @@
   },
   "dependencies": {
     "express": "=2.5.11",
-    "moment": ">=1.6.2",
-    "bcrypt": ">= 0.7.0",
-    "mongojs": ">=0.4.3",
-    "jade": ">=0.26.3"
+    "moment": "=1.6.2",
+    "bcrypt": "= 0.7.0",
+    "mongojs": "=0.4.3",
+    "jade": "=0.26.3"
       },
   "devDependencies": {},
   "optionalDependencies": {}
