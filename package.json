@@ -3,7 +3,7 @@
   "name": "toomanymangos",
   "description": "Too many mangos.",
   "version": "0.0.1",
-  "private": false,
+  "private": true,
   "homepage": "http://toomanymangos.nodester.com",
   "node": "0.8.1",
   "repository": {
@@ -11,11 +11,11 @@
   },
   "main": "app.js",
   "dependencies": {
-    "express": "=2.5.11",
-    "moment": "=1.6.2",
-    "bcrypt": "=0.7.0",
-    "mongojs": "=0.4.3",
-    "jade": "=0.26.3"
+    "express": "2.5.11",
+    "moment": "1.6.2",
+    "bcrypt": "0.7.0",
+    "mongojs": "0.4.3",
+    "jade": "0.26.3"
   },
   "devDependencies": {},
   "optionalDependencies": {},
@@ -23,6 +23,6 @@
     "node": "*"
   },
   "scripts": {
-    "start": "node server"
+    "start": "node app"
   }
 }

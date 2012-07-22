@@ -1,15 +1,68 @@
 /**/
 /* Let's start with some basic stylings */
+@font-face {
+font-family: DejaVuSerif;
+src: url('../DejaVuSerif.ttf');
+}
+
+@font-face {
+font-family: DejaVuSerif;
+font-weight: bold;
+src: url('../DejaVuSerif-Bold.ttf');
+}
+
+@font-face {
+font-family: DejaVuSerif;
+font-style: italic;
+src: url('../DejaVuSerif-Italic.ttf');
+}
+
+@font-face {
+font-family: DejaVuSerif;
+font-style: italic;
+font-weight: bold;
+src: url('../DejaVuSerif-BoldItalic.ttf');
+}
+
+
+@font-face {
+font-family: Arimo-Latin;
+src: url('../Arimo-Regular-Latin.ttf');
+}
+
+@font-face {
+font-family: Arimo-Latin;
+font-weight: bold;
+src: url('../Arimo-Bold-Latin.ttf');
+}
+
+@font-face {
+font-family: Arimo-Latin;
+font-weight: italic;
+src: url('../Arimo-Italic-Latin.ttf');
+}
+
+
+@font-face {
+font-family: Arimo-Latin;
+font-style: italic;
+font-weight: bold;
+src: url('../Arimo-BoldItalic-Latin.ttf');
+}
+
 
 body {
 	position: relative;
 	padding: 30px 50px;
-	font: 16px "Ubuntu Mono", "Lucida Grande", monospace;
+	font: 16px "Arimo-Latin", Helvetica, sans-serif;
+	font-weight: normal;
+	font-style: normal;
 	height: 100%;
+	background-color: #FCFBF7;
 }
 
 a, .deletebutton, .editbutton, .tag {
-	color: #00B7FF;
+	color: #FFB700;
 	text-decoration: none;
 	transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -18,16 +71,18 @@ a, .deletebutton, .editbutton, .tag {
 }
 
 a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover {
-	text-shadow: 0 -1px 0 #0079A8;
+	text-shadow: 0 -1px 0 #A87900;
 	text-decoration: underline;
 }
 
 h1 {
-	font-size: 22px;
+	font: 22px "DejaVuSerif", "Georgia", serif;
 }
 
 h1.main {
-	font-size: 28px;
+	font: 28px "DejaVuSerif", "Georgia", serif;
+	font-weight: normal;
+	font-style: normal;
 }
 
 
@@ -38,10 +93,11 @@ header {
 	z-index: 1000;
 	position: fixed;
 	top: 0;
-	left: 0;
-	background-color: #0e0e0e;
-	color: #FFF;
-	width: 100%;
+	right: 0;
+	background-color: #fcfcfc;
+	color: #FFF000;
+	width: 20%;
+	height: 100%;
 	padding: 6px 0;
 	box-shadow: 0 2px 1px rgba(0,0,0,0.3);
 }
@@ -56,14 +112,20 @@ footer {
 	font-size: 11px;
 }
 
-.logo {
-	color: #fcfcfc;
+.headertext {
+	color: #660000;
 	padding: 0 0 0 20px;
 }
 
-.login  {
+.logo {
 	position: absolute;
 	right: 20px;
+	top: 20px;
+}
+
+.login  {
+	right: 20px;
+	top: 60px;
 }
 
 .divider {
@@ -72,6 +134,11 @@ footer {
 
 #container {
 	z-index: 100;
+	width: 80%;
+}
+
+.indexheader {
+	border-bottom: 4px groove #660000;
 }
 
 
@@ -80,7 +147,7 @@ footer {
 
 .body {
 	padding: 10px 0 20px;
-	font: 16px "Ubuntu Mono", "Lucida Grande", monospace;
+	font: 16px ;
 }
 
 .posted {
@@ -99,13 +166,13 @@ footer {
 	margin: 15px 0;
 	display: block;
 	overflow: hidden;
-	max-width: 66%;
+	max-width: 80%;
 	text-overflow: ellipsis;
     white-space: nowrap;
 } 
 
 .fpblogpost {
-	height: 75px;
+	height: 70px;
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -116,7 +183,7 @@ footer {
 	font-size: 12px;
 	padding: 0 5px 0 0;
 	margin: 5px 5px 5px 0 ;
-	border-right: 1px solid #00B7FF;
+	border-right: 1px solid #660000;
 }
 
 
@@ -179,20 +246,6 @@ footer {
 /**/
 /* rte-plugin and the slider */
 
-.frameBody
-{
-    font-family: "Ubuntu Mono", "Lucida Grande", monospace;
-    font-size:12px;
-    margin:0;
-    width:100%;
-    height:100%;
-}
-
-.frameBody p
-{
-    border:1px #bbb solid;
-    padding:2px;
-}
 
 .rte-zone
 {

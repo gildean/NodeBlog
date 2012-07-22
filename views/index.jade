@@ -1,7 +1,7 @@
 h1.main= title
 
-h3 #{header}
-
+h3.indexheader #{header}
+a.login(href="/login") Login
 -if (flash)
   -if (flash.error)
     p.flash.error #{flash.error}

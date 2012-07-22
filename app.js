@@ -1,8 +1,9 @@
-// MAIN APP
+// MAIN server
 
 // module dependencies.
 var express = require('express')
   , moment = require('moment')
+  , jade = require('jade')
   , routes = require('./routes')
   , dbaccess = require('./dbaccess');
 var app = module.exports = express.createServer();

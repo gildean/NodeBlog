@@ -9,20 +9,21 @@ html
 
   body
     header
-      a.logo(href="/")= title
-      span.login
-          - if (user)
-            a(href="/settings") Settings
-            span.divider |
-            a(href="/logout") Logout
-            span.divider |
-            a(href="/posts/add") New post
-          - else
-            a(href="/login") Login
+      a.logo(href="/") 
+         img(src="/images/mangos.png",alt="mangos")
+      - if (user)            
+         span.login
+            p
+               a(href="/posts/add") New post
+            p
+               a(href="/settings") Settings
+            p
+               a(href="/logout") Logout
+
 
 
     div#container!= body
-      footer NodeBlog by ok | no rights reserved 2012
+    footer NodeBlog by ok | no rights reserved 2012
     script(type='text/javascript', src='/javascripts/editor.jquery.js')
     script(type='text/javascript', src='/javascripts/slidesubmit.jquery.js')
     script(type='text/javascript', src='/javascripts/snippets.jquery.js')
