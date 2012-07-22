@@ -32,8 +32,7 @@ div.commentsection
                  a(href="/posts/remove/comment/#{comment._id}", onClick="return confirm('Sure about that?')") Delete
           p!= comment.body
           p.posted posted #{moment(comment.created).fromNow()} by #{comment.name}
-          -if comment.created = ''
-             p.nocomments no comments added yet
+
   - if (user) 
     - if (post.hidden)
         for hidden in post.hidden
