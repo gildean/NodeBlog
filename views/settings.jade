@@ -1,7 +1,8 @@
 h1 Blog and user settings
+p Last modified: #{blogsettings.modified}
+h3 Blog settings
 
 form(name="blogsettings",method="post",action="/save/settings")
-  p Last modified: #{blogsettings.modified}
   p
     label Title:
   p  
@@ -11,7 +12,8 @@ form(name="blogsettings",method="post",action="/save/settings")
   p  
     textarea(name="header", rows="1", cols="45",resize="none") #{blogsettings.header}
   p  
-    input(type="submit",name="post",value="Save")
+    input(type="submit", class="button", name="post", value="Save")
+h3 User settings
 form(name="usersettings",method="post",action="/save/usersettings")
   p  
     label Username:
@@ -23,4 +25,4 @@ form(name="usersettings",method="post",action="/save/usersettings")
     label Confirm :
     input(type="password", name="passwordconf", required)
   p  
-    input(type="submit",name="submit",value="Save",onClick="return confirm('Are you sure?');")
+    input(type="submit", class="button", name="submit", value="Save", onClick="return confirm('Are you sure?');")

@@ -45,6 +45,22 @@ exports.settings = function(req, res, next) {
 };   
 
 
+// Ipcheck middleware
+exports.checkIP = function(req, res, next) {
+  var ipAddress;
+  var forwardedIpsStr = req.header('x-forwarded-for'); 
+  if (forwardedIpsStr) {
+    var forwardedIps = forwardedIpsStr.split(',');
+    ipAddress = forwardedIps[0];
+  }
+  if (!ipAddress) {
+    ipAddress = req.connection.remoteAddress;
+  }
+  req.ipaddress = ipAddress;
+  next();
+};
+
+
 // no users? no problem!
 exports.anyoneThere = function (req, res) {
   userdb.count(function(err, users) {
@@ -234,6 +250,7 @@ exports.deletePost = function(req, res) {
 
 // add a comment
 exports.addComment = function(req, res) {
+
   var data = {
       _id: new db.bson.ObjectID.createPk()
     , postid: req.body.postid
@@ -242,7 +259,7 @@ exports.addComment = function(req, res) {
     , body: req.body.body
     , created: new Date()
     , status: 0
-    , from: req.connection.remoteAddress
+    , from: req.ipaddress
   };
   commentdb.insert(data, function(err, post) {
       req.flash('info', 'Comment added for reviewing at a later time!')
