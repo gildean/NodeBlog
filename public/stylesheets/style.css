@@ -193,11 +193,11 @@ footer {
 }
 
 .tag {
-	color: #0e0e0e;
+	color: #990000;
 	font-size: 12px;
 	padding: 0 5px 0 0;
 	margin: 5px 5px 5px 0 ;
-	border-right: 1px solid #660000;
+	border-right: 1px solid #FFB800;
 }
 
 
@@ -224,12 +224,12 @@ footer {
 }
 
 .comment:nth-of-type(odd) {
-	background-color:#EBFBFF;
+	background-color:#fcfcfc;
 }
 
 .editcomm {
 	text-align: right;
-	width: 750px;
+	width: 700px;
 }
 
 .deletebutton, .editbutton {
@@ -241,6 +241,7 @@ footer {
 	background-color: transparent;
 	border: 0;
 	border-radius: 1px;
+	color: #990000;
 }
 
 .deletebutton:hover, .editbutton:hover {
@@ -270,6 +271,8 @@ footer {
     clear:both;
     height:200px;
     display:block;
+    background: #fcfcfc;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.3);
 }
 
 .rte-toolbar{ 
