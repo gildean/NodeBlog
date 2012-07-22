@@ -15,17 +15,17 @@ exports.posts = function(req, res) {
 
 // create a new post
 exports.newPost = function(req, res) {
-  res.render('add.jade', { 
-    title: 'NodeBlog - New Post'
-  , flash: req.flash() 
+  res.render('add.jade', {
+    title: req.settings.title + ' - New Post'
+  , flash: req.flash()
   });
 };
 
 
 // edit a post
 exports.editPost = function(req, res) {
-   res.render('edit.jade', { 
-     title: 'NodeBlog - Edit post'
+   res.render('edit.jade', {
+     title: req.settings.title + ' - Edit post:' + ' ' + req.post.subject
    , post: req.post
    , flash: req.flash()
    });
@@ -35,17 +35,17 @@ exports.editPost = function(req, res) {
 // show one post
 exports.showPost = function(req, res) {
     res.render('show.jade', {
-     title: 'NodeBlog - ' + req.post.subject
+     title: req.settings.title + ' - ' + req.post.subject
    , post: req.post
-   , flash: req.flash()  
+   , flash: req.flash()
    });
 };
 
 
 // edit a comment
 exports.editComment = function(req, res) {
-    res.render('editcomment.jade', { 
-    title: 'NodeBlog - Found these'
+    res.render('editcomment.jade', {
+    title: req.settings.title + ' - Editing comment from:' + ' ' + req.comment.name
   , comment: req.comment
   , flash: req.flash()
   });
@@ -55,6 +55,8 @@ exports.editComment = function(req, res) {
 // 404 Not Found
 exports.notFound = function(req, res) {
   res.render('404.jade', {
-    title: '404 Not Found'  
+    status: 404
+  , title: '404 Not Found'
   });
 };
+

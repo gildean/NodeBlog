@@ -43,36 +43,41 @@ function checkLogin(req, res, next) {
 // routes for login-logout
 // gets
 app.get('/login', dbaccess.anyoneThere);
-app.get('/logout', checkLogin, routes.logout);
+app.get('/logout', dbaccess.settings, checkLogin, routes.logout);
 app.get('/adduser', routes.addNewUser);
-app.get('/loginpage', routes.loginPage);
+app.get('/loginpage', dbaccess.settings, routes.loginPage);
 
 
 // post the user authentication
 app.post('/login', dbaccess.logon);
 app.post('/adduser', dbaccess.addNewUser);
-
+app.post('/initialsetup', dbaccess.initCheck);
 
 // routes for views
 // gets
-app.get('/', dbaccess.index);
+app.get('/', dbaccess.settings, dbaccess.index);
 app.get('/posts', routes.posts);
-app.get('/posts/add', checkLogin, routes.newPost);
-app.get('/posts/:postid', routes.showPost);
-app.get('/posts/edit/:postid', checkLogin, routes.editPost);
-app.get('/posts/remove/:postid', checkLogin, dbaccess.deletePost);
-app.get('/posts/edit/comment/:coid', checkLogin, routes.editComment);
-app.get('/posts/remove/comment/:coid', checkLogin, dbaccess.deleteComment);
+app.get('/settings', checkLogin, dbaccess.blogSettings);
+app.get('/posts/add', checkLogin, dbaccess.settings, routes.newPost);
+app.get('/posts/:postid', dbaccess.settings, routes.showPost);
+app.get('/posts/edit/:postid', checkLogin, dbaccess.settings, routes.editPost);
+app.get('/posts/remove/:postid', checkLogin, dbaccess.settings, dbaccess.deletePost);
+app.get('/posts/edit/comment/:coid', checkLogin, dbaccess.settings, routes.editComment);
+app.get('/posts/publish/comment/:coid', checkLogin, dbaccess.settings, dbaccess.publishComment);
+app.get('/posts/hide/comment/:coid', checkLogin, dbaccess.settings, dbaccess.hideComment);
+app.get('/posts/remove/comment/:coid', checkLogin, dbaccess.settings, dbaccess.deleteComment);
 
 // searchs
-app.get('/posts/tags/:tag', dbaccess.postsByTag);
+app.get('/posts/tags/:tag', dbaccess.settings, dbaccess.postsByTag);
 
 
 // posts
 app.post('/posts/add', checkLogin, dbaccess.addNewPost);
-app.post('/posts/edit', dbaccess.savePostEdit);
+app.post('/posts/edit', checkLogin, dbaccess.savePostEdit);
 app.post('/posts/comment', dbaccess.addComment);
 app.post('/posts/edit/comment', checkLogin, dbaccess.saveCommentEdit);
+app.post('/save/settings', checkLogin, dbaccess.settings, dbaccess.saveBlogSettings);
+app.post('/save/usersettings', checkLogin, dbaccess.saveUserSettings);
 
 
 // route for parameters
@@ -80,10 +85,11 @@ app.param('postid', dbaccess.checkPostId);
 app.param('coid', dbaccess.checkCId);
 
 
-// not found handling, this just grabs every other get and sends simply '404 nnt found'
-app.get('*', routes.notFound);
+// not found handling, this just grabs every other get and sends simply '404 not found'
+app.get('*', dbaccess.settings, routes.notFound);
 
 // Run, you fool!
 app.listen(3004, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
+

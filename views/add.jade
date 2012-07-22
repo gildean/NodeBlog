@@ -7,12 +7,12 @@ h1 Add a new blog post
 form(name="add-post",method="post",action="/posts/add")
   p
     label Subject:
-      input(type="text",name="subject", required)
+    input(type="text",name="subject", required)
   p
     label Content
-      textarea.rte-zone(name="body", rows="20", cols="95")
+    textarea.rte-zone(name="body", rows="20", cols="95")
   p
     label Tags (comma-separated)
-      input(type="text",name="tags")
+    input(type="text",name="tags")
   p
     input(type="submit",name="post",value="Post")

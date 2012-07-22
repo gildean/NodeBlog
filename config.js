@@ -9,8 +9,8 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({ secret: 'sessioncookie' }));
-  app.use(app.router);
   app.use(express.static(__dirname + '/public'));
+  app.use(app.router);
 });
 
   app.configure('development', function(){
@@ -24,3 +24,4 @@ app.configure(function(){
   });
 
 };
+

@@ -4,12 +4,12 @@ form(name="edit-post",method="post",action="/posts/edit")
   input(type="hidden",name="id",value="#{post._id}")
   p
     label Subject:
-      input(type="text",name="subject",value="#{post.subject}")
+    input(type="text",name="subject",value="#{post.subject}")
   p
     label Content
-      textarea.rte-zone(name="body", rows="15", cols="95", wrap="hard") #{post.body}
+    textarea.rte-zone(name="body", rows="15", cols="95", wrap="hard") #{post.body}
   p
     label Tags (comma-separated)
-      input(type="text",name="tags",value="#{post.tags}")
+    input(type="text",name="tags",value="#{post.tags}")
   p  
-    input(type="submit",name="post",value="Post")
+    input(type="submit",name="post",value="Save")

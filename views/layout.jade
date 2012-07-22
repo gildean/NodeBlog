@@ -3,15 +3,18 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(type='text/javascript', src='http://code.jquery.com/jquery-1.7.2.min.js')
-
+    link(rel='stylesheet', href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css') 
+    script(type='text/javascript', src='http://code.jquery.com/jquery-latest.js')
+    script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js')
 
   body
     header
       a.logo(href="/")= title
       span.login
           - if (user)
-            a(href="/logout") Logout #{user.user}
+            a(href="/settings") Settings
+            span.divider |
+            a(href="/logout") Logout
             span.divider |
             a(href="/posts/add") New post
           - else
@@ -20,10 +23,8 @@ html
 
     div#container!= body
       footer NodeBlog by ok | no rights reserved 2012
-script(type='text/javascript', src='/javascripts/editor.jquery.js')
-script(type='text/javascript')
-  $(".rte-zone").rte({
-    content_css_url: "rte.css",
-    media_url: "",
-  });
- 
+    script(type='text/javascript', src='/javascripts/editor.jquery.js')
+    script(type='text/javascript', src='/javascripts/slidesubmit.jquery.js')
+    script(type='text/javascript', src='/javascripts/snippets.jquery.js')
+
+

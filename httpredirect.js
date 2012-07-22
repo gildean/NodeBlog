@@ -12,7 +12,7 @@ http.get('*',function(req,res){
 	var str = req.header('host');
 	str = str.replace( /:3005/g, ":3004" ); // remove or edit this line if default ports or port forwarding is used
     res.redirect('https://' + str + req.url )
-})
+});
 
 
 // proxy up

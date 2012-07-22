@@ -1,12 +1,15 @@
-h1 Editing comment: 
+h1 Editing comment:
 
 form(name="edit-post",method="post",action="/posts/edit/comment")
   input(type="hidden",name="id",value="#{comment._id}")
-  input(type="hidden",name="postid",value="#{comment.postid}")  
+  input(type="hidden",name="postid",value="#{comment.postid}")
   p Name: #{comment.name}
   p email: #{comment.email}
+  p From: #{comment.from}
+  p At: #{comment.created}
   p
     label Content
-      textarea.rte-zone(name="body", rows="15", cols="95", wrap="hard") #{comment.body}
-  p  
-    input(type="submit",name="post",value="Post")
+    textarea.rte-zone(name="body", rows="15", cols="95", wrap="hard") #{comment.body}
+  p
+    input(type="submit",name="post",value="Save")
+
