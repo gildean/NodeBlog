@@ -2,48 +2,48 @@
 /* Let's start with some basic stylings */
 @font-face {
 font-family: DejaVuSerif;
-src: url('/public/DejaVuSerif.ttf');
+src: url('http://toomanymangos.nodester.com/public/DejaVuSerif.ttf');
 }
 
 @font-face {
 font-family: DejaVuSerif;
 font-weight: bold;
-src: url('/public/DejaVuSerif-Bold.ttf');
+src: url('http://toomanymangos.nodester.com/public/DejaVuSerif-Bold.ttf');
 }
 
 @font-face {
 font-family: DejaVuSerif;
 font-weight: italic;
-src: url('/public/DejaVuSerif-Italic.ttf');
+src: url('http://toomanymangos.nodester.com/public/DejaVuSerif-Italic.ttf');
 }
 
 @font-face {
 font-family: DejaVuSerif;
 font-weight: bolditalic;
-src: url('/public/DejaVuSerif-BoldItalic.ttf');
+src: url('http://toomanymangos.nodester.com/public/DejaVuSerif-BoldItalic.ttf');
 }
 
 @font-face {
 font-family: Arimo-Latin;
-src: url('/public/Arimo-Regular-Latin.ttf');
+src: url('http://toomanymangos.nodester.com/public/Arimo-Regular-Latin.ttf');
 }
 
 @font-face {
 font-family: Arimo-Latin;
 font-weight: bold;
-src: url('/public/Arimo-Bold-Latin.ttf');
+src: url('http://toomanymangos.nodester.com/public/Arimo-Bold-Latin.ttf');
 }
 
 @font-face {
 font-family: Arimo-Latin;
 font-weight: italic;
-src: url('/public/Arimo-Italic-Latin.ttf');
+src: url('http://toomanymangos.nodester.com/public/Arimo-Italic-Latin.ttf');
 }
 
 @font-face {
 font-family: Arimo-Latin;
 font-weight: bolditalic;
-src: url('/public/Arimo-BoldItalic-Latin.ttf');
+src: url('http://toomanymangos.nodester.com/public/Arimo-BoldItalic-Latin.ttf');
 }
 
 body {
