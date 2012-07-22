@@ -1,5 +1,50 @@
 /**/
 /* Let's start with some basic stylings */
+@font-face {
+font-family: DejaVuSerif;
+src: url('./DejaVuSerif.ttf');
+}
+
+@font-face {
+font-family: DejaVuSerif;
+font-weight: bold;
+src: url('./DejaVuSerif-Bold.ttf');
+}
+
+@font-face {
+font-family: DejaVuSerif;
+font-weight: italic;
+src: url('./DejaVuSerif-Italic.ttf');
+}
+
+@font-face {
+font-family: DejaVuSerif;
+font-weight: bolditalic;
+src: url('./DejaVuSerif-BoldItalic.ttf');
+}
+
+@font-face {
+font-family: Arimo-Latin;
+src: url('./Arimo-Regular-Latin.ttf');
+}
+
+@font-face {
+font-family: Arimo-Latin;
+font-weight: bold;
+src: url('./Arimo-Bold-Latin.ttf');
+}
+
+@font-face {
+font-family: Arimo-Latin;
+font-weight: italic;
+src: url('./Arimo-Italic-Latin.ttf');
+}
+
+@font-face {
+font-family: Arimo-Latin;
+font-weight: bolditalic;
+src: url('./Arimo-BoldItalic-Latin.ttf');
+}
 
 body {
 	position: relative;
