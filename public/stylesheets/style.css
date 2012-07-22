@@ -350,10 +350,7 @@ input {
 
 label {
     display: block;
-    width: 90px;
-    float: left;
-    margin: 2px 4px 6px 4px;
-    text-align: right;
+    margin: 5px 0;
 }
 
 form {
