@@ -4,6 +4,11 @@
   -if (flash.info)
     p.flash.info #{flash.info} 
 article
+- if (user)
+    div.edit
+      a(href="/posts/edit/#{post._id}") Edit post
+      span.divider |
+      a(href="/posts/remove/#{post._id}", onClick="return confirm('Sure about that? All comments will also be removed.')") Delete post
   h1 #{post.subject}
   div.body!= post.body
 div.tags
@@ -11,11 +16,6 @@ div.tags
       a.tag(href="/posts/tags/#{tag}") #{tag}
 div.posted Posted: #{moment(post.created).format('DD.MM.YYYY HH:mm')} by: #{post.author.username}
 
-- if (user)
-    div.edit
-      a(href="/posts/edit/#{post._id}") Edit post
-      span.divider |
-      a(href="/posts/remove/#{post._id}", onClick="return confirm('Sure about that? All comments will also be removed.')") Delete post
 
 div.commentsection
   h3 Comments
