@@ -81,12 +81,13 @@ h1 {
 	border-bottom-style: groove;
 	width:50%;
 }
-}
+
 
 h1.main {
 	font: 28px "DejaVuSerif", "Georgia", serif;
 	font-weight: normal;
 	font-style: normal;
+	padding: 0 0 10px;
 }
 
 
