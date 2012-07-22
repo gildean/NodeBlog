@@ -72,14 +72,6 @@ a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover {
 	text-decoration: underline;
 }
 
-h1 {
-	font: 22px "DejaVuSerif", "Georgia", serif;
-	border-bottom:2px #660000;
-	border-bottom-style: groove;
-	width:50%;
-}
-
-
 h1.main {
 	font: 28px "DejaVuSerif", "Georgia", serif;
 	padding: 0 0 10px;
@@ -90,6 +82,14 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	text-shadow: 0 2px 2px rgba(0,0,0,0.2);
 }
+
+h1 {
+	font: 22px "DejaVuSerif", "Georgia", serif;
+	border-bottom:2px #660000;
+	border-bottom-style: groove;
+	width:50%;
+}
+
 
 /**/
 /* These are the concurring parts */
