@@ -32,6 +32,8 @@ div.commentsection
                  a(href="/posts/remove/comment/#{comment._id}", onClick="return confirm('Sure about that?')") Delete
           p!= comment.body
           p.posted posted #{moment(comment.created).fromNow()} by #{comment.name}
+          -if comment.created === null
+             p.nocomments no comments added yet
   - if (user) 
     - if (post.hidden)
         for hidden in post.hidden
@@ -52,10 +54,10 @@ div.commentsection
        label Name
        input(type="text", name="name", required)  
     p
-       label email
+       label Email
        input(type="email", name="email", required)
     textarea.rte-zone(placeholder="Comment goes here", name="body", rows="6", cols="60", maxlength="550")
     input(type="hidden", class="for-bots", name="forbots", value="")
     div#submit-slider
-   p.disclaimer note that your ip is recorded upon submit, please do not spam
-
+   p.disclaimer note that your ip is recorded upon submit, please do not spam<br>
+      | comments will be reviewed before publishing
