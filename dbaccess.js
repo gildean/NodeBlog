@@ -37,7 +37,7 @@ exports.settings = function(req, res, next) {
       	req.settings = settings;
       	next();
      } else {
-        res.render('initdb.jade', {
+        res.render('initdb', {
            title: 'Initial setup'
        });
       }
