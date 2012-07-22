@@ -4,9 +4,11 @@ form(name="blogsettings",method="post",action="/save/settings")
   p Last modified: #{blogsettings.modified}
   p
     label Title:
+  p  
     textarea(name="title", rows="1", cols="45", resize="none") #{blogsettings.title}
   p
     label Header
+  p  
     textarea(name="header", rows="1", cols="45",resize="none") #{blogsettings.header}
   p  
     input(type="submit",name="post",value="Save")
