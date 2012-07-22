@@ -2,48 +2,48 @@
 /* Let's start with some basic stylings */
 @font-face {
 font-family: DejaVuSerif;
-src: url('./DejaVuSerif.ttf');
+src: url('/public/DejaVuSerif.ttf');
 }
 
 @font-face {
 font-family: DejaVuSerif;
 font-weight: bold;
-src: url('./DejaVuSerif-Bold.ttf');
+src: url('/public/DejaVuSerif-Bold.ttf');
 }
 
 @font-face {
 font-family: DejaVuSerif;
 font-weight: italic;
-src: url('./DejaVuSerif-Italic.ttf');
+src: url('/public/DejaVuSerif-Italic.ttf');
 }
 
 @font-face {
 font-family: DejaVuSerif;
 font-weight: bolditalic;
-src: url('./DejaVuSerif-BoldItalic.ttf');
+src: url('/public/DejaVuSerif-BoldItalic.ttf');
 }
 
 @font-face {
 font-family: Arimo-Latin;
-src: url('./Arimo-Regular-Latin.ttf');
+src: url('/public/Arimo-Regular-Latin.ttf');
 }
 
 @font-face {
 font-family: Arimo-Latin;
 font-weight: bold;
-src: url('./Arimo-Bold-Latin.ttf');
+src: url('/public/Arimo-Bold-Latin.ttf');
 }
 
 @font-face {
 font-family: Arimo-Latin;
 font-weight: italic;
-src: url('./Arimo-Italic-Latin.ttf');
+src: url('/public/Arimo-Italic-Latin.ttf');
 }
 
 @font-face {
 font-family: Arimo-Latin;
 font-weight: bolditalic;
-src: url('./Arimo-BoldItalic-Latin.ttf');
+src: url('/public/Arimo-BoldItalic-Latin.ttf');
 }
 
 body {
@@ -69,8 +69,7 @@ a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover {
 }
 
 h1 {
-	font: "DejaVuSerif", "Georgia", serif;
-	font-size: 22px;
+	font: 22px "DejaVuSerif", "Georgia", serif;
 }
 
 h1.main {
