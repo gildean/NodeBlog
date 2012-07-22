@@ -149,7 +149,7 @@ footer {
 .indexheader {
 	padding: 0 0 5px 0;
 	margin: 0 0 20px;
-	border: 0 0 1px 0 #660000;
+	border-bottom:1px #660000;
 	border-style: groove;
 	width:50%;
 }
