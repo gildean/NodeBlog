@@ -119,7 +119,7 @@ footer {
 .headertext {
 	position: absolute;
 	top: 5px;
-	left: 65px;
+	left: 70px;
 	color:rgba(10,0,0,0.6);
 	font: 14px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
@@ -130,7 +130,7 @@ footer {
 .mangos {
 	position: absolute;
 	top: 140px;
-	left: 60px;
+	left: 65px;
 	color:rgba(10,0,0,0.6);
 	font: 20px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
