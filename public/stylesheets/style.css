@@ -122,7 +122,7 @@ footer {
 
 .logo {
 	position: absolute;
-	right: 20px;
+	right: 80px;
 	top: 20px;
 }
 
@@ -130,7 +130,7 @@ footer {
 	z-index: 1000;
 	position: absolute;
 	top:200px;
-	right: 50px;
+	right: 80px;
 }
 
 .loginlink {
