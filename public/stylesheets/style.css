@@ -17,11 +17,6 @@ font-weight: italic;
 src: url('../DejaVuSerif-Italic.ttf');
 }
 
-@font-face {
-font-family: DejaVuSerif;
-font-weight: bolditalic;
-src: url('../DejaVuSerif-BoldItalic.ttf');
-}
 
 @font-face {
 font-family: Arimo-Latin;
@@ -40,11 +35,7 @@ font-weight: italic;
 src: url('../Arimo-Italic-Latin.ttf');
 }
 
-@font-face {
-font-family: Arimo-Latin;
-font-weight: bolditalic;
-src: url('../Arimo-BoldItalic-Latin.ttf');
-}
+
 
 body {
 	position: relative;
@@ -74,6 +65,7 @@ h1 {
 
 h1.main {
 	font: 28px "DejaVuSerif", "Georgia", serif;
+	font-weight: normal;
 }
 
 
