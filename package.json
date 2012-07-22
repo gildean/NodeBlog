@@ -5,17 +5,17 @@
   "version": "0.0.1",
   "private": true,
   "homepage": "http://toomanymangos.nodester.com",
-  "node": "0.6.12",
+  "node": "0.8.1",
   "repository": {
     "url": "defaultapp"
   },
   "main": "server.js",
   "dependencies": {
     "express": "=2.5.11",
-    "moment": "=1.6.2",
-    "bcrypt": "=0.7.0",
-    "mongojs": "=0.4.3",
-    "jade": "=0.26.3"
+    "moment": "~1.6.2",
+    "bcrypt": "~0.7.0",
+    "mongojs": "~0.4.3",
+    "jade": "~0.26.3"
   },
   "devDependencies": {},
   "optionalDependencies": {},
