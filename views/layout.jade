@@ -9,13 +9,13 @@ html
 
   body
     header
-
       a.logo(href="/") 
          img(src="/images/mangos.png",alt="mangos")
       footer 
+         p
+            a.loginlink(href="/login") Login
          p NodeBlog by ok
          p no rights reserved 2012
-         a.loginlink(href="/login") Login
       - if (user)            
          span.login
             p
