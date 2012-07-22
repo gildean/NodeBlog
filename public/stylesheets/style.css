@@ -93,13 +93,13 @@ header {
 	position: fixed;
 	top: 0;
 	right: 0;
-	background-color: #fcfcfc;
 	color: #FFF000;
 	width: 17%;
 	min-width: 200px;
 	max-width: 200px;
 	height: 100%;
-	box-shadow: inset 2px 0 4px rgba(0,0,0,0.3);
+    background: #fcfcfc;
+    box-shadow: inset 2px 0 5px rgba(0,0,0,0.2);
 	padding: 0 0 60px 0;
 	overflow: hidden;
 }
