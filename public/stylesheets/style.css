@@ -260,6 +260,11 @@ footer {
 	width: 700px;
 }
 
+.nocomments {
+	margin: 0 0 0 20px;
+	font-style: italic;
+}
+
 .deletebutton, .editbutton {
 	font-size: 12px;
 	display: inline-block;
