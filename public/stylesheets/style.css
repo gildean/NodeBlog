@@ -52,7 +52,8 @@ src: url('../Arimo-BoldItalic-Latin.ttf');
 
 
 body {
-	padding: 10px 0 20px;
+	height: 100%;
+
 }
 
 a, .deletebutton, .editbutton, .tag {
@@ -160,13 +161,11 @@ footer {
 
 .body {
 	width: 64%;
-
 	position: relative;
 	font: 16px "Arimo-Latin", Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	height: 100%;
-	background-color: #FCFBF7;
 	line-height: 26px;
 }
 
