@@ -101,6 +101,8 @@ header {
 	max-width: 300px;
 	height: 100%;
 	box-shadow: inset 2px 0 2px rgba(0,0,0,0.3);
+	padding: 0 0 60px 0;
+	overflow: hidden;
 }
 
 footer {
@@ -145,7 +147,8 @@ footer {
 }
 
 .indexheader {
-	border-bottom: 4px groove #660000;
+	margin: 0 0 10px;
+	border-bottom: 1px groove #660000;
 	width:50%;
 }
 
