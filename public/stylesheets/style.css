@@ -120,22 +120,22 @@ footer {
 	position: absolute;
 	top: 5px;
 	left: 70px;
-	color:rgba(10,0,0,0.6);
+	color:rgba(10,0,0,0.4);
 	font: 14px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
 	text-align: center;
-	text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .mangos {
 	position: absolute;
 	top: 140px;
 	left: 65px;
-	color:rgba(10,0,0,0.6);
+	color:rgba(10,0,0,0.4);
 	font: 20px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
 	text-align: center;
-	text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+	text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 	border-bottom: 1px solid rgba(0,0,0,0.6)
 }
 
