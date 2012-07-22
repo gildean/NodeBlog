@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h1 #{title}
 
 if (flash)
@@ -34,3 +35,29 @@ form(name="usersettings",method="post",action="/save/usersettings")
     input(type="password", name="passwordconf", required)
     
     input(type="submit", class="button", name="submit", value="Save", onClick="return confirm('Are you sure you want to change your password?');")
+=======
+h1 Blog and user settings
+
+form(name="blogsettings",method="post",action="/save/settings")
+  p Last modified: #{blogsettings.modified}
+  p
+    label Title:
+    textarea(name="title", rows="1", cols="45", resize="none") #{blogsettings.title}
+  p
+    label Header
+    textarea(name="header", rows="1", cols="45",resize="none") #{blogsettings.header}
+  p  
+    input(type="submit",name="post",value="Save")
+form(name="usersettings",method="post",action="/save/usersettings")
+  p  
+    label Username:
+    input(type="text", name="username", value="#{user.user}", required)
+  p  
+    label Password:
+    input(type="password", name="password", required)
+  p  
+    label Confirm :
+    input(type="password", name="passwordconf", required)
+  p  
+    input(type="submit",name="submit",value="Save",onClick="return confirm('Are you sure?');")
+>>>>>>> 5d40346... Initilize db function

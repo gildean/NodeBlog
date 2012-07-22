@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h1 #{title}
 h3 Please fill in the name and the header text of the blog, about-page content and some author info
 if (flash)
@@ -35,3 +36,16 @@ form(name="blogsettings",method="post",action="/initialsetup")
     input(type="text",name="where", required)
     
     input(type="submit", class="button", name="post", value="Save")
+=======
+h1 Blog settings
+h3 Please fill in the name and the header text of the blog (you can change these settings later)
+form(name="blogsettings",method="post",action="/initialsetup")
+  p
+    label Title:
+    textarea(name="title", placeholder="Blog name here", rows="1", cols="45", resize="none", required)
+  p
+    label Header
+    textarea(name="header", placeholder="Header info text here", rows="1", cols="45", resize="none", required)
+  p  
+    input(type="submit",name="post",value="Save")
+>>>>>>> 5d40346... Initilize db function
