@@ -260,7 +260,7 @@ exports.addComment = function(req, res) {
     , body: req.body.body
     , created: new Date()
     , status: 0
-    , from: ipAddress
+    , from: new getClientIp()
   };
   commentdb.insert(data, function(err, post) {
       req.flash('info', 'Comment added for reviewing at a later time!')
