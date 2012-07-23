@@ -1,7 +1,8 @@
 h1 Blog and user settings
+p Last modified: #{blogsettings.modified}
+h3 Blog settings
 
 form(name="blogsettings",method="post",action="/save/settings")
-  p Last modified: #{blogsettings.modified}
   p
     label Title:
   p  
@@ -12,6 +13,7 @@ form(name="blogsettings",method="post",action="/save/settings")
     textarea(name="header", rows="1", cols="45",resize="none") #{blogsettings.header}
   p  
     input(type="submit", class="button", name="post", value="Save")
+h3 User settings
 form(name="usersettings",method="post",action="/save/usersettings")
   p  
     label Username:
