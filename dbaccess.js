@@ -34,8 +34,8 @@ exports.initCheck = function(req, res) {
 exports.settings = function(req, res, next) { 
    setupdb.findOne({ _id: 1}, function(err, settings) {
       if (settings) {
-      	req.settings = settings;
-      	next();
+        req.settings = settings;
+        next();
      } else {
         res.render('initdb.jade', {
            title: 'Initial setup'
@@ -90,16 +90,16 @@ exports.addNewUser = function(req, res) {
           if(req.body.password != req.body.passwordconf) {
             req.flash('error', 'Password mismatch!')
             res.redirect('back');
-	   } else {
-      	    var values = {
+     } else {
+            var values = {
                   user: req.body.username
-      		, pass: bcrypt.hashSync(req.body.password, 8)
-      		};
-      	    userdb.insert(values, function(err, post) {
-        	req.flash('info', 'New user added!')
-        	res.redirect('/login');
+          , pass: bcrypt.hashSync(req.body.password, 8)
+          };
+            userdb.insert(values, function(err, post) {
+          req.flash('info', 'New user added!')
+          res.redirect('/login');
             });
-	  }
+    }
        }
    });
 };
@@ -134,17 +134,17 @@ exports.saveBlogSettings = function(req, res) {
 // save usersettings
 exports.saveUserSettings = function(req, res) {
         if(req.body.password != req.body.passwordconf) {
-        	req.flash('error', 'Password mismatch!')
-        	res.redirect('back');
+          req.flash('error', 'Password mismatch!')
+          res.redirect('back');
         } else {
            userdb.update({ user: req.body.username }, {
-  	     $set: {
-   	        user: req.body.username
- 	      , pass: bcrypt.hashSync(req.body.password, 8)
- 		 }}, function(err, post) {
-  	req.flash('info', 'Settings saved!');
- 	res.redirect('/'); 
-	});
+         $set: {
+            user: req.body.username
+        , pass: bcrypt.hashSync(req.body.password, 8)
+     }}, function(err, post) {
+    req.flash('info', 'Settings saved!');
+  res.redirect('/'); 
+  });
     }
 };
 
@@ -174,8 +174,7 @@ exports.logon = function(req, res) {
 
 // list all posts
 exports.index = function(req, res) {
-  var indexes = { subject: 1, body: 1, tags: 1, created: 1, author: 1 };
-  postdb.find({ state: 'published'}, indexes, function(err, posts) {
+  postdb.find().sort( { created : -1 }, function(err, posts) {
     if (!err && posts) {
         res.render('index.jade', {
         title: req.settings.title
@@ -284,7 +283,7 @@ exports.saveCommentEdit = function(req, res) {
 exports.publishComment = function(req, res) {
   commentdb.update({ _id: db.ObjectId(req.params.coid) }, {
   $set: {
-	status: 1
+  status: 1
     }}, function(err, post) {
     req.flash('info', 'Comment published');
     res.redirect('back');
@@ -296,7 +295,7 @@ exports.publishComment = function(req, res) {
 exports.hideComment = function(req, res) {
   commentdb.update({ _id: db.ObjectId(req.params.coid) }, {
   $set: {
-	status: 0
+  status: 0
     }}, function(err, post) {
     req.flash('info', 'Comment hidden from view');
     res.redirect('back');
@@ -341,4 +340,3 @@ exports.checkCId = function(req, res, next, id) {
     next();
   });
 };
-
