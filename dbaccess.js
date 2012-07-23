@@ -45,6 +45,22 @@ exports.settings = function(req, res, next) {
 };   
 
 
+// Ipcheck middleware
+exports.checkIP = function(req, res, next) {
+  var ipAddress;
+  var forwardedIpsStr = req.header('x-forwarded-for'); 
+  if (forwardedIpsStr) {
+    var forwardedIps = forwardedIpsStr.split(',');
+    ipAddress = forwardedIps[0];
+  }
+  if (!ipAddress) {
+    ipAddress = req.connection.remoteAddress;
+  }
+  req.ipaddress = ipAddress;
+  next();
+};
+
+
 // no users? no problem!
 exports.anyoneThere = function (req, res) {
   userdb.count(function(err, users) {
@@ -130,28 +146,6 @@ exports.saveUserSettings = function(req, res) {
  	res.redirect('/'); 
 	});
     }
-};
-
-
-// Ipcheck middleware
-exports.checkIP = function(req, res, next) {
-  var ipAddress;
-  // Amazon EC2 / Heroku workaround to get real client IP
-  var forwardedIpsStr = req.header('x-forwarded-for'); 
-  if (forwardedIpsStr) {
-    // 'x-forwarded-for' header may return multiple IP addresses in
-    // the format: "client IP, proxy 1 IP, proxy 2 IP" so take the
-    // the first one
-    var forwardedIps = forwardedIpsStr.split(',');
-    ipAddress = forwardedIps[0];
-  }
-  if (!ipAddress) {
-    // Ensure getting client IP address still works in
-    // development environment
-    ipAddress = req.connection.remoteAddress;
-  }
-  req.ipaddress = ipAddress;
-  next();
 };
 
 
