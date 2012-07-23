@@ -190,7 +190,7 @@ footer p {
 
 .login a:hover {
 	cursor: pointer;
-	box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 2px 2px 8px rgba(0,0,0,0.2);
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 0 5px rgba(0,0,0,0.2);
 	text-decoration: none;
 }
 
@@ -212,6 +212,7 @@ footer p {
 }
 
 .indexheader {
+	font-size: 20px;
 	padding: 0 0 5px 0;
 	margin: 0 0 20px;
 	text-shadow: 0 2px 2px rgba(0,0,0,0.2);
@@ -277,6 +278,14 @@ footer p {
     white-space: nowrap;
 }
 
+code {
+	color: #660000;
+	font-size: 14px;
+	font-family: "Ubuntu mono", "Lucida Grande", monospace;
+	margin: 0 0 0 10px;
+	display: block;
+}
+
 
 /**/
 /* Let's style the comments too */
@@ -307,11 +316,6 @@ footer p {
 .editcomm {
 	text-align: right;
 	width: 700px;
-}
-
-.nocomments {
-	margin: 0 0 0 20px;
-	font-style: italic;
 }
 
 .deletebutton, .editbutton {
@@ -346,15 +350,20 @@ footer p {
 
 .rte-zone
 {
-    width:500px;
+    width:600px;
     margin:0;
-    padding:0;
+    padding:4px;
     border:1px #999 solid;
     clear:both;
-    height:200px;
+    height:300px;
     display:block;
     background: #fcfcfc;
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.commentsection .rte-zone {
+	width: 400px;
+	height: 160px;
 }
 
 .rte-toolbar{ 
@@ -372,7 +381,8 @@ footer p {
 }
 
 input {
-	padding: 2px;
+	width: 300px;
+	padding: 4px;
     border:1px #999 solid;
 	background: #fcfcfc;
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.2);
@@ -383,6 +393,7 @@ input {
 }
 
 .button {
+	width: 80px;
 	margin: 5px 0 15px;
 	padding: 5px 10px;
 }
