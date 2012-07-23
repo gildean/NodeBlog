@@ -70,7 +70,7 @@ app.get('/posts/tags/:tag', dbaccess.settings, dbaccess.postsByTag);
 // posts
 app.post('/posts/add', checkLogin, dbaccess.addNewPost);
 app.post('/posts/edit', checkLogin, dbaccess.savePostEdit);
-app.post('/posts/comment', dbaccess.addComment);
+app.post('/posts/comment', dbaccess.checkIP, dbaccess.addComment);
 app.post('/posts/edit/comment', checkLogin, dbaccess.saveCommentEdit);
 app.post('/save/settings', checkLogin, dbaccess.settings, dbaccess.saveBlogSettings);
 app.post('/save/usersettings', checkLogin, dbaccess.saveUserSettings);
