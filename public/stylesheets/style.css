@@ -92,7 +92,8 @@ h1 {
 	font: 22px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
 	border-bottom-style: groove;
-	width:50%;
+	width:60%;
+	max-width: 600px;
 }
 
 
@@ -117,20 +118,25 @@ header {
 }
 
 footer {
-	z-index: 1100;
-	position: fixed;
-	bottom: 0;
+	position: absolute;
+	bottom: 60px;
 	right: 10px;
 	margin: 0;
 	color: #c6c6c6;
 	font-size: 11px;
 	text-align: right;
+	line-height: 13px;
+}
+
+footer p {
+	padding: 0;
+	margin: 0;
 }
 
 .headertext {
 	position: absolute;
-	top: 20px;
-	left: 70px;
+	top: 25px;
+	left: 65px;
 	color:rgba(10,0,0,0.4);
 	font: 14px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
@@ -140,8 +146,8 @@ footer {
 
 .mangos {
 	position: absolute;
-	top: 155px;
-	left: 65px;
+	top: 160px;
+	left: 60px;
 	color:rgba(10,0,0,0.4);
 	font: 20px "DejaVuSerif", "Georgia", serif;
 	border-bottom:2px #660000;
@@ -152,17 +158,40 @@ footer {
 
 .logo {
 	position: absolute;
-	right: 50px;
-	top: 35px;
+	right: 55px;
+	top: 40px;
 }
 
 .login  {
 	text-align: center;
 	z-index: 1000;
 	position: absolute;
-	top:185px;
-	right: 62px;
-	text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+	top:195px;
+	left: 40px;
+}
+
+.login a {
+	font: 18px "DejaVuSerif", "Georgia", serif;
+	width: 100px;
+	text-align: center;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	color: rgba(0,0,0,0.4);
+	display: inline-block;
+	margin: 5px 0 15px;
+	padding: 5px 10px;
+    border:1px #999 solid;
+	background: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.login a:hover {
+	cursor: pointer;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 2px 2px 8px rgba(0,0,0,0.2);
+	text-decoration: none;
 }
 
 .loginlink {
@@ -214,11 +243,18 @@ footer {
 
 .items {
 	margin: 15px 0;
+	padding: 0 0 15px 0;
+ 	max-width: 600px;
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
     white-space: nowrap;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
 } 
+
+.items:last-of-type {
+	border: 0;
+}
 
 .fpblogpost {
 	height: 55px;
@@ -233,6 +269,12 @@ footer {
 	padding: 0 5px 0 0;
 	margin: 15px 5px 5px 0 ;
 	border-right: 1px solid #FFB700;
+}
+
+.items h3 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
