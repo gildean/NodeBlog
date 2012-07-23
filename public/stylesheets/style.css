@@ -1,5 +1,10 @@
 /**/
 /* Let's start with some basic stylings */
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
 @font-face {
 font-family: DejaVuSerif;
 font-weight: normal;
@@ -171,8 +176,10 @@ footer {
 
 #container {
 	z-index: 100;
-	width: 84%;
+	width: 70%;
 	margin: 5% 10% 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .indexheader {
@@ -186,7 +193,7 @@ footer {
 /* Styles to the blogposts */
 
 .body {
-	width: 64%;
+	width: 90%;
 	position: relative;
 	height: 100%;
 	font: 16px "Arimo", "Helvetica", sans-serif;
@@ -214,7 +221,7 @@ footer {
 } 
 
 .fpblogpost {
-	height: 60px;
+	height: 55px;
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -291,9 +298,9 @@ footer {
 	font-style: italic;
 }
 
-/**/
-/* rte-plugin and the slider */
 
+/**/
+/* rte-plugin and the inputs */
 
 .rte-zone
 {
