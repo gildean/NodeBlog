@@ -35,8 +35,8 @@ div.commentsection
 
   - if (user) 
     - if (post.hidden)
+        h3 Comments to review:
         for hidden in post.hidden
-           h3 Comments to review:
            div.comment
               div
                  a(href="/posts/publish/comment/#{hidden._id}") Publish
