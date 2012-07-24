@@ -18,6 +18,7 @@ exports.initCheck = function(req, res) {
           _id: 1   
         , title: req.body.title
         , header: req.body.header
+        , about: ''
         , modified: new Date()
        }, function (err, post) {
          res.redirect('/login');
@@ -123,6 +124,19 @@ exports.saveBlogSettings = function(req, res) {
   $set: {  
     title: req.body.title
   , header: req.body.header
+  , modified: new Date()
+  }}, function(err, post) {
+  req.flash('info', 'Settings saved!');
+  res.redirect('/');
+  });
+};
+
+
+// save about page
+exports.saveAbout = function(req, res) {
+  setupdb.update({ _id: 1 }, {
+  $set: {  
+    about: req.body.about
   , modified: new Date()
   }}, function(err, post) {
   req.flash('info', 'Settings saved!');
@@ -249,7 +263,6 @@ exports.deletePost = function(req, res) {
 
 // add a comment
 exports.addComment = function(req, res) {
-
   var data = {
       _id: new db.bson.ObjectID.createPk()
     , postid: req.body.postid
