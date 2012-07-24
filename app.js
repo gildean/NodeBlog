@@ -39,8 +39,7 @@ function checkLogin(req, res, next) {
 // routes for login-logout
 // gets
 app.get('/login', dbaccess.anyoneThere);
-app.get('/logout', dbaccess.settings, checkLogin, routes.logout);
-app.get('/adduser', routes.addNewUser);
+app.get('/logout', checkLogin, routes.logout);
 app.get('/loginpage', dbaccess.settings, routes.loginPage);
 
 
@@ -49,11 +48,13 @@ app.post('/login', dbaccess.logon);
 app.post('/adduser', dbaccess.addNewUser);
 app.post('/initialsetup', dbaccess.initCheck);
 
+
 // routes for views
 // gets
 app.get('/', dbaccess.settings, dbaccess.index);
 app.get('/posts', routes.posts);
 app.get('/about', dbaccess.settings, routes.about);
+app.get('/edit/about', checkLogin, dbaccess.settings, routes.editAbout);
 app.get('/settings', checkLogin, dbaccess.blogSettings);
 app.get('/posts/add', checkLogin, dbaccess.settings, routes.newPost);
 app.get('/posts/:postid', dbaccess.settings, routes.showPost);
@@ -64,11 +65,13 @@ app.get('/posts/publish/comment/:coid', checkLogin, dbaccess.settings, dbaccess.
 app.get('/posts/hide/comment/:coid', checkLogin, dbaccess.settings, dbaccess.hideComment);
 app.get('/posts/remove/comment/:coid', checkLogin, dbaccess.settings, dbaccess.deleteComment);
 
+
 // searchs
 app.get('/posts/tags/:tag', dbaccess.settings, dbaccess.postsByTag);
 
 
 // posts
+app.post('/save/about', checkLogin, dbaccess.saveAbout);
 app.post('/posts/add', checkLogin, dbaccess.addNewPost);
 app.post('/posts/edit', checkLogin, dbaccess.savePostEdit);
 app.post('/posts/comment', dbaccess.checkIP, dbaccess.addComment);
@@ -86,9 +89,9 @@ app.param('coid', dbaccess.checkCId);
 app.get('*', dbaccess.settings, routes.notFound);
 
 
+// for nodester
 var PORT = process.env['app_port'] || 19968;
 // Run, you fool!
 app.listen( PORT, function(){
   console.log("server listening");
 });
-

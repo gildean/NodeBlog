@@ -12,13 +12,24 @@ exports.posts = function(req, res) {
   res.redirect('/');
 };
 
+
 // about page
 exports.about = function(req, res) {
   res.render('about.jade', {
     title: 'About' + ' ' + req.settings.title
-  , aboutinfo: req.settings
+  , aboutinfo: req.settings.about
   , flash: req.flash()
   });
+};
+
+
+// edit the about page
+exports.editAbout = function(req, res) {
+  res.render('editabout.jade', {
+    title: 'Editing about'
+  , aboutinfo: req.settings.about
+  , flash: req.flash()
+  }); 
 };
 
 

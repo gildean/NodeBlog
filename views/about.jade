@@ -4,3 +4,7 @@ h1= title
     p.flash.error #{flash.error}
   -if (flash.info)
     p.flash.info #{flash.info} 
+- if (user)
+   div.edit
+      a(href="/edit/about") Edit this page
+article!= aboutinfo
