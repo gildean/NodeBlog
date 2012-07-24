@@ -53,6 +53,7 @@ app.post('/initialsetup', dbaccess.initCheck);
 // gets
 app.get('/', dbaccess.settings, dbaccess.index);
 app.get('/posts', routes.posts);
+app.get('/about', dbaccess.settings, routes.about);
 app.get('/settings', checkLogin, dbaccess.blogSettings);
 app.get('/posts/add', checkLogin, dbaccess.settings, routes.newPost);
 app.get('/posts/:postid', dbaccess.settings, routes.showPost);

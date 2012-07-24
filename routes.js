@@ -12,6 +12,15 @@ exports.posts = function(req, res) {
   res.redirect('/');
 };
 
+// about page
+exports.about = function(req, res) {
+  res.render('about.jade', {
+    title: 'About' + ' ' + req.settings.title
+  , aboutinfo: req.settings
+  , flash: req.flash()
+  });
+};
+
 
 // create a new post
 exports.newPost = function(req, res) {

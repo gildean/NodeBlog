@@ -34,8 +34,8 @@ exports.initCheck = function(req, res) {
 exports.settings = function(req, res, next) { 
    setupdb.findOne({ _id: 1}, function(err, settings) {
       if (settings) {
-        req.settings = settings;
-        next();
+      	req.settings = settings;
+      	next();
      } else {
         res.render('initdb.jade', {
            title: 'Initial setup'
@@ -90,16 +90,16 @@ exports.addNewUser = function(req, res) {
           if(req.body.password != req.body.passwordconf) {
             req.flash('error', 'Password mismatch!')
             res.redirect('back');
-     } else {
-            var values = {
+	   } else {
+      	    var values = {
                   user: req.body.username
-          , pass: bcrypt.hashSync(req.body.password, 8)
-          };
-            userdb.insert(values, function(err, post) {
-          req.flash('info', 'New user added!')
-          res.redirect('/login');
+      		, pass: bcrypt.hashSync(req.body.password, 8)
+      		};
+      	    userdb.insert(values, function(err, post) {
+        	req.flash('info', 'New user added!')
+        	res.redirect('/login');
             });
-    }
+	  }
        }
    });
 };
@@ -134,17 +134,17 @@ exports.saveBlogSettings = function(req, res) {
 // save usersettings
 exports.saveUserSettings = function(req, res) {
         if(req.body.password != req.body.passwordconf) {
-          req.flash('error', 'Password mismatch!')
-          res.redirect('back');
+        	req.flash('error', 'Password mismatch!')
+        	res.redirect('back');
         } else {
            userdb.update({ user: req.body.username }, {
-         $set: {
-            user: req.body.username
-        , pass: bcrypt.hashSync(req.body.password, 8)
-     }}, function(err, post) {
-    req.flash('info', 'Settings saved!');
-  res.redirect('/'); 
-  });
+  	     $set: {
+   	        user: req.body.username
+ 	      , pass: bcrypt.hashSync(req.body.password, 8)
+ 		 }}, function(err, post) {
+  	req.flash('info', 'Settings saved!');
+ 	res.redirect('/'); 
+	});
     }
 };
 
@@ -283,7 +283,7 @@ exports.saveCommentEdit = function(req, res) {
 exports.publishComment = function(req, res) {
   commentdb.update({ _id: db.ObjectId(req.params.coid) }, {
   $set: {
-  status: 1
+	status: 1
     }}, function(err, post) {
     req.flash('info', 'Comment published');
     res.redirect('back');
@@ -295,7 +295,7 @@ exports.publishComment = function(req, res) {
 exports.hideComment = function(req, res) {
   commentdb.update({ _id: db.ObjectId(req.params.coid) }, {
   $set: {
-  status: 0
+	status: 0
     }}, function(err, post) {
     req.flash('info', 'Comment hidden from view');
     res.redirect('back');
@@ -314,10 +314,19 @@ exports.deleteComment = function(req, res) {
 
 // validating the post id to get a single post
 exports.checkPostId = function(req, res, next, id) {
-  if (id.length != 24) return next(new Error('The post id length is incorrect'));
+  if (id.length != 24) return next( res.render('404.jade', {
+           title: 'Bro, wtf?'
+       })
+    );
   postdb.findOne({_id: db.ObjectId(id)}, function(err, post) {
-    if (err) return next(new Error('Make sure you provided correct post id'));
-    if (!post) return next(new Error('Post loading failed'));
+    if (err) return next( res.render('404.jade', {
+           title: 'Bro, wtf?'
+       })
+    );
+    if (!post) return next( res.render('404.jade', {
+           title: 'Bro, wtf?'
+       })
+    );
     commentdb.find({postid: id, status: 1}, function(err, comments) {
     commentdb.find({postid: id, status: 0}, function(err, hiddenc) {
       req.post = post;
@@ -340,3 +349,4 @@ exports.checkCId = function(req, res, next, id) {
     next();
   });
 };
+
