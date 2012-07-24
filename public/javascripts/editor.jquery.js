@@ -71,7 +71,7 @@ if(typeof $.fn.rte === "undefined") {
             textarea.after(iframe);
 
 
-            var doc = "<html><head>"+"</head><body style='font-family: monospace'>"+content+"</body></html>";
+            var doc = "<html><head>"+"</head><body style='font-family: sans-serif'>"+content+"</body></html>";
             tryEnableDesignMode(doc, function() {
                 $("#toolbar-" + element_id).remove();
                 textarea.before(toolbar());
@@ -131,7 +131,7 @@ if(typeof $.fn.rte === "undefined") {
                         <option value=''>Block style</option>\
                         <option value='p'>Paragraph</option>\
                         <option value='h3'>Title</option>\
-                        <option value='address'>Address</option>\
+                        <option value='pre'>Code</option>\
                     </select>\
                 </p>\
                 <p>\

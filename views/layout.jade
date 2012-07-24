@@ -2,6 +2,10 @@
 html
   head
     title= title
+    meta(name="author", content="Olli K")
+    meta(name="generator", content="NodeBlog")
+    meta(name="description", content="Blog")
+    meta(name="viewport", content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1.2")
     link(rel='shortcut icon', href='/images/favicon.ico')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css') 
@@ -10,15 +14,11 @@ html
 
   body
     header
-      span.headertext too many
-      a.logo(href="/") 
-         img(src="/images/mangos.png",alt="too many mangos")
-      span.mangos mangos
-      footer 
-         p
-            a.loginlink(href="/login") Login
-         p NodeBlog by ok
-         p no rights reserved 2012
+      div.manymangos
+         span.headertext too many
+         a.logo(href="/") 
+            img(src="/images/mangos.png",alt="too many mangos")
+         span.mangos mangos
       - if (user)            
          span.login
             p
@@ -27,6 +27,11 @@ html
                a(href="/settings") Settings
             p
                a(href="/logout") Logout
+    footer
+      p.about
+         a(href="/about") about 
+      p NodeBlog no rights reserved 2012
+
 
 
 
