@@ -57,7 +57,7 @@ app.get('/about', dbaccess.settings, routes.about);
 app.get('/edit/about', checkLogin, dbaccess.settings, routes.editAbout);
 app.get('/settings', checkLogin, dbaccess.blogSettings);
 app.get('/posts/add', checkLogin, dbaccess.settings, routes.newPost);
-app.get('/posts/:postid', dbaccess.settings, routes.showPost);
+app.get('/posts/:postid?', dbaccess.settings, routes.showPost);
 app.get('/posts/edit/:postid', checkLogin, dbaccess.settings, routes.editPost);
 app.get('/posts/remove/:postid', checkLogin, dbaccess.settings, dbaccess.deletePost);
 app.get('/posts/edit/comment/:coid', checkLogin, dbaccess.settings, routes.editComment);

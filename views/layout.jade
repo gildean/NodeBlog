@@ -5,6 +5,7 @@ html
     meta(name="author", content="Olli K")
     meta(name="generator", content="NodeBlog")
     meta(name="description", content="Blog")
+    meta(name="apple-mobile-web-app-capable", content="yes")
     meta(name="viewport", content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1.2")
     link(rel='shortcut icon', href='/images/favicon.ico')
     link(rel='stylesheet', href='/stylesheets/style.css')
@@ -13,27 +14,23 @@ html
     script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js')
 
   body
+  
     header
       div.manymangos
-         span.headertext too many
-         a.logo(href="/") 
-            img(src="/images/mangos.png",alt="too many mangos")
-         span.mangos mangos
+         a(href="/")
+            span.headertext too many
+            img(class="logo", src="/images/mangos.png",alt="too many mangos")
+            span.mangos mangos
       - if (user)            
-         span.login
-            p
-               a(href="/posts/add") New post
-            p
-               a(href="/settings") Settings
-            p
-               a(href="/logout") Logout
+         div.login
+            a(href="/posts/add") New post
+            a(href="/settings") Settings
+            a(href="/logout") Logout
+
     footer
       p.about
          a(href="/about") about 
       p NodeBlog no rights reserved 2012
-
-
-
 
     div#container!= body
     
