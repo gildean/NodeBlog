@@ -1,0 +1,12 @@
+h1= title
+-if (flash)
+  -if (flash.error)
+    p.flash.error #{flash.error}
+  -if (flash.info)
+    p.flash.info #{flash.info} 
+form(name="edit-about",method="post",action="/save/about")
+  p
+    label About page content:
+    textarea.rte-zone(name="about", rows="20", cols="95") #{aboutinfo}
+  p
+    input(type="submit", class="button", name="post", value="Save")
