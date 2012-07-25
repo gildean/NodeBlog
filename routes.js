@@ -16,7 +16,7 @@ exports.posts = function(req, res) {
 // about page
 exports.about = function(req, res) {
   res.render('about.jade', {
-    title: 'About' + ' ' + req.settings.title
+    title: req.settings.title
   , aboutinfo: req.settings.about
   , flash: req.flash()
   });
