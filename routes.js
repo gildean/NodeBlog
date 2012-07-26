@@ -17,7 +17,7 @@ exports.posts = function(req, res) {
 exports.about = function(req, res) {
   res.render('about.jade', {
     title: req.settings.title
-  , aboutinfo: req.settings.about
+  , aboutinfo: req.settings
   , flash: req.flash()
   });
 };
@@ -27,7 +27,7 @@ exports.about = function(req, res) {
 exports.editAbout = function(req, res) {
   res.render('editabout.jade', {
     title: 'Editing about'
-  , aboutinfo: req.settings.about
+  , aboutinfo: req.settings
   , flash: req.flash()
   }); 
 };
@@ -45,7 +45,7 @@ exports.newPost = function(req, res) {
 // edit a post
 exports.editPost = function(req, res) {
    res.render('edit.jade', {
-     title: req.settings.title + ' - Edit post:' + ' ' + req.post.subject
+     title: req.settings.title + ' - Editing post:' + ' ' + req.post.subject
    , post: req.post
    , flash: req.flash()
    });

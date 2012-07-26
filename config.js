@@ -8,7 +8,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({ secret: 'HJF839hrfsdjufFhj48w3hfsvfhushrfSVHydrg3547fa83yzcvwe' }));
+  app.use(express.session({ secret: 'SHVd8uh8fhsdf8fvch7uwhksduhsdFhsyuvnwfh8hnsuher8vvdsvSHudcvsswef32q54sd' }));
   app.use(express.static(__dirname+'/public')); 
   app.use(app.router);
 });

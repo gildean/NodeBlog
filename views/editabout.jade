@@ -1,12 +1,25 @@
 h1= title
 -if (flash)
-  -if (flash.error)
-    p.flash.error #{flash.error}
-  -if (flash.info)
-    p.flash.info #{flash.info} 
-form(name="edit-about",method="post",action="/save/about")
-  p
-    label About page content:
-    textarea.rte-zone(name="about", rows="20", cols="95") #{aboutinfo}
-  p
-    input(type="submit", class="button", name="post", value="Save")
+   -if (flash.error)
+      p.flash.error #{flash.error}
+   -if (flash.info)
+      p.flash.info #{flash.info}
+form(name="edit-author",method="post",action="/save/about")
+   p
+      label Edit motto
+      input(type="text",name="about", required)  
+   p
+      label Full name 
+      input(type="text",name="author", required)
+   p
+      label Nickname (shows up as poster)
+      input(type="text",name="nick", required)
+   p
+      label Who/what are you? 
+      input(type="text",name="what", required)
+   p
+      label Links to you, use full url, separate with commas without spaces 
+      input(type="text",name="where", required)      
+
+   p
+      input(type="submit", class="button", name="post", value="Save")
