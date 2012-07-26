@@ -1,4 +1,15 @@
 /**/
+/* go google go! (android, chrome etc.) */
+
+* {
+	-webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent
+    -webkit-user-drag: none;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+}
+
+
+/**/
 /* pads, tabs and desktops (landscape) */
 
 header {
@@ -10,8 +21,9 @@ header {
 	color: #FFF000;
 	width: 13%;
 	min-width: 200px;
+	max-width: 350px;
 	height: 100%;
-    background: #FFFDFA url('/images/mangosbg.png');
+    background: #FFFDFA url('/images/mangosbgdg.png');
     box-shadow: inset 2px 0 5px rgba(0,0,0,0.2);
 	padding: 0 0 60px 0;
 	overflow: hidden;
@@ -22,13 +34,18 @@ header {
 footer {
 	z-index: 1001;
 	position: fixed;
-	bottom: 5px;
-	right: 10px;
+	bottom: 2px;
+	right: 2px;
 	margin: 0;
-	color:rgba(10,0,0,0.3);
+	width: 70px;
+	color: #999796;
 	font-size: 11px;
-	text-align: right;
+	text-align: center;
 	line-height: 13px;
+	o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
 }
 
 footer p {
@@ -42,18 +59,20 @@ footer p {
 	width: 90px;
 	text-align: center;
 	color:rgba(10,0,0,0.4);
-	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .headertext {
 	font: 14px "DejaVuSerif", "Georgia", serif;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 1px rgba(0,0,0,0.7);
 }
 
 .mangos {
-	color:rgba(10,0,0,0.4);
+	text-shadow: -1px -1px 1px rgba(255,255,255,0.5), 1px 1px 1px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
+	color:rgba(10,0,0,0.2);
 	font: 20px "DejaVuSerif", "Georgia", serif;
 	text-decoration: underline;
 	line-height: 20px;
+	font-weight: bold;
 	padding: 0;
 	margin: 0;
 }
@@ -67,9 +86,9 @@ footer p {
 .about a {
 	padding: 10px 0;
 	text-align: center;
-	color:rgba(10,0,0,0.2);
-	text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-	font: 22px "DejaVuSerif", "Georgia", serif;
+	text-shadow: -1px -1px 1px rgba(255,255,255,0.5), 1px 1px 1px rgba(0,0,0,0.5);
+    color:rgba(10,0,0,0.3);
+	font: 24px "DejaVuSerif", "Georgia", serif;
 }
 
 .about a:hover {
@@ -88,7 +107,7 @@ footer p {
 .login  {
 	text-align: center;
 	width: 100px;
-	margin: 0 auto;
+	margin: 100px auto 0;
 }
 
 .login a {
@@ -97,7 +116,7 @@ footer p {
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	color: rgba(10,0,0,0.4);
 	display: inline-block;
-	margin: 15px auto;
+	margin: 10px auto;
 	padding: 5px 0;
     border:1px #999 solid;
 	background: #fff;
@@ -116,6 +135,7 @@ footer p {
 }
 
 #container {
+	z-index: 950;
 	margin: 0 auto;
 	padding: 5% 15% 5% 10%;
 }
@@ -128,7 +148,7 @@ footer p {
 	text-align: center;
 	position: fixed;
 	right: 0;
-	top: 40%;
+	top: 220px;
 	width: 13%;
 	min-width: 200px;
 	z-index: 1001;
@@ -159,7 +179,11 @@ header {
 }
 
 footer {
-	font-size: 9px;
+	width: 62px;
+	right: 10px;
+	bottom: 10px;
+	font-size: 10px;
+	line-height: 10px;
 }
 
 .manymangos {
@@ -170,8 +194,12 @@ footer {
 	padding: 0;
 }
 
+.mangos {
+	text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
 .about a {
-	font: 18px "DejaVuSerif", "Georgia", serif;
+	font: 21px "DejaVuSerif", "Georgia", serif;
 }
 
 .login {
@@ -210,9 +238,6 @@ footer {
 }
 
 .author {
-	color:rgba(10,0,0,0.5);
-	font: 16px "DejaVuSerif", "Georgia", serif;
-	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	text-align: left;
 	position: absolute;
 	left: 1%;
@@ -221,15 +246,15 @@ footer {
 }
 
 .author b, .author i {
-	font: 12px "DejaVuSerif", "Georgia", serif;
-	font-style: italic;
+	font-size: 12px;
 }
 
 }
 
 
 /**/
-/* phones */
+/* smaller phones */
+
 @media only screen
 and (max-width : 767px) {
 
@@ -244,8 +269,11 @@ header {
 
 footer {
 	font-size: 8px;
+	width: 40px;
+	right: 3px;
+	bottom: 3px;
+	line-height: 7px;
 }
-
 
 .manymangos {
 	position: absolute;
@@ -303,6 +331,7 @@ footer {
 
 .about a {
 	font-size: 13px;
+	text-shadow: 0 1px 1px rgba(0,0,0,0.5)
 }
 
 #container {
@@ -312,9 +341,6 @@ footer {
 }
 
 .author {
-	color:rgba(10,0,0,0.5);
-	font: 14px "DejaVuSerif", "Georgia", serif;
-	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	text-align: left;
 	position: absolute;
 	left: 1%;
@@ -323,8 +349,7 @@ footer {
 }
 
 .author b, .author i {
-	font: 10px "DejaVuSerif", "Georgia", serif;
-	font-style: italic;
+	font-size: 10px;
 }
 
 }
@@ -334,9 +359,6 @@ footer {
 /* Let's start with some basic stylings */
 
 html {
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: transparent
-    -webkit-user-drag: none;
     height: 100%;    
 	min-height: 100%;
 }
@@ -437,12 +459,7 @@ h1.main {
 	text-decoration: underline;
 }
 
-h6 {
-	color:rgba(10,0,0,0.4);
-	font: 24px "DejaVuSerif", "Georgia", serif;
-	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-	text-decoration: none;
-}
+
 
 /**/
 /* These are the concurring parts */
@@ -489,6 +506,7 @@ h6 {
 .posted {
 	margin: 10px 0;
 	font-size: 14px;
+	font-style: italic;
 }
 
 .fpposted b {
@@ -500,8 +518,8 @@ h6 {
 .edit {
 	display: inline-block;
 	position: absolute;
-	left: 10%;
-	top: 20px;
+	right: 20%;
+	top: 30px;
 }
 
 .items {
@@ -515,7 +533,6 @@ h6 {
 	text-overflow: ellipsis;
     white-space: nowrap;
     border-bottom: 1px solid rgba(0,0,0,0.3);
-    z-index: 1000;
 } 
 
 .postlink {
@@ -589,9 +606,13 @@ pre {
 .comment {
 	position: relative;
 	margin: 15px 0;
-	padding: 5px;
-	font-size: 14px;
-	width: 750px;
+	font-size: 16px;
+	width: 90%;
+	background: #FFF;
+	padding: 6px;
+    max-width: 1000px;
+    cursor: copy;
+    border-bottom:1px #999 solid;
 }
 
 .comment pre {
@@ -599,13 +620,17 @@ pre {
 	overflow: auto;
 }
 
-.comment:nth-of-type(odd) {
-	background-color:#FFFDFA;
+.comment:nth-of-type(even) {
+	background: #FFFDFA;
+}
+
+.comment:last-of-type {
+	border:0;
 }
 
 .editcomm {
 	text-align: right;
-	width: 700px;
+	width: 100%;
 }
 
 .deletebutton, .editbutton {
@@ -708,6 +733,47 @@ label {
 
 form {
 	margin: 20px 0 0;
+}
+
+/**/
+/* Aboutpage styles */
+.aboutpage {
+	padding: 0 5%;
+	color:rgba(10,0,0,0.4);
+	font: 20px "DejaVuSerif", "Georgia", serif;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.aboutpage h2, .aboutpage h3 {
+	color:rgba(10,0,0,0.4);
+	font: 22px "DejaVuSerif", "Georgia", serif;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-decoration: none;
+	margin: 0;
+}
+
+.aboutpage h3 {
+	padding: 0 0 0 40px;
+	font-size: 20px;
+	margin: 0 0 30px;
+}
+
+.aboutpage p {
+	padding: 0;
+	margin: 0;
+}
+
+.aboutpage i {
+	font-style: italic;
+	font-size: 16px;
+}
+
+.aboutpage a {
+	display: block;
+	font-size: 18px;
+	padding: 5px 20px;
+	margin: 10px 0 10px 20px;
+	max-width: 700px;
 }
 
 

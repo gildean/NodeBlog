@@ -1,4 +1,5 @@
-h1= title
+h1.main About - #{title}
+h2.indexheader #{aboutinfo.about}
 -if (flash)
   -if (flash.error)
     p.flash.error #{flash.error}
@@ -7,4 +8,16 @@ h1= title
 - if (user)
    div.edit
       a(href="/edit/about") Edit this page
-article!= aboutinfo
+article
+   div.aboutpage      
+      p
+         i Who?
+      h3 #{aboutinfo.author.name} <i>alias</i> #{aboutinfo.author.nick}
+      p  
+         i What?
+      h3 #{aboutinfo.author.what}
+      p
+         i Where?
+      div.externallinks
+      - for sites in aboutinfo.author.where
+         a(href='#{sites}') #{sites}

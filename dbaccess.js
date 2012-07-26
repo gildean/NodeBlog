@@ -18,13 +18,19 @@ exports.initCheck = function(req, res) {
           _id: 1   
         , title: req.body.title
         , header: req.body.header
-        , about: ''
+        , about: req.body.about
+        , author: {
+            name: req.body.author
+          , nick: req.body.nick
+          , what: req.body.what
+          , where: req.body.where.split(',')
+        } 
         , modified: new Date()
        }, function (err, post) {
          res.redirect('/login');
       });
     } else {
-     req.flash('error', 'data exists');
+     req.flash('error', 'data exists, stop hacking');
      res.redirect('/');
     }
    });
@@ -132,15 +138,21 @@ exports.saveBlogSettings = function(req, res) {
 };
 
 
-// save about page
+// save about page and author info
 exports.saveAbout = function(req, res) {
   setupdb.update({ _id: 1 }, {
-  $set: {  
-    about: req.body.about
-  , modified: new Date()
+  $set: {
+      about: req.body.about
+    , author: {
+            name: req.body.author
+          , nick: req.body.nick
+          , what: req.body.what
+          , where: req.body.where.split(',')
+        } 
+    , modified: new Date()
   }}, function(err, post) {
   req.flash('info', 'Settings saved!');
-  res.redirect('/');
+  res.redirect('/about');
   });
 };
 
@@ -203,7 +215,7 @@ exports.index = function(req, res) {
 
 // list all by selected tag
 exports.postsByTag = function(req, res) {
-  postdb.find({ tags: req.params.tag }, function(err, foundposts) {
+  postdb.find({ tags: req.params.tag }).sort( { created : -1 }, function(err, foundposts) {
     if (!err) {
       res.render('found.jade', {
         title: req.settings.title + ' - Found these'
@@ -224,7 +236,6 @@ exports.addNewPost = function(req, res) {
     , state: 'published'
     , created: new Date()
     , modified: new Date()
-    , comments: []
     , author: {
         username: req.session.user.user
     }
