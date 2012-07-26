@@ -94,21 +94,21 @@ exports.addNewUser = function(req, res) {
       req.flash('error', 'A user already exists');
       res.redirect('/');
     } else {
-          if(req.body.password != req.body.passwordconf) {
-            req.flash('error', 'Password mismatch!')
-            res.redirect('back');
-	   } else {
+          if (req.body.password != req.body.passwordconf) {
+              req.flash('error', 'Password mismatch!')
+              res.redirect('back');
+	      } else {
       	    var values = {
-                  user: req.body.username
-      		, pass: bcrypt.hashSync(req.body.password, 8)
-      		};
+              user: req.body.username
+      		  , pass: bcrypt.hashSync(req.body.password, 8)
+      		  };
       	    userdb.insert(values, function(err, post) {
-        	req.flash('info', 'New user added!')
-        	res.redirect('/login');
-            });
-	  }
-       }
-   });
+        	   req.flash('info', 'New user added!')
+        	   res.redirect('/login');
+          });
+	     }
+     }
+  });
 };
 
 
@@ -164,14 +164,14 @@ exports.saveUserSettings = function(req, res) {
         	res.redirect('back');
         } else {
            userdb.update({ user: req.body.username }, {
-  	     $set: {
-   	        user: req.body.username
- 	      , pass: bcrypt.hashSync(req.body.password, 8)
- 		 }}, function(err, post) {
-  	req.flash('info', 'Settings saved!');
- 	res.redirect('/'); 
-	});
-    }
+  	         $set: {
+   	            user: req.body.username
+ 	            , pass: bcrypt.hashSync(req.body.password, 8)
+ 		         }}, function(err, post) {
+	                req.flash('info', 'Settings saved!');
+ 	                res.redirect('/'); 
+	         });
+        }
 };
 
 
@@ -221,7 +221,7 @@ exports.postsByTag = function(req, res) {
         title: req.settings.title + ' - Found these'
       , querytag: req.params.tag
       , foundPosts: foundposts
-       });
+      });
     }
   });
 };
@@ -231,14 +231,16 @@ exports.postsByTag = function(req, res) {
 exports.addNewPost = function(req, res) {
   var values = {
       subject: req.body.subject
+    , subtitle: req.body.subtitle
     , body: req.body.body
     , tags: req.body.tags.split(',')
     , state: 'published'
     , created: new Date()
     , modified: new Date()
     , author: {
-        username: req.session.user.user
-    }
+         username: req.session.user.user
+       , poster: req.settings.author.nick    
+     }
   };
   postdb.insert(values, function(err, post) {
     req.flash('info', 'New post added');
@@ -252,6 +254,7 @@ exports.savePostEdit = function(req, res) {
   postdb.update({ _id: db.ObjectId(req.body.id) }, {
   $set: {
   subject: req.body.subject
+  , subtitle: req.body.subtitle
   , body: req.body.body
   , tags: req.body.tags.split(',')
   , modified: new Date()
@@ -264,10 +267,10 @@ exports.savePostEdit = function(req, res) {
 // delete a post
 exports.deletePost = function(req, res) {
   postdb.remove({ _id: db.ObjectId(req.params.postid) }, function(err, post) {
-  commentdb.remove({ postid: req.params.postid }, function(err, comments) {
-    req.flash('info', 'Post deleted');
-    res.redirect('/');
-  });
+    commentdb.remove({ postid: req.params.postid }, function(err, comments) {
+      req.flash('info', 'Post deleted');
+      res.redirect('/');
+    });
   });
 };
 
@@ -286,7 +289,7 @@ exports.addComment = function(req, res) {
   };
   commentdb.insert(data, function(err, post) {
       req.flash('info', 'Comment added for reviewing at a later time!')
-      res.redirect('/posts/' + req.body.postid);
+      res.redirect('/posts/' + req.body.postid + '/' + 'Thanks_for_the_comment');
   });
 };
 
@@ -373,4 +376,3 @@ exports.checkCId = function(req, res, next, id) {
     next();
   });
 };
-

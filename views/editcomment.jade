@@ -1,6 +1,6 @@
 h1 Editing comment:
 
-form(name="edit-post",method="post",action="/posts/edit/comment")
+form(name="edit-post",method="post",action="/edit/comment")
   input(type="hidden",name="id",value="#{comment._id}")
   input(type="hidden",name="postid",value="#{comment.postid}")
   p Name: #{comment.name}

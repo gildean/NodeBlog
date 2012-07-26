@@ -10,10 +10,12 @@ h3.indexheader #{header}
 
 for post in blogPosts
    div.items
-      a.postlink(href="/posts/#{post._id}")
+      - link = post._id + '/' + post.subject.split(' ').join('_');
+      a.postlink(href="/posts/#{link}")
          div.fpposted!= moment(post.created).format('DD / MM <b>YYYY</b>')
          h2 #{post.subject}
-      div.fpblogpost!= post.body
+      div.fpblogpost
+         h3 #{post.subtitle}
       p.tags
          for tag in post.tags
-            a.tag(href="/posts/tags/#{tag}") #{tag} 
+            a.tag(href="/search/tags/#{tag}") #{tag} 

@@ -7,19 +7,19 @@ h1= title
 form(name="edit-author",method="post",action="/save/about")
    p
       label Edit motto
-      input(type="text",name="about", required)  
+      input(type="text",name="about", required, value="#{aboutinfo.about}")  
    p
       label Full name 
-      input(type="text",name="author", required)
+      input(type="text",name="author", required. value="#{aboutinfo.author.name}")
    p
       label Nickname (shows up as poster)
-      input(type="text",name="nick", required)
+      input(type="text",name="nick", required, value="#{aboutinfo.author.nick}")
    p
       label Who/what are you? 
-      input(type="text",name="what", required)
+      input(type="text",name="what", required, value="#{aboutinfo.author.what}")
    p
       label Links to you, use full url, separate with commas without spaces 
-      input(type="text",name="where", required)      
+      input(type="text",name="where", required, value="#{aboutinfo.author.where}")      
 
    p
       input(type="submit", class="button", name="post", value="Save")

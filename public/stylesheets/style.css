@@ -13,7 +13,7 @@
 /* pads, tabs and desktops (landscape) */
 
 header {
-	z-index: 1000;
+	z-index: 800;
 	position: fixed;
 	top: 0;
 	bottom: 0;
@@ -32,7 +32,7 @@ header {
 }
 
 footer {
-	z-index: 1001;
+	z-index: 900;
 	position: fixed;
 	bottom: 2px;
 	right: 2px;
@@ -54,33 +54,45 @@ footer p {
 }
 
 .manymangos {
+	width: 100%;
 	margin: 0 auto;
 	padding: 20px 0 0;
-	width: 90px;
 	text-align: center;
 	color:rgba(10,0,0,0.4);
+	z-index: 1000;
 }
 
 .headertext {
-	font: 14px "DejaVuSerif", "Georgia", serif;
+	font: 16px "Roman", "Georgia", serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 1px 1px rgba(0,0,0,0.7);
 }
 
 .mangos {
 	text-shadow: -1px -1px 1px rgba(255,255,255,0.5), 1px 1px 1px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
 	color:rgba(10,0,0,0.2);
-	font: 20px "DejaVuSerif", "Georgia", serif;
+	font: 28px "Roman", "Georgia", serif;
 	text-decoration: underline;
-	line-height: 20px;
+	line-height: 18px;
 	font-weight: bold;
 	padding: 0;
 	margin: 0;
 }
 
 .logo {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	width: 90px;
+	display: block;
+}
+
+div.kudosbutton {
+	min-width: 200px;
+	position: fixed;
+	right: 0;
+	top: 250px;
+	margin: 0 auto;
+	width: 13%;
+	z-index: 1000; 
 }
 
 .about a {
@@ -88,7 +100,7 @@ footer p {
 	text-align: center;
 	text-shadow: -1px -1px 1px rgba(255,255,255,0.5), 1px 1px 1px rgba(0,0,0,0.5);
     color:rgba(10,0,0,0.3);
-	font: 24px "DejaVuSerif", "Georgia", serif;
+	font: 26px "Roman", "Georgia", serif;
 }
 
 .about a:hover {
@@ -111,7 +123,7 @@ footer p {
 }
 
 .login a {
-	font: 18px "DejaVuSerif", "Georgia", serif;
+	font: 20px "Roman", "Georgia", serif;
 	width: 100px;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	color: rgba(10,0,0,0.4);
@@ -128,22 +140,28 @@ footer p {
 }
 
 .login a:hover {
-	cursor: pointer;
+	cursor: url('/images/pointer.png') 10 0, auto;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 0 5px rgba(0,0,0,0.2);
 	text-decoration: none;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 #container {
-	z-index: 950;
 	margin: 0 auto;
-	padding: 5% 15% 5% 10%;
+	line-height: 26px;
+	width: 73%;
+	width: 73vw;
+	max-width: 1200px;
+	z-index: 700;
+	margin: 0 auto;
+	padding: 5% 20% 5% 5%;
+	padding: 5vh 20vw 5vw 5vw;
 }
 
 
 .author {
 	color:rgba(10,0,0,0.5);
-	font: 14px "DejaVuSerif", "Georgia", serif;
+	font: 16px "Roman", "Georgia", serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	text-align: center;
 	position: fixed;
@@ -151,13 +169,41 @@ footer p {
 	top: 220px;
 	width: 13%;
 	min-width: 200px;
-	z-index: 1001;
+	z-index: 1000;
 }
 
 .author b, .author i {
-	font: 10px "DejaVuSerif", "Georgia", serif;
+	font: 14px "Roman", "Georgia", serif;
 	font-style: italic;
 }
+
+.edit a {
+	right: 20%;
+	top: 30px;
+	font: 20px "Roman", "Georgia", serif;
+	width: 110px;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	color: rgba(10,0,0,0.4);
+	display: inline-block;
+	text-align: center;
+	margin: 0 30px 10px 0;
+	padding: 5px 10px;
+    border:1px #999 solid;
+	background: #fff;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.edit a:hover {
+	cursor: url('/images/pointer.png') 10 0, auto;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 0 5px rgba(0,0,0,0.2);
+	text-decoration: none;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
 
 
 /**/
@@ -187,32 +233,37 @@ footer {
 }
 
 .manymangos {
-	position: absolute;
-	top: 25px;
 	opacity: 0.8;
-	right: 25px;
-	padding: 0;
+	padding: 20px 0 0;
+    width: 100%;
 }
 
 .mangos {
 	text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
+div.kudosbutton {
+	top: 180px;
+	width: 8%;
+	min-width: 115px;
+}
+
 .about a {
-	font: 21px "DejaVuSerif", "Georgia", serif;
+	font: 24px "Roman", "Georgia", serif;
 }
 
 .login {
 	position: absolute;
 	top: 185px;
-	right: 25px;
+	right: 0;
 	margin: 0 auto;
+	width: 8%;
+	min-width: 115px;
 }
 
 .login a {
-	font: 18px "DejaVuSerif", "Georgia", serif;
-	width: 90px;
-	padding: 5px 10px 10px;
+	font: 20px "Roman", "Georgia", serif;
+	padding: 5px 0 10px;
     border: none;
 	background: transparent;
     box-shadow: none;
@@ -223,18 +274,15 @@ footer {
 }
 
 .login a:hover {
-	cursor: pointer;
 	box-shadow: none;
 	text-decoration: none;
 }
 
 #container {
-	z-index: 100;
-	width: 82%;
-	margin: 0 auto;
-	padding: 5% 0;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	margin: 0;
+	width: 75%;
+	width: 75vw;
+	padding: 5vw 0 5vw 5vw;
 }
 
 .author {
@@ -242,7 +290,7 @@ footer {
 	position: absolute;
 	left: 1%;
 	top: 1%;
-	z-index: 90;
+
 }
 
 .author b, .author i {
@@ -264,7 +312,7 @@ header {
 	border:0;
 	margin: 0;
 	width: 9%;
-	min-width: 57px;
+	min-width: 60px;
 }
 
 footer {
@@ -276,12 +324,9 @@ footer {
 }
 
 .manymangos {
-	position: absolute;
 	opacity: 0.8;
-	right: 12px;
-	top: 2px;
-	width: 45px;
-	padding: 0;
+	padding: 2px 0 0 0;
+	width: 100%;
 }
 
 .manymangos img {
@@ -289,11 +334,18 @@ footer {
 }
 
 .headertext {
-	font-size: 8px;
+	font-size: 10px;
 }
 
 .mangos {
-	font-size: 13px;
+	font-size: 16px;
+	line-height: 11px;
+}
+
+div.kudosbutton {
+	top: 80px;
+	width: 9%;
+	min-width: 60px;
 }
 
 .login {
@@ -305,7 +357,7 @@ footer {
 }
 
 .login a {
-	font: 9px "DejaVuSerif", "Georgia", serif;
+	font: 12px "Roman", "Georgia", serif;
 	width: 45px;
 	padding: 5px 0;
 	margin: 0;
@@ -319,7 +371,6 @@ footer {
 }
 
 .login a:hover {
-	cursor: pointer;
 	box-shadow: none;
 	text-decoration: none;
 }
@@ -330,14 +381,15 @@ footer {
 }
 
 .about a {
-	font-size: 13px;
+	font-size: 16px;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.5)
 }
 
 #container {
-	width: 90%;
-	margin: 0 auto;
-	padding: 5% 1% 5% 0;
+	width: 75%;
+	width: 75vw;
+	margin: 0;
+	padding: 5vw 0 5vw 5vw;
 }
 
 .author {
@@ -345,11 +397,17 @@ footer {
 	position: absolute;
 	left: 1%;
 	top: 1%;
-	z-index: 90;
 }
 
 .author b, .author i {
 	font-size: 10px;
+}
+
+.edit {
+	display: inline-block;
+	background: none;
+	color: #FFB700;
+	font: 18px "Arimo", Helvetica, sans-serif;
 }
 
 }
@@ -363,29 +421,26 @@ html {
 	min-height: 100%;
 }
 
+html:hover {
+	cursor: url('/images/cursor.png'), auto;
+}
+
 @font-face {
-	font-family: DejaVuSerif;
+	font-family: Roman;
 	font-weight: normal;
-	src: url('../DejaVuSerif.ttf');
+	src: url('../lmroman10-regular.otf');
 }
 
 @font-face {
+	font-family: Roman;
 	font-weight: bold;
-	font-family: DejaVuSerif;
-	src: url('../DejaVuSerif-Bold.ttf');
+	src: url('../lmromandemi10-regular.otf');
 }
 
 @font-face {
-	font-family: DejaVuSerif;
+	font-family: Roman;
 	font-style: italic;
-	src: url('../DejaVuSerif-Italic.ttf');
-}
-
-@font-face {
-	font-family: DejaVuSerif;
-	font-style: italic;
-	font-weight: bold;
-	src: url('../DejaVuSerif-BoldItalic.ttf');
+	src: url('../lmroman10-italic.otf');
 }
 
 
@@ -437,6 +492,7 @@ a, .deletebutton, .editbutton, .tag {
 a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover {
 	text-shadow: 0 -1px 0 rgba(10,0,0,0.6);
 	text-decoration: underline;
+	cursor: url('/images/pointer.png') 10 0, auto;
 }
 
 h1, h2, h3, h4, h5 {
@@ -447,9 +503,10 @@ h1, h2, h3, h4, h5 {
 
 h1 {
 	color:rgba(10,0,0,0.4);
-	font: 32px "DejaVuSerif", "Georgia", serif;
+	font: 34px "Roman", "Georgia", serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	text-decoration: underline;
+	font-weight: bold;
 }
 
 h1.main {
@@ -472,34 +529,27 @@ h1.main {
 .indexheader {
 	font-size: 24px;
 	padding: 0;
-	margin: 0 0 60px;
+	margin: 0 0 40px;
 	color:rgba(10,0,0,0.4);
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	background-color: transparent;
+	width: 90%;
 }
 
 
 /**/
 /* Styles to the blogposts */
 
-.body {
-	width: 90%;
-	position: relative;
-	height: 100%;
-	font: 16px "Arimo", "Helvetica", sans-serif;
-	line-height: 26px;
-}
-
 .fpposted {
 	margin: 5px 0 0;
-	font: 16px "DejaVuSerif", "Georgia", serif;;
+	font: 18px "Roman", "Georgia", serif;;
 	color:rgba(10,0,0,0.4);
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 40px;
-	line-height: 16px;
+	line-height: 18px;
 	display: inline-block;
 }
 
@@ -515,18 +565,12 @@ h1.main {
 	display: block;
 }
 
-.edit {
-	display: inline-block;
-	position: absolute;
-	right: 20%;
-	top: 30px;
-}
-
 .items {
 	background-color: transparent;
-	margin: 0;
+	margin: 0 auto;
 	padding: 45px 0 45px 45px;
- 	max-width: 750px;
+	width: 90%;
+ 	max-width: 1200px;
 	display: block;
 	position: relative;
 	overflow: hidden;
@@ -536,7 +580,7 @@ h1.main {
 } 
 
 .postlink {
-	z-index: 1002;
+	z-index: 1000;
 	display: block;
 }
 
@@ -544,7 +588,6 @@ h1.main {
 	color:rgba(10,0,0,0.2);
 	text-decoration: underline;
 	text-shadow: 0 1px 5px rgba(0,0,0,0.5);
-	cursor: progress;
 }
 
 .items:last-of-type {
@@ -561,10 +604,11 @@ h1.main {
 
 .tag {
 	color: #660000;
-	font-size: 12px;
+	font-size: 14px;
 	padding: 0 5px 0 0;
 	margin: 15px 5px 5px 0 ;
 	border-right: 1px solid #FFB700;
+	float: left;
 }
 
 .items h3, .items h2 {
@@ -576,7 +620,7 @@ h1.main {
 .items h2 {
 	margin: 0;
 	padding: 15px 0;
-	font: 20px "DejaVuSerif", "Georgia", serif;
+	font: 24px "Roman", "Georgia", serif;
 }
 
 pre {
@@ -598,9 +642,10 @@ pre {
 /* Let's style the comments too */
 
 .commentsection {
-	margin: 15px 0 0;
-	max-width: 66%;
-
+	margin: 0;
+	width: 80%;
+	padding: 20px;
+	clear: both;
 }
 
 .comment {
@@ -646,7 +691,7 @@ pre {
 }
 
 .deletebutton:hover, .editbutton:hover {
-	cursor: pointer;
+	cursor: url('/images/pointer.png') 10 0, auto;
 }
 
 .commenteditform {
@@ -665,7 +710,7 @@ pre {
 
 .rte-zone
 {
-    min-width: 270px;
+    min-width: 250px;
     width: 80%;
     margin:0;
     padding:4px;
@@ -692,8 +737,8 @@ pre {
 }
 
 input {
-	width: 40%;
-	min-width: 200px;
+	width: 50%;
+	min-width: 220px;
 	padding: 5px;
     border:1px #999 solid;
 	background: #FFFDFA;
@@ -713,7 +758,7 @@ input {
 }
 
 .button:hover {
-	cursor: pointer;
+	cursor: url('/images/pointer.png') 10 0, auto;
 	box-shadow: inset 2px 2px 8px rgba(0,0,0,0.2);
 }
 
@@ -738,15 +783,19 @@ form {
 /**/
 /* Aboutpage styles */
 .aboutpage {
+	margin: 0 auto;
+	width: 90%;
+	height: 90vh;
+	max-width: 1200px;
 	padding: 0 5%;
 	color:rgba(10,0,0,0.4);
-	font: 20px "DejaVuSerif", "Georgia", serif;
+	font: 22px "Roman", "Georgia", serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .aboutpage h2, .aboutpage h3 {
 	color:rgba(10,0,0,0.4);
-	font: 22px "DejaVuSerif", "Georgia", serif;
+	font: 24px "Roman", "Georgia", serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 	text-decoration: none;
 	margin: 0;
@@ -770,10 +819,13 @@ form {
 
 .aboutpage a {
 	display: block;
-	font-size: 18px;
+	font-size: 20px;
 	padding: 5px 20px;
 	margin: 10px 0 10px 20px;
 	max-width: 700px;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
 }
 
 
@@ -788,11 +840,257 @@ form {
 
 .notfound h2, .notfound h3 {
 	color:rgba(10,0,0,0.4);
-	font: 24px "DejaVuSerif", "Georgia", serif;
+	font: 24px "Roman", "Georgia", serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
 .notfound b {
 	text-decoration: underline;
 	font-size: 40px;
+}
+
+
+/**/
+/* styles for the kudos buttons */
+
+
+p.count {
+	display: block;
+}
+
+div.circle {
+	background: rgba(255,255,255,0.8) url('/images/kudos.png') center center no-repeat;
+	background-size:100%;
+	-moz-background-size:100%;	
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+	width:40px;
+	height:40px;
+	border-radius:50%;
+	margin:0 auto;
+	border:4px solid rgba(0.0.0,0.0);
+	position:relative
+}
+
+div.circle div.filled {
+	background: none; 
+	width:10px;
+	height:10px;
+	border-radius:50%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-5px;
+	margin-top:-5px;
+	-webkit-transition-property:margin,width,height,color;
+	-webkit-transition-duration:1.5s;
+	-webkit-transition-timing-function:ease-in-out;
+	-moz-transition-property:margin,width,height,color;
+	-moz-transition-duration:1.5s;
+	-moz-transition-timing-function:ease-in-out
+}
+	
+figure {
+	display:block;
+	position:relative;
+	margin:0 auto;
+	left:auto;
+	top:auto;
+	margin-top:20px;
+}
+
+figure.kudo {
+	height:100px;
+	margin-top:30px;
+}
+
+figure.filling.kudo {
+	height:150px;
+}
+
+/*figure.kudo article a.kudos p{text-align:center;display:block;margin:0;padding:0;line-height:50px;width:auto;height:auto}*/
+a.kudos.animate div.circle div.filled {
+	-webkit-animation-name:hoverPulse;
+	-moz-animation-name:hoverPulse;
+	-webkit-animation-duration:7.5s;
+	-moz-animation-duration:7.5s;
+	-webkit-animation-iteration-count:infinite;
+	-moz-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+	-moz-animation-timing-function:linear;
+	-webkit-transform:translateZ(0);
+}
+
+a.kudos.filling div.circle div.filled {
+	width:42px;
+	height:42px;
+	margin-left:-21px;
+	margin-top:-21px;
+}
+
+a.kudos.completed div.circle div.filled {
+	width:42px;
+	height:42px;
+	margin-left:-21px;
+	margin-top:-21px;
+	background: rgba(255,255,255,0.8) url('/images/mangos.png') center center no-repeat;
+	background-size:120%;
+	-moz-background-size:120%;
+}
+
+a.kudos p {
+	width:auto;
+	display:block;
+	line-height:18px;
+	margin-top:5px;
+}
+
+a.kudos p span{
+	color: rgba(10, 0, 0, 0.5);
+	font: 14px "Roman","Georgia",serif;
+	text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+	line-height:14px;
+	display:block;
+	margin-top:5px;
+}
+
+a.kudos p span.dont-move{
+	font-size:14px;
+	text-transform:none;
+	line-height:22px;
+	width:200px;
+	margin-left:-50px;
+	margin-top:8px;
+	letter-spacing:0;
+}
+
+div.pulse.animate{
+	-webkit-animation-name:dotPulse;
+	-moz-animation-name:dotPulse;
+	-webkit-animation-duration:7.5s;
+	-moz-animation-duration:7.5s;
+	-webkit-animation-iteration-count:infinite;
+	-moz-animation-iteration-count:infinite;
+	-webkit-animation-timing-function:linear;
+	-moz-animation-timing-function:linear;
+	-webkit-transform:translateZ(0)
+}
+
+@-webkit-keyframes 'dotPulse'{
+	0%{-webkit-transform:scale(0.55);opacity:.2}
+	10%{-webkit-transform:scale(0.65);opacity:.2}
+	30%{-webkit-transform:scale(0.7);opacity:.2}
+	100%{opacity:0;-webkit-transform:scale(0.9)}
+}
+
+@-moz-keyframes dotPulse{
+	0%{-moz-transform:scale(0.7);opacity:0}
+	10%{-moz-transform:scale(0.8);opacity:.2}
+	30%{-moz-transform:scale(0.75);opacity:.1}
+	100%{opacity:0;-moz-transform:scale(1)}
+}
+
+@-webkit-keyframes 'hoverPulse'{
+	0%{opacity:1}
+	50%{opacity:.5}
+	100%{opacity:1}
+}
+
+@-moz-keyframes hoverPulse{
+	0%{opacity:1}
+	50%{opacity:.5}
+	100%{opacity:1}
+}
+
+a.kudos{
+	position:absolute;
+	top:auto;
+	right:auto;
+	left:50%;
+	bottom:auto;
+	clear:both;
+	width:100px;
+	height:auto;
+	margin-left:-50px;
+	text-align:center;
+	-webkit-transition-property:margin,width;
+	-webkit-transition-duration:0.75s;
+	-webkit-transition-timing-function:ease-in-out;
+	-moz-transition-property:margin,width;
+	-moz-transition-duration:0.75s;
+	-moz-transition-timing-function:ease-in-out;
+}
+
+figure.kudo article a.kudos p{
+	text-align:center;
+	display:block;
+	margin:0;
+	padding:0;
+	line-height:50px;
+	width:auto;
+	height:auto;
+}
+
+a.kudos.filling{
+	margin-top:-50px;
+	margin-left:-100px;
+	width:200px;
+}
+
+a.kudos.filling p.notice span.dont-move{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: auto;
+	font-size: 20px;
+	width: auto;
+	margin: 0;
+	line-height: 60px;
+	border-radius: 30px;
+	min-width: 200px;
+}
+
+a.kudos div.circle{
+	color: transparent;
+	text-decoration: none;
+	-webkit-transition-property:width,margin,top,left,height,width;
+	-webkit-transition-duration:0.75s;
+	-webkit-transition-timing-function:ease-in-out;
+	-moz-transition-property:all;
+	-moz-transition-duration:0.75s;
+	-moz-transition-timing-function:ease-in-out
+}
+
+a.kudos.filling div.circle {
+	background-color:#fff;
+	width:120px;
+	height:120px;
+	border-radius:50%;
+	margin:0 auto;
+	border:15px solid rgba(0,0,0,0.7);
+}
+
+a.kudos div.circle div.filled{
+	background:rgba(0,0,0,0);
+	-webkit-transition-property:background-color,width,height,margin;
+	-webkit-transition-duration:1.5s;
+	-webkit-transition-timing-function:ease-in-out;
+	-moz-transition-property:background-color,width,height,margin;
+	-moz-transition-duration:1.5s;
+	-moz-transition-timing-function:ease-in-out
+}
+
+a.kudos.filling div.circle div.filled{
+	width:200px;
+	height:200px;
+	margin-left:-100px;
+	margin-top:-100px;
+	background:rgba(255,255,255,0.7)
+}
+
+a.kudos.completed div.circle div.filled{
+	color: transparent;
+	width:42px;
+	height:42px;
+	border-radius:50%;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.2), inset 0 0 5px rgba(0,0,0,0.2);
 }
