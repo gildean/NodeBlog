@@ -4,10 +4,13 @@ h1 Add a new blog post
     p.flash.error #{flash.error}
   -if (flash.info)
     p.flash.info #{flash.info} 
-form(name="add-post",method="post",action="/posts/add")
+form(name="add-post",method="post",action="/add/posts")
   p
     label Subject:
     input(type="text",name="subject", required)
+  p
+    label Subtitle:
+    input(type="text",name="subtitle", required)
   p
     label Content
     textarea.rte-zone(name="body", rows="20", cols="95")

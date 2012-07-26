@@ -57,25 +57,24 @@ app.get('/about', dbaccess.settings, routes.about);
 app.get('/edit/about', checkLogin, dbaccess.settings, routes.editAbout);
 app.get('/settings', checkLogin, dbaccess.blogSettings);
 app.get('/posts/add', checkLogin, dbaccess.settings, routes.newPost);
-app.get('/posts/:postid?', dbaccess.settings, routes.showPost);
 app.get('/posts/edit/:postid', checkLogin, dbaccess.settings, routes.editPost);
 app.get('/posts/remove/:postid', checkLogin, dbaccess.settings, dbaccess.deletePost);
-app.get('/posts/edit/comment/:coid', checkLogin, dbaccess.settings, routes.editComment);
-app.get('/posts/publish/comment/:coid', checkLogin, dbaccess.settings, dbaccess.publishComment);
-app.get('/posts/hide/comment/:coid', checkLogin, dbaccess.settings, dbaccess.hideComment);
-app.get('/posts/remove/comment/:coid', checkLogin, dbaccess.settings, dbaccess.deleteComment);
-
+app.get('/comments/edit/:coid', checkLogin, dbaccess.settings, routes.editComment);
+app.get('/comments/publish/:coid', checkLogin, dbaccess.settings, dbaccess.publishComment);
+app.get('/comments/hide/:coid', checkLogin, dbaccess.settings, dbaccess.hideComment);
+app.get('/comments/remove/:coid', checkLogin, dbaccess.settings, dbaccess.deleteComment);
+app.get('/posts/:postid/*', dbaccess.settings, routes.showPost);
 
 // searchs
-app.get('/posts/tags/:tag', dbaccess.settings, dbaccess.postsByTag);
+app.get('/search/tags/:tag', dbaccess.settings, dbaccess.postsByTag);
 
 
 // posts
 app.post('/save/about', checkLogin, dbaccess.saveAbout);
-app.post('/posts/add', checkLogin, dbaccess.addNewPost);
-app.post('/posts/edit', checkLogin, dbaccess.savePostEdit);
-app.post('/posts/comment', dbaccess.checkIP, dbaccess.addComment);
-app.post('/posts/edit/comment', checkLogin, dbaccess.saveCommentEdit);
+app.post('/add/post', checkLogin, dbaccess.addNewPost);
+app.post('/edit/post', checkLogin, dbaccess.savePostEdit);
+app.post('/save/comment', dbaccess.checkIP, dbaccess.addComment);
+app.post('/edit/comment', checkLogin, dbaccess.saveCommentEdit);
 app.post('/save/settings', checkLogin, dbaccess.settings, dbaccess.saveBlogSettings);
 app.post('/save/usersettings', checkLogin, dbaccess.saveUserSettings);
 

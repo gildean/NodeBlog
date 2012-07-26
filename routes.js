@@ -57,6 +57,7 @@ exports.showPost = function(req, res) {
     res.render('show.jade', {
      title: req.settings.title + ' - ' + req.post.subject
    , post: req.post
+   , settings: req.settings
    , flash: req.flash()
    });
 };

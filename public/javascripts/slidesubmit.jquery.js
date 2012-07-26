@@ -25,7 +25,7 @@
  		slidesubmit: function(options) {
 			var defaults = {
 			    value : 1,
-                label : 'Slide To Submit',
+                label : 'Fill fields and slide to submit',
                 label_position: 'before',
                 width : '100px',
                 form_wrap: false,

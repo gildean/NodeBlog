@@ -3,19 +3,32 @@
     p.flash.error #{flash.error}
   -if (flash.info)
     p.flash.info #{flash.info} 
-article
+article(id="#{post._id}")
   - if (user)
     div.edit
       a(href="/posts/edit/#{post._id}") Edit post
-      span.divider |
       a(href="/posts/remove/#{post._id}", onClick="return confirm('Sure about that? All comments will also be removed.')") Delete post
+
+  else
+    div.kudosbutton
+      figure.kudo
+        a(class="kudos kudoable", id="kudos-#{post._id}")
+          div.circle
+            div.filled &nbsp;
+          p.count
+            span(class="kudos-#{post._id}-count identifier") 0
+            span.identifier kudos
+        div.pbar
+          div.progress &nbsp;
+
   h1 #{post.subject}
+  h2.indexheader #{post.subtitle}
   div.body!= post.body
 div.tags
     for tag in post.tags
-      a.tag(href="/posts/tags/#{tag}") #{tag}
+      a.tag(href="/search/tags/#{tag}") #{tag}
 div.author <i>posted:</i> #{moment(post.created).fromNow()} <br>
-   <i>by:</i> #{post.author.username}
+   <i>by:</i> #{settings.author.nick}
 
 
 div.commentsection
@@ -26,29 +39,30 @@ div.commentsection
         div.comment
           - if (user)
               div
-                 a(href="/posts/hide/comment/#{comment._id}") Hide
+                 a(href="/comments/hide/#{comment._id}") Hide
                  span.divider |
-                 a(href="/posts/edit/comment/#{comment._id}") Edit
+                 a(href="/comments/edit/#{comment._id}") Edit
                  span.divider |
-                 a(href="/posts/remove/comment/#{comment._id}", onClick="return confirm('Sure about that?')") Delete
+                 a(href="/comments/remove/#{comment._id}", onClick="return confirm('Sure about that?')") Delete
           p!= comment.body
           p.posted posted #{moment(comment.created).fromNow()} by #{comment.name}
-
+  else
+     i no comments...yet
   - if (user) 
     - if (post.hidden)
         h3 Comments to review:
         for hidden in post.hidden
            div.comment
               div
-                 a(href="/posts/publish/comment/#{hidden._id}") Publish
+                 a(href="/comments/publish/#{hidden._id}") Publish
                  span.divider |
-                 a(href="/posts/edit/comment/#{hidden._id}") Edit
+                 a(href="/comments/edit/#{hidden._id}") Edit
                  span.divider |
-                 a(href="/posts/remove/comment/#{hidden._id}", onClick="return confirm('Sure about that?')") Delete
+                 a(href="/comments/remove/#{hidden._id}", onClick="return confirm('Sure about that?')") Delete
               p!= hidden.body
               p.posted posted #{moment(hidden.created).fromNow()} by #{hidden.name} from #{hidden.from}
   h3 Comments, please:
-  form(name="add-comment",method="post",action="/posts/comment")
+  form(name="add-comment",method="post",action="/save/comment")
     input(type="hidden",name="postid",value="#{post._id}")
     p
        label Name

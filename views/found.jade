@@ -2,13 +2,14 @@ h1.main Posts by tag - #{querytag}
 
 h3.indexheader Descending order by date
 
-for bp in foundPosts
-   div.items
-      a.postlink(href="/posts/#{bp._id}")
-         div.fpposted!= moment(bp.created).format('DD / MM <b>YYYY</b>')
-         h2 #{bp.subject}
-      div.fpblogpost!= bp.body
+for post in foundPosts
+   div.items  
+      - link = post._id + '/' + post.subject.split(' ').join('_');
+      a.postlink(href="/posts/#{link}/")
+         div.fpposted!= moment(post.created).format('DD / MM <b>YYYY</b>')
+         h2 #{post.subject}
+      div.fpblogpost
+         h3 #{post.subtitle}
       p.tags
-         for tag in bp.tags
-            a.tag(href="/posts/tags/#{tag}") #{tag} 
-
+         for tag in post.tags
+            a.tag(href="/search/tags/#{tag}") #{tag} 

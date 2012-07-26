@@ -1,17 +1,27 @@
 h1 Blog settings
 h3 Please fill in the name and the header text of the blog, about-page content and some author info
 form(name="blogsettings",method="post",action="/initialsetup")
-  p
-    label Title:
-    textarea(name="title", placeholder="Blog name here", rows="1", cols="45", resize="none", required)
-  p
-    label Header
-    textarea(name="header", placeholder="Header info text here", rows="1", cols="45", resize="none", required)
-  p
-    label Author info (sidebar):
-    textarea(name="author", rows="20", cols="30", resize="none")
-  p
-    label About page content:
-    textarea.rte-zone(name="about", rows="20", cols="95")
-  p
-    input(type="submit", class="button", name="post", value="Save")
+   p
+      label Blog Title
+      input(type="text", name="title", required)
+   p
+      label Blog Header
+      input(type="text", name="header", required)
+   p
+      label Your motto
+      input(type="text",name="about", required)  
+   p
+      label Full name 
+      input(type="text",name="author", required)
+   p
+      label Nickname (shows up as poster)
+      input(type="text",name="nick", required)
+   p
+      label Who/what are you? 
+      input(type="text",name="what", required)
+   p
+      label Links to you, use full url, separate with commas without spaces 
+      input(type="text",name="where", required)
+   p
+      input(type="submit", class="button", name="post", value="Save")
+

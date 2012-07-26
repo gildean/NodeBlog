@@ -1,10 +1,13 @@
 h1 Editing post: #{post.subject}
 
-form(name="edit-post",method="post",action="/posts/edit")
+form(name="edit-post",method="post",action="/edit/posts")
   input(type="hidden",name="id",value="#{post._id}")
   p
     label Subject:
-    input(type="text",name="subject",value="#{post.subject}")
+    input(type="text",name="subject",value="#{post.subject}", required)
+  p
+    label Subtitle:
+    input(type="text",name="subtitle", required, value="#{post.subtitle}")
   p
     label Content
     textarea.rte-zone(name="body", rows="15", cols="115", resize="both") #{post.body}
