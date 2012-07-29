@@ -1,6 +1,64 @@
-// DATABASE ACCESS FUNCTIONS
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                   DATABASE ACCESS FUNCTIONS                |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                         Contents:                          |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                   1.MODULE DEPENDENCIES                    |//
+//|                                                            |//
+//|                   2.MIDDLEWAREZ                            |//
+//|                                                            |//
+//|                   3.PARAMETER CALLS                        |//
+//|                                                            |//
+//|                   4.LOGIN ACTIONS                          |//
+//|                                                            |//
+//|                   5.BLOGPOST ACTIONS                       |//
+//|                                                            |//
+//|                   6.COMMENT ACTIONS                        |//
+//|                                                            |//
+//|                   7.BLOG SETTINGS                          |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
 
-// module dependencies
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                 1.MODULE DEPENDENCIES                      |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//                                                              //
+//          These are the modules and db-connections            //
+//                                                              //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
+
+
 var dbinfo = require('./dbinfo').dbinfo;
 var db = require('mongojs').connect(dbinfo);
 var setupdb = db.collection('setup');
@@ -11,53 +69,62 @@ var bcrypt = require('bcrypt');
 
 
 
-// add kudos atomic operation
-exports.addKudos = function (req, res, id) {
-  postdb.update({_id: req.post._id},{$inc:{kudos:1}}, function(err) {
-    if (err) {
-        console.log(new Error(err));
-    } else {
-        console.log('success' + ' ' + req.post._id);
-        res.send(204);
-        res.end;
-    }
-  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                       2.MIDDLEWAREZ                        |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//                                                              //
+//                look for things that make us go               //
+//                                                              //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
+
+
+// logincheck middleware
+exports.checkLogin = function(req, res, next) {
+  if (req.session.user) {
+    next();
+  } else {
+    req.flash('error','Not logged in');
+    res.redirect('/login');
+  }
 };
 
 
-// first check if data exist, if so, consider the action as hacking
-exports.initCheck = function(req, res) {
-  setupdb.count(function(err, dbcheck) {
-    if (dbcheck === 0) {
-      setupdb.insert({
-          _id: 1   
-        , title: req.body.title
-        , header: req.body.header
-        , about: req.body.about
-        , author: {
-            name: req.body.author
-          , nick: req.body.nick
-          , what: req.body.what
-          , where: req.body.where.split(',')
-        } 
-        , modified: new Date()
-       }, function (err, post) {
-         res.redirect('/login');
-      });
-    } else {
-     req.flash('error', 'data exists, stop hacking');
-     res.redirect('/');
-    }
-   });
-};
 
-
-// export blog settings middleware
+// blog settings middleware
 exports.settings = function(req, res, next) { 
    setupdb.findOne({ _id: 1}, function(err, settings) {
       if (settings) {
-      	req.settings = settings;
-      	next();
+        req.settings = settings;
+        next();
       } else {
         res.render('initdb.jade', {
             title: 'Initial setup'
@@ -66,6 +133,7 @@ exports.settings = function(req, res, next) {
       }
    });
 };   
+
 
 
 // Ipcheck middleware
@@ -82,6 +150,186 @@ exports.checkIP = function(req, res, next) {
   req.ipaddress = ipAddress;
   next();
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                    3.PARAMETER CALLS                       |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//                                                              //
+//              Url-parameter callback functions                //
+//                                                              //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
+
+
+// validating the post id to get a post and all linked comments
+exports.checkPostId = function(req, res, next, id) {
+  if (id.length != 24) {
+    return next(
+      res.render('404.jade', {
+          status: 418
+        , title: 'No coffee...'
+        , author: 'NodeBlog'
+      })
+    );
+  } else {
+    postdb.findOne({_id: db.ObjectId(id)},
+      function(err, post) {
+        if (!err && post) {
+          commentdb.find({postid: id},
+            function(err, comments) {
+              if (!err) {
+                req.post = post;
+                post.comments = comments;
+                next();
+              }
+          });
+        } else {
+          return next(
+            res.render('404.jade', {
+                status: 501
+              , title: 'Error'
+              , author: 'NodeBlog'
+            })
+          );
+        }
+    });
+  } 
+};
+
+
+
+// validating the comment id to get a comment
+exports.checkCId = function(req, res, next, id) {
+  if (id.length != 24) {
+    return next(
+      res.render('404.jade', {
+          status: 404
+        , title: 'No comments...'
+        , author: 'NodeBlog'
+      })
+    );
+  } else {
+    commentdb.findOne({_id: db.ObjectId(id)},
+      function(err, comment) {
+        if (!err && comment) { 
+          req.comment = comment;
+          next();
+        } else {
+          return next(
+            res.render('404.jade', {
+                status: 404
+              , title: 'No comments...'
+              , author: 'NodeBlog'
+            })
+          );
+        }
+    });
+  }
+};
+
+
+
+// list all by selected tag
+exports.findTag = function(req, res, next, tag) {
+  postdb.find({ tags: req.params.tag }).sort( { created : -1 },
+   function(err, foundtags) {
+      if (!err && foundtags) {
+        req.postsbytag = foundtags;
+        next();
+      } else {
+        return next(
+          res.render('404.jade', {
+              status: 404
+            , title: 'No tag in sight...'
+            , author: 'NodeBlog'
+          })
+        );
+      }
+  });
+};
+
+
+
+// add kudos atomic operation
+exports.addKudos = function (req, res) {
+  postdb.update({_id: req.post._id},{$inc:{kudos:1}},
+    function(err) {
+      if (!err) {res.send(204);}
+      else {res.send(501);}
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                     4.LOGIN ACTIONS                        |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//                                                              //
+//     Login/logout user, if none found create a new one        //
+//                                                              //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
 
 
 // no users? no problem!
@@ -103,6 +351,7 @@ exports.anyoneThere = function (req, res) {
   });
 };
 
+
   
 // check that the user doesn't already exist and then create it with a randomly salted password hash
 exports.addNewUser = function(req, res) {
@@ -117,10 +366,14 @@ exports.addNewUser = function(req, res) {
         res.redirect('back');
       } else {
         var values = {
-          user: req.body.username
-      	, pass: bcrypt.hashSync(req.body.password, 8)
+            user: req.body.username
+          , pass: bcrypt.hashSync(req.body.password, 8)
+          , lastlogin: {
+              time: new Date()
+            , from: req.ipaddress
+        }
       	};
-      	userdb.insert(values, function(err, post) {
+      	userdb.insert(values, function() {
            req.flash('info', 'New user added!')
            res.redirect('/login');
         });
@@ -130,83 +383,18 @@ exports.addNewUser = function(req, res) {
 };
 
 
-// edit blog settings
-exports.blogSettings = function(req, res) {
-   setupdb.findOne({ _id: 1 }, function(err, settings) {
-       res.render('settings.jade', {
-          title: 'Blog Settings'
-        , blogsettings: settings
-        , user: req.session.user.user
-        , author: 'NodeBlog'
-        , flash: req.flash()
-       });
-   });  
-};
-
-
-// save blog settings
-exports.saveBlogSettings = function(req, res) {
-  setupdb.update({ _id: 1 }, {
-    $set: {  
-        title: req.body.title
-      , header: req.body.header
-      , modified: new Date()
-      }
-    }, function(err, post) {
-        req.flash('info', 'Settings saved!');
-        res.redirect('/');
-  });
-};
-
-
-// save about page and author info
-exports.saveAbout = function(req, res) {
-  setupdb.update({ _id: 1 }, {
-    $set: {
-        modified: new Date()
-      , about: req.body.about
-      , author: {
-          name: req.body.author
-        , nick: req.body.nick
-        , what: req.body.what
-        , where: req.body.where.split(',')
-        } 
-      }
-  }, function(err, post) {
-      req.flash('info', 'Settings saved!');
-      res.redirect('/about');
-  });
-};
-
-
-// save usersettings
-exports.saveUserSettings = function(req, res) {
-  if(req.body.password != req.body.passwordconf) {
-      req.flash('error', 'Password mismatch!')
-      res.redirect('back');
-  } else {
-      userdb.update({ user: req.body.username }, {
-        $set: {
-          user: req.body.username
-        , pass: bcrypt.hashSync(req.body.password, 8)
-        }
-      }, function(err, post) {
-          req.flash('info', 'Settings saved!');
-          res.redirect('/'); 
-    });
-  }
-};
-
 
 // logon with bcrypt hash check
 exports.logon = function(req, res) {
-   userdb.findOne({ user : req.body.username }, function(err, useraccount) {
+  userdb.findOne({ user : req.body.username },
+    function(err, useraccount) {
       if (!err && useraccount) {
         var password = req.body.password;
         var passhash = useraccount.pass;
         bcrypt.compare(password, passhash, function(err, same) {
           if (!err && same) {
             req.session.user = useraccount;
+            req.flash('info', 'Last login at' + ' ' + useraccount.lastlogin.time + ' ' + 'from' + ' ' + useraccount.lastlogin.from);
             res.redirect('/');
           } else {
             req.flash('error', 'Incorrect login, try again');
@@ -219,6 +407,65 @@ exports.logon = function(req, res) {
       }
   });
 };
+
+
+
+// logout and log ip and time
+exports.logout = function(req, res) {
+  userdb.update({ user: req.session.user.user }, {
+    $set: {
+      lastlogin: {
+          time: new Date()
+        , from: req.ipaddress 
+      } 
+    }
+  }, 
+  function() {
+    req.session.destroy();
+    res.redirect('/');
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                    5.BLOGPOST ACTIONS                      |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//                                                              //
+//        Add, save, publish, hide and delete blogposts         //
+//                                                              //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
 
 
 // list all posts
@@ -237,26 +484,6 @@ exports.index = function(req, res) {
 };
 
 
-// list all by selected tag
-exports.postsByTag = function(req, res) {
-  postdb.find({ tags: req.params.tag }).sort( { created : -1 }, function(err, foundposts) {
-    if (!err && foundposts) {
-      res.render('index.jade', {
-          title: 'Search results for tag:' + ' ' + req.params.tag 
-        , header:  'Descenging order by date'
-        , blogPosts: foundposts
-        , flash: req.flash()
-        , author: req.settings.author.nick
-      });
-    } else {
-      res.render('404.jade', {
-          title: 'No mangos found'
-        , author: req.settings.author.nick
-      });
-    }
-  });
-};
-
 
 // save a new post
 exports.addNewPost = function(req, res) {
@@ -266,7 +493,7 @@ exports.addNewPost = function(req, res) {
     , body: req.body.body
     , kudos: 0
     , tags: req.body.tags.split(',')
-    , state: 'published'
+    , status: 0
     , created: new Date()
     , modified: new Date()
     , author: {
@@ -274,11 +501,12 @@ exports.addNewPost = function(req, res) {
        , poster: req.settings.author.nick    
      }
   };
-  postdb.insert(values, function(err, post) {
+  postdb.insert(values, function() {
     req.flash('info', 'New post added');
     res.redirect('/posts/' + values._id + '/' + 'New-Post-Saved-Succesfully');
   });
 };
+
 
 
 // save an edited post
@@ -291,10 +519,41 @@ exports.savePostEdit = function(req, res) {
       , tags: req.body.tags.split(',')
       , modified: new Date()
       }
-    }, function(err, post) {
-  res.redirect('/posts/' + req.body.id + '/' + 'Post-Saved-Succesfully');
+    }, function() {
+        req.flash('info', 'Post saved succesfully');
+        res.redirect('/posts/' + req.body.id + '/' + 'Post-Saved-Succesfully');
   });
 };
+
+
+
+// publish a blogpost
+exports.publishPost = function(req, res) {
+  postdb.update({ _id: db.ObjectId(req.params.postid) }, {
+    $set: {
+      status: 1
+      }
+    }, function() {
+        req.flash('info', 'Post published');
+        res.redirect('back');
+  });
+};
+
+
+
+// hide a blogpost
+exports.hidePost = function(req, res) {
+  postdb.update({ _id: db.ObjectId(req.params.postid) }, {
+    $set: {
+      status: 0
+      }
+    }, function() {
+        req.flash('info', 'Post hidden from public view');
+        res.redirect('back');
+  });
+};
+
+
 
 
 // delete a post
@@ -308,11 +567,53 @@ exports.deletePost = function(req, res) {
 };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                    6.COMMENT ACTIONS                       |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//                                                              //
+//         Add, save, publish, hide and delete comments         //
+//                                                              //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
+
+
 // add a comment
 exports.addComment = function(req, res) {
   var data = {
         _id: new db.bson.ObjectID.createPk()
       , postid: req.body.postid
+      , postsubject: req.body.postsubject
       , website: req.body.site
       , subject: req.body.subject
       , name: req.body.name
@@ -322,11 +623,12 @@ exports.addComment = function(req, res) {
       , status: 0
       , from: req.ipaddress
   };
-  commentdb.insert(data, function(err, post) {
+  commentdb.insert(data, function() {
       req.flash('info', 'Comment added for reviewing at a later time!')
       res.redirect('/posts/' + req.body.postid + '/' + 'Thanks-For-The-Comment');
   });
 };
+
 
 
 // save an edited comment
@@ -335,11 +637,12 @@ exports.saveCommentEdit = function(req, res) {
     $set: {
        body: req.body.body
       }
-    }, function(err, post) {
+    }, function() {
         req.flash('info', 'Comment edited!');
         res.redirect('/posts/' + req.body.postid + '/' + 'Comment-edited-succesfully');
   });
 };
+
 
 
 // publish a comment
@@ -348,11 +651,12 @@ exports.publishComment = function(req, res) {
     $set: {
       status: 1
       }
-    }, function(err, post) {
+    }, function() {
         req.flash('info', 'Comment published');
         res.redirect('back');
   });
 };
+
 
 
 // hide a comment
@@ -361,11 +665,12 @@ exports.hideComment = function(req, res) {
     $set: {
       status: 0
       }
-    }, function(err, post) {
-        req.flash('info', 'Comment hidden from view');
+    }, function() {
+        req.flash('info', 'Comment hidden from public view');
         res.redirect('back');
   });
 };
+
 
 
 // delete a comment
@@ -377,66 +682,131 @@ exports.deleteComment = function(req, res) {
 };
 
 
-// validating the post id to get a single post
-exports.checkPostId = function(req, res, next, id) {
-  if (id.length != 24) {
-    return next(
-      res.render('404.jade', {
-          title: 'Incorrect post id'
-        , author: 'NodeBlog'
-      }));
-  } else {
-    postdb.findOne({_id: db.ObjectId(id)}, function(err, post) {
-      if (err) {
-        return next(
-          res.render('404.jade', {
-              title: 'Error occurred'
-            , author: 'NodeBlog'
-          }));
-      }
-      if (!post) { 
-        return next(
-          res.render('404.jade', {
-              title: 'Sorry, no post found'
-            , author: 'NodeBlog'
-          }));
-      } else {  
-        commentdb.find({postid: id, status: 1}, function(err, comments) {
-          if (err) {
-            return next(
-              res.render('404.jade', {
-                title: 'Error occurred'
-                , author: 'NodeBlog' 
-            }));
-          } else {
-            commentdb.find({postid: id, status: 0}, function(err, hiddenc) {
-              if (err) {
-                return next(
-                  res.render('404.jade',{
-                      title: 'Error occurred'
-                    , author: 'NodeBlog'
-                }));
-              } 
-              req.post = post;
-              post.hidden = hiddenc;
-              post.comments = comments;
-              next();
-            });
-          }
-        });
-      }
-    });
-  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+//|************************************************************|//
+//|                                                            |//
+//|                      7.BLOG SETTINGS                       |//
+//|                                                            |//
+//|____________________________________________________________|//
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//                                                              //
+//                                                              //
+//     Functions to save aboutpage, user- and blog settings     //
+//                                                              //
+//                                                              //
+//////////////////////////////////////////////////////////////////
+
+
+
+// this creates the blog settings for the first time
+// first check if data exist, if so, stop, something is wrong
+exports.initCheck = function(req, res) {
+  setupdb.count(function(err, dbcheck) {
+    if (dbcheck === 0) {
+      setupdb.insert({
+          _id: 1   
+        , title: req.body.title
+        , header: req.body.header
+        , about: req.body.about
+        , author: {
+            name: req.body.author
+          , nick: req.body.nick
+          , what: req.body.what
+          , where: req.body.where.split(',')
+        } 
+        , modified: new Date()
+       }, function () {
+         res.redirect('/login');
+      });
+    } else {
+      req.flash('error', 'data exists, stop hacking');
+      res.redirect('/');
+    }
+  });
 };
 
 
-// validating the comment id to get a single comment
-exports.checkCId = function(req, res, next, id) {
-  if (id.length != 24) return next(new Error('The comment id length is incorrect'));
-  commentdb.findOne({_id: db.ObjectId(id)}, function(err, comment) {
-    if (err) return next(new Error('Make sure you provided correct post id'));
-    if (!comment) return next(new Error('Comment loading failed'));
-    req.comment = comment;
-    next();
+
+// save blog settings
+exports.saveBlogSettings = function(req, res) {
+  setupdb.update({ _id: 1 }, {
+    $set: {  
+        title: req.body.title
+      , header: req.body.header
+      , modified: new Date()
+      }
+    }, function() {
+        req.flash('info', 'Settings saved!');
+        res.redirect('/');
   });
+};
+
+
+
+// save about page and author info
+exports.saveAbout = function(req, res) {
+  setupdb.update({ _id: 1 }, {
+    $set: {
+        modified: new Date()
+      , about: req.body.about
+      , author: {
+          name: req.body.author
+        , nick: req.body.nick
+        , what: req.body.what
+        , where: req.body.where.split(',')
+        } 
+      }
+  }, function() {
+      req.flash('info', 'Settings saved!');
+      res.redirect('/about');
+  });
+};
+
+
+
+// save usersettings
+exports.saveUserSettings = function(req, res) {
+  if(req.body.password != req.body.passwordconf) {
+      req.flash('error', 'Password mismatch!')
+      res.redirect('back');
+  } else {
+      userdb.update({ user: req.body.username }, {
+        $set: {
+            user: req.body.username
+          , pass: bcrypt.hashSync(req.body.password, 8)
+          , lastlogin: {
+              time: new Date()
+            , from: req.ipaddress
+          }
+        }
+      }, function() {
+          req.flash('info', 'Settings saved!');
+          res.redirect('/'); 
+    });
+  }
 };

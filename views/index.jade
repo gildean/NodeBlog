@@ -9,18 +9,31 @@ h3.indexheader #{header}
     p#flash.info #{flash.info} 
 
 for post in blogPosts
-  section(title="#{post.subject}", lang="en")
-  
-    div.items
-      span.fpkudos #{post.kudos}<br> kudos
-      - link = post._id + '/' + post.subject.split(' ').join('-');
-      a.postlink(href="/posts/#{link}")
-        span.fpposted!= moment(post.created).format('DD / MM <b>YYYY</b>')
-        div.fpblogpost
-          hgroup
+  -if (post.status === 1)
+    article(title="#{post.subject}", lang="en")
+      div.items
+        figure.fpkudos #{post.kudos}<br> kudos
+        - link = post._id + '/' + post.subject.split(' ').join('-');
+        a.postlink(href="/posts/#{link}")
+          p.fpposted!= moment(post.created).format('DD / MM <b>YYYY</b>')
+          hgroup.fpblogpost
             h2 #{post.subject}
             h3 #{post.subtitle}
-
-      div.tags
-        for tag in post.tags
-          a.tag(href="/search/tags/#{tag}") #{tag}
+        p.tags
+          for tag in post.tags
+            a.tag(href="/search/tags/#{tag}") #{tag}
+    hr
+  -if (user)
+    -if (post.status === 0)
+      article(title="#{post.subject}", lang="en")
+        div.items
+          figure.fpkudos #{post.kudos}<br> kudos
+          - link = post._id + '/' + post.subject.split(' ').join('-');
+          a.postlink(href="/posts/#{link}")
+            p.fpposted!= moment(post.created).format('DD / MM <b>YYYY</b>')
+            hgroup.fpblogpost
+              h2 #{post.subject}
+              h3 #{post.subtitle}
+          p.tags
+            for tag in post.tags
+              a.tag(href="/search/tags/#{tag}") #{tag}

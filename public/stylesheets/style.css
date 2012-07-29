@@ -65,8 +65,10 @@ html, body {
 	top:0;
 	left: 0;
 	font-family: "Arimo", "Helvetica", sans-serif;
-	font-size: 115%;
+	font-size: 108.5%;
 }
+
+section, article, header, footer, nav, aside {display: block;}
 
 html:hover {
 	cursor: url('/images/cursor.png'), auto;
@@ -134,14 +136,13 @@ a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover, button:hover, .kudo
 h1, h2, h3, h4, h5 {
 	font-family: "Arimo", "Verdana", sans-serif;
 	font-weight: normal;
-	text-shadow: 0.04em 0.04em 0.15em rgba(10,5,0,0.2), -0.04em -0.04em 0.04em rgba(10,5,0,0.8), 0.04em 0.04em 0.1em rgba(10,5,0,0.4);
+	text-shadow: 0.02em 0.02em 0.08em rgba(10,5,0,0.2), -0.02em -0.02em 0.02em rgba(10,5,0,0.8), 0.02em 0.02em 0.7em rgba(10,5,0,0.2);
 	clear: both;
 	margin: 3% 0 2% 0;
-	color:rgba(10,5,0,0.2);
+	color:rgba(10,5,0,0.4);
 }
 
 h1 {
-	text-shadow: 0.04em 0.04em 0.15em rgba(10,5,0,0.2), -0.04em -0.04em 0.04em rgba(10,5,0,0.8), 0.04em 0.04em 0.1em rgba(10,5,0,0.4);
 	color:rgba(10,5,0,0.4);
 	font: 2em "Roman", "Georgia", serif;
 	text-decoration: underline;
@@ -160,7 +161,7 @@ h1.main {
 .indexheader {
 	font-size: 1.5em;
 	padding: 0 0 2% 0;
-	color:rgba(10,5,0,0.2);
+	color:rgba(10,5,0,0.6);
 	text-shadow: 0.04em 0.04em 0.15em rgba(10,5,0,0.2), -0.04em -0.04em 0.04em rgba(10,5,0,0.8), 0.04em 0.04em 0.1em rgba(10,5,0,0.4);
 }
 
@@ -172,10 +173,9 @@ header {
 	color: #FFF000;
 	width: 14vw;
 	width: 14%;
-	min-width: 5em;
 	height: 100%;
 	height: 100vh;
-    background: #FFFDFA url('/images/mangosbgdg.png');
+	background: #F2F2F2 url('/images/mangosbgdg.png');
     box-shadow: inset 0.15em 0 0.2em rgba(0,0,0,0.2), inset 0 0 5em rgba(0,0,0,0.2);
 	border-left: 0.06em solid rgba(0,0,0,0.4);
 	padding: 0 0 4% 0;
@@ -224,12 +224,13 @@ summary:hover, .about a:hover {
 	cursor: help;
 }
 
-section {
-	border-bottom: 0.06em solid rgba(0,0,0,0.15);
-}
-
-section:last-of-type {
-	border: 0;
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0)); 
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0)); 
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0)); 
+    background-image: linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,0));
 }
 
 .blogheader {
@@ -247,7 +248,7 @@ section:last-of-type {
 }
 
 .headerheader {
-	text-shadow: 0.04em 0.04em 0.15em rgba(10,5,0,0.2), -0.04em -0.04em 0.04em rgba(10,5,0,0.8), 0.04em 0.04em 0.1em rgba(10,5,0,0.4);
+	text-shadow: 0.02em 0.02em 0.08em rgba(10,5,0,0.2), -0.02em -0.02em 0.02em rgba(10,5,0,0.8), 0.02em 0.02em 0.7em rgba(10,5,0,0.2);
 	color:rgba(10,5,0,0.3);
 	font: 1.7em "Roman", "Georgia", serif;
 	text-decoration: underline;
@@ -262,11 +263,6 @@ section:last-of-type {
 	display: block;
 }
 
-.blogheader a {
-	width: 100%;
-	z-index: 1000;
-}
-
 .blogheader a:hover {
 	text-decoration: none;
 	color:rgba(10,5,0,0.5);
@@ -278,12 +274,11 @@ section:last-of-type {
 	display: block;
 	top: 0;
 	left: 0;
-	margin: 0 auto;
+	margin: 0;
 	line-height: 1.44em;
 	min-height: 90%;
 	height: 90%;
 	padding: 5% 0;
-	width: 100%;
 	background: none;
 }
 
@@ -301,7 +296,7 @@ section:last-of-type {
 	box-shadow: inset 0 0 6.25em rgba(0,0,0,0.08);
 	min-height: 100%;
 	padding: 0 10%; 
-	margin: 0 14% 0 0;
+	margin: 0 13.2% 0 0; /* 0.8% bumper for mobile-zoom aka bumperfix */
 	background: -moz-linear-gradient(left, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 5%);
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.1)), color-stop(5%,rgba(0,0,0,0)));
 	background: -webkit-linear-gradient(left, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 5%);
@@ -309,6 +304,7 @@ section:last-of-type {
 	background: -ms-linear-gradient(left, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 5%);
 	background: linear-gradient(to right, rgba(0,0,0,0.1) 0%,rgba(0,0,0,0) 5%);
 }
+
 
 
 
@@ -330,7 +326,7 @@ section:last-of-type {
 .login  {
 	text-align: center;
 	width: 100%;
-	margin: 5em auto 0;
+	margin: 5.8em auto 0;
 	z-index: 1000;
 }
 
@@ -371,7 +367,7 @@ section:last-of-type {
 	color: rgba(10,5,0,0.6);
 	padding: 0.28em 0.28em 0.56em;
     border:0.06em solid rgba(0,0,0,0.2);
-	background: #FFFDFA;
+	background: #F2F2F2;
     box-shadow: inset 0.1em 0.1em 0.2em rgba(0,0,0,0.2), inset 0 0 0.44em rgba(0,0,0,0.2);
 }
 
@@ -398,10 +394,11 @@ section:last-of-type {
 
 #blogpost {
 	width: 100%;
+	margin: 1% 0;
 }
 
 .fpposted, .fpkudos {
-	margin: 1% 0;
+	margin: 0.5em 0;
 	font: 1.2em "Roman", "Georgia", serif;
 	color:rgba(10,5,0,0.5);
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
@@ -410,10 +407,6 @@ section:last-of-type {
 	left: 0;
 	line-height: 1.1em;
 	display: inline-block;
-}
-
-.posted {
-	font-style: italic;
 }
 
 .fpposted b {
@@ -428,28 +421,28 @@ section:last-of-type {
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	overflow: hidden;
-	font-size: 0.5em;
-	line-height: 3em;
-	height: 3em;
-	width: 3em;
+	font-size: 0.8em;
+	line-height: 2em;
+	height: 2em;
+	width: 2em;
 	position: absolute;
 	margin: 1em 0 0 80%;
 	text-align: center;
-	background: #FFFDFA;
+	background: #F2F2F2;
 	border-radius: 50%;
     box-shadow: inset 0.1em 0.1em 0.2em rgba(0,0,0,0.2), inset 0 0 0.44em rgba(0,0,0,0.2);
 }
 
 .fpkudos:hover {
-	font-size: 0.8em;
-	height: 5em;
-	width: 5em;
-	padding: 1em;
-	line-height: 2em;
+	font-size: 1.12em;
+	width: 3em;
+	height: 3em;
+	padding: 0.75em;
+	line-height: 1.2em;
 }
 
 .postlink {
-	padding: 0 0 0 2%;
+	padding: 0 0 0 1em;
 	position: relative;
 }
 
@@ -464,26 +457,36 @@ section:last-of-type {
 	display: block;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	padding: 0 0 0 3%;
+	padding: 0 0 0 1em;
+}
+
+.tags {
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+	width: 86%;
 }
 
 .tag {
 	color: #0e0e0e;
-	font: 0.82em "Roman", "Georgia", serif;
+	font: 0.83em "Roman", "Georgia", serif;
 	padding: 0 2%;
-	margin: 1% 0;
+	margin: 0 0 0 1%;
 	border-right: 0.17em solid #FFB700;
-	float: left;
 	font-style: italic;
+	display: inline-block;
+}
+
+.tag:last-of-type {
+	border: 0;
 }
 
 .items h3, .items h2 {
-	opacity: 0.8;
 	overflow: hidden;
 	text-overflow: ellipsis;
     white-space: nowrap;
-    color:rgba(255,200,15,0.85);
-	text-shadow: 0.04em 0.04em 0.05em rgba(10,5,0,0.2), -0.04em -0.04em 0.05em rgba(10,5,0,0.8), 0 0 0.12em rgba(10,5,0,0.4);
+    color:rgba(253,151,2,0.9);
+	text-shadow: 0.02em 0.02em 0.03em rgba(10,5,0,0.2), -0.02em -0.02em 0.03em rgba(10,5,0,0.8), 0 0 0.1em rgba(10,5,0,0.4);
 }
 
 .items h2 {
@@ -501,7 +504,7 @@ pre {
     box-shadow: inset 0.12em 0.12em 0.278em rgba(0,0,0,0.2);
     cursor: copy;
     border:0.08em solid rgba(0,0,0,0.2);
-	background: #FFFDFA;
+	background: #F2F2F2;
 	color: rgba(0,0,0,0.8);
 	text-shadow: 0.1em 0.1em 0.1em rgba(0,0,0,0.2);
 	font: 0.93em "Ubuntu mono", "Lucida Grande", monospace;
@@ -545,35 +548,45 @@ pre {
 /*-------------------------------------------------------------------*/
 
 
+.ghmcomment h1 {
+	font-size: 1.15em;
+}
 
-.commentsection {
-	width: 80%;
-	padding: 4%;
-	clear: both;
+.ghmcomment h2 {
+	font-size: 1.1em;
+}
+
+.ghmcomment p, .ghmcomment pre, .ghmcomment h3, .ghmcomment h4, .ghmcomment h5,
+  .ghmcomment h6 {
+	font-size: 0.97em
+}
+
+.commentheader {
+	font: "Roman", "Georgia", serif;
+}
+
+.posted {
+	font: 0.9em "Roman", "Georgia", serif;
+	font-style: italic;
 }
 
 .comment {
-	position: relative;
-	margin: 1% 0;
-	font-size: 0.92em;
-	width: 85%;
-	background: #FFF;
-	padding: 0.33em;
-    cursor: copy;
-    border-bottom: 0.06em rgba(0,0,0,0.2) solid;
+	padding: 0 1em;
 }
 
 .comment:nth-of-type(even) {
-	background: #FFFDFA;
-}
-
-.comment:last-of-type {
-	border:0;
+	margin: 1em 0 2em 1em;
+	padding: 0 0 0 1.2em;
+	border-left: 0.2em solid rgba(255,140,15,0.4);
 }
 
 .editcomm {
 	text-align: right;
 	width: 100%;
+}
+
+.commentform {
+	padding: 2em 0 0;
 }
 
 .deletebutton, .editbutton {
@@ -589,10 +602,6 @@ pre {
 
 .deletebutton:hover, .editbutton:hover {
 	cursor: url('/images/pointer.png') 10 0, auto;
-}
-
-.commenteditform {
-	display: inline;
 }
 
 .disclaimer {
@@ -611,7 +620,7 @@ pre {
 /*-------------------------------------------------------------------*/
 /*___________________________________________________________________*/
 /*                                                                   */
-/*                     rte-plugin and the inputs                     */
+/*                     Textareas and the inputs                      */
 /*___________________________________________________________________*/
 /*                                                                   */
 /*-------------------------------------------------------------------*/
@@ -623,7 +632,7 @@ input, textarea {
 	width: 50%;
 	min-width: 12.17em;
     border:0.1em solid rgba(0,0,0,0.2);
-	background: #FFFDFA;
+	background: #F2F2F2;
     box-shadow: inset 0.1em 0.1em 0.278em rgba(0,0,0,0.2);
     transition: all 0.2s ease-in-out;
 	-moz-transition: all 0.2s ease-in-out;
@@ -634,13 +643,13 @@ input, textarea {
 textarea {
 	width: 95%;
 	min-width: 13.889em;
-	height: 90%;
+	height: 95%;
 	min-height: 15em;
 }
 
 #commentcontent {
 	height: 45%;
-	width: 60%
+	width: 35em;
 }
 
 .button {
@@ -769,7 +778,7 @@ form {
 /*-------------------------------------------------------------------*/
 
 
-div.kudosbutton {text-align: center;position: fixed;z-index: 1000;top:14em;width:14%;min-width: 5em;right: 0;height: 2em}
+.kudosbutton {text-align: center;position: fixed;z-index: 1000;top:14.8em;width:14%;min-width: 5em;right: 0;height: 2em}
 
 p.count{display:block}
 
@@ -783,7 +792,7 @@ figure.filling.kudo{height:8.15em}
 
 a.kudos.animate div.circle div.filled{-webkit-animation-name:hoverPulse;-moz-animation-name:hoverPulse;-webkit-animation-duration:5s;-moz-animation-duration:5s;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;-webkit-transform:translateZ(0)}
 
-a.kudos.completed div.circle div.filled{margin-left:-1.14em;margin-top:-1.14em;background: url('/images/mangos.png') center center no-repeat;background-size:70%;-moz-background-size:70%;box-shadow: 0 0 0.28em rgba(0,0,0,0.2)}
+a.kudos.completed div.circle div.filled{margin-left:-1.14em;margin-top:-1.14em;background: url('/images/mangos.png') center center no-repeat;background-size:50%;-moz-background-size:50%;box-shadow: 0 0 0.28em rgba(0,0,0,0.2)}
 
 a.kudos p{width:auto;text-decoration: underline;line-height:1.2em;font-family:"Roman",serif;font-weight:normal;font-size:1.21em;color:rgba(0,0,0,0.7);}
 
@@ -831,14 +840,14 @@ a.kudos.completed div.circle div.filled{box-shadow: 0.15em 0.15em 0.2em rgba(0,0
 
 
 @media only screen
-and (min-width: 768px) 
+and (min-width: 720px) 
 and (max-width: 1224px) {
 
-* {font-size: 98%}
+body {font-size: 100%}
 
 header{background:0 0;box-shadow:none;border:0}
 
-footer{bottom:.8em;right:0.5em}
+footer{bottom:1em;right:0.5em}
 
 .headertext{font-size:.9em}
 
@@ -846,11 +855,11 @@ footer{bottom:.8em;right:0.5em}
 
 .headerheader{font-size:1.4em}
 
-div.kudosbutton{top:12em}
+.kudosbutton{top:12em}
 
 .login{margin:25% auto 0}
 
-.login a{width:80%;font:1.1em "Roman","Georgia",serif;padding:6% 0 12%;margin:25% auto}
+.login a{width:80%;padding:6% 0 12%;margin:25% auto}
 
 .edit{margin:2% 0 1%}
 
@@ -858,9 +867,7 @@ div.kudosbutton{top:12em}
 
 .author{text-align:left;position:absolute;left:0;top:.2em;width:88%}
 
-.author span{font-size:1.15em;margin:0 .3em 0;display:inline;float:left}
-
-.author i{font-size:1em}
+.author span{margin:0 .3em 0;display:inline;float:left}
 
 }
 
@@ -885,9 +892,9 @@ div.kudosbutton{top:12em}
 @media only screen
 and (max-width : 767px) {
 
-*{font-size:97%}
+body {font-size:97%}
 
-header{background:0 0;box-shadow:none;border:0;min-width:3.333em;width:12%}
+header{background:0 0;box-shadow:none;border:0;min-width:3.33em;width:12%}
 
 footer{bottom:.8em;right:0.5em}
 
@@ -897,9 +904,9 @@ footer{bottom:.8em;right:0.5em}
 
 .headertext{font-size:.6em}
 
-.headerheader{font-size:.92em;line-height:.9em}
+.headerheader{font-size:.9em;line-height:.85em}
 
-div.kudosbutton{top:10em;width:12%;min-width:3.33em}
+.kudosbutton{top:4.45em;width:12%;min-width:3.6em}
 
 .login{position:fixed;bottom:0;left:0;margin:0}
 
@@ -909,17 +916,17 @@ div.kudosbutton{top:10em;width:12%;min-width:3.33em}
 
 .book{margin:0;padding:0 14% 0 4%;box-shadow:none}
 
-.author{z-index:700;text-align:left;position:absolute;left:0;top:0;font-size:.88em;width:88%}
+.author{z-index:700;text-align:left;position:absolute;left:0;top:0;width:88%}
 
 .author span{display:inline}
-
-.author i{font-size:.75em}
 
 .edit{margin:10% 0 3%}
 
 .edit a{border-right:0;width:4.44em;padding:0 .28em .17em}
 
 .edit a:last-of-type{border-right:0.06em solid rgba(0,0,0,.4)}
+
+.fpkudos{margin: 0 0 0 58%}
 
 }
 

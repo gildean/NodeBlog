@@ -5,16 +5,22 @@ h1 #{title}
     p.flash.error #{flash.error}
   -if (flash.info)
     p.flash.info #{flash.info} 
-    
+
 form(name="add-post",method="post",action="/save/post")
   fieldset.details
+    
     label(for="subject") Subject:
     input(type="text",name="subject", required)
+    
     label(for="subtitle") Subtitle:
     input(type="text",name="subtitle", required)
+    
     label(for="tags") Tags (comma-separated)
     input(type="text",name="tags")
- fieldset.textcontent   
+ 
+  fieldset.textcontent   
+    
     label(for="body") Content
     textarea.rte-zone(name="body", rows="20", cols="95")
-    input(type="submit", class="button", name="post",value="Post")
+    
+    input(type="submit", class="button", name="post", value="Post")

@@ -9,7 +9,7 @@ html
     meta(name="generator", content="NodeBlog")
     meta(name="description", content="#{title}")
     meta(name="apple-mobile-web-app-capable", content="yes")
-    meta(name="viewport", content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1.1, minimum-scale=0.9")
+    meta(name="viewport", content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no")
 
     title= title
 
@@ -26,26 +26,28 @@ html
   body
 
     header
-      div.blogheader
+      aside.blogheader
         a(href="/")
           span.headertext too many
           img(class="logo", src="/images/mangos.png",alt="too many mangos")
           span.headerheader mangos
-      - if (user)            
-        div.login
+      
+      - if (user)
+        aside.login
           a(href="/add/post") New post
           a(href="/settings") Settings
           a(href="/logout") Logout
 
-    div.book  
-      div#container!= body
-    
+    section#mainsection.book
+      div#container
+        != body
+
     footer
       details
         summary
-          span about 
+          span about
         a(href="/about") NodeBlog 2012
-    
+
     script(type="text/javascript", src="/javascripts/editor.jquery.js")
     script(type="text/javascript", src="/javascripts/slidesubmit.jquery.js")
     script(type="text/javascript", src="/javascripts/cookie.jquery.js")

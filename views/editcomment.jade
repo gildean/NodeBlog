@@ -6,17 +6,24 @@ h1 #{title}
   -if (flash.info)
     p.flash.info #{flash.info}
 
+label Site: #{comment.website}
+label Name: #{comment.name}
+label email: #{comment.email}
+label From: #{comment.from}
+label At: #{comment.created}
+label To post: 
+  a(href="/posts/#{comment.postid}/#{comment.postsubject}") #{comment.postsubject} 
+
 form(name="edit-post",method="post",action="/edit/comment")
   fieldset
+    
     input(type="hidden",name="id",value="#{comment._id}")
     input(type="hidden",name="postid",value="#{comment.postid}")
-    label Site: #{comment.website}
-    label Name: #{comment.name}
-    label email: #{comment.email}
-    label From: #{comment.from}
-    label At: #{comment.created}
+    
     label(for="subject") Title:
     input(type="text", name="subject", value="#{comment.subject}") 
+    
     label(for="body") Content
     textarea.rte-zone(name="body", rows="15", cols="95", wrap="hard") #{comment.body}
+    
     input(type="submit", class="button", name="post",value="Save")

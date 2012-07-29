@@ -8,18 +8,19 @@
    div.edit
       a(href="/edit/about") Edit
 
-div.aboutpage
-   h1.main About - #{title}
+section.aboutpage
    article
-      h2.indexheader #{aboutinfo.about}
-      p
-         i Who?
-      h3 #{aboutinfo.author.name} <i>alias</i> #{aboutinfo.author.nick}
-      p  
-         i What?
-      h3 #{aboutinfo.author.what}
-      p
-         i Where?
-      div.externallinks
+     hgroup
+       h1.main About - #{title}
+       h2.indexheader #{aboutinfo.about}
+     p
+       i Who?
+     h3 #{aboutinfo.author.name} <i>alias</i> #{aboutinfo.author.nick}
+     p  
+       i What?
+     h3 #{aboutinfo.author.what}
+     p
+       i Where?
+     p.externallinks
       - for sites in aboutinfo.author.where
          a(href='#{sites}') #{sites}

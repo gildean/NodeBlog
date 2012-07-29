@@ -1,17 +1,23 @@
 -if (flash)
   -if (flash.error)
-    p.flash.error #{flash.error}
+    p#flash.error #{flash.error}
   -if (flash.info)
-    p.flash.info #{flash.info} 
+    p#flash.info #{flash.info} 
 
 section#blogpost
   article(id="#{post._id}", title="#{post.subject}")
+    
     - if (user)
       div.edit
         a(href="/edit/post/#{post._id}") Edit 
+        - if (post.status === 0)
+          a(href="/publish/post/#{post._id}") Publish
+        else
+          a(href="/hide/post/#{post._id}") Hide 
         a(href="/remove/post/#{post._id}", onClick="return confirm('Sure about that? All comments will also be removed.')") Delete
+    
     else
-      div.kudosbutton
+      aside.kudosbutton
         figure.kudo
           a(class="kudos kudoable", id="kudos-#{post._id}")
             div.circle
@@ -21,14 +27,15 @@ section#blogpost
               span.identifier kudos
           div.pbar
             div.progress &nbsp;
+    
     hgroup
       h1 #{post.subject}
       h2.indexheader #{post.subtitle}
-    div.body!= post.body
-    div.tags
+    != post.body
+    p.tags
       for tag in post.tags
         a.tag(href="/search/tags/#{tag}") #{tag}
-    div.author 
+    p.author 
       time(datetime="#{post.created}", pubdate="pubdate")
       span 
         i posted:
@@ -36,14 +43,14 @@ section#blogpost
       span 
         i by:
         = (settings.author.nick)
-
-section#comments
-  div.commentsection
+hr
+if (post.comments)
+  section#comments.commentsection
     h3 Comments
-
-    - if (post.comments)
-      for comment in post.comments
-        div.comment
+    for comment in post.comments
+      if (comment.status === 1)
+        article.comment(title="#{comment.subject}")
+        
           - if (user)
             div
               a(href="/hide/comment/#{comment._id}") Hide
@@ -51,46 +58,60 @@ section#comments
               a(href="/edit/comment/#{comment._id}") Edit
               span.divider |
               a(href="/remove/comment/#{comment._id}", onClick="return confirm('Sure about that?')") Delete
+        
           p.link 
             a(href="#{'/comments/' + comment._id + '/' + comment.subject}") #{comment.subject}
-
-          p!= comment.body
+          div.ghmcomment!= md(comment.body)
+          time(datetime="#{comment.created}", pubdate="pubdate")
           p.posted posted #{moment(comment.created).fromNow()} by #{comment.name}
-          p from:         
-            a(href="#{comment.website}") #{comment.website} 
-
-  - if (user) 
-    - if (post.hidden)
+          p backlink:         
+          a(href="#{comment.website}") #{comment.website} 
+        hr
+      - if (user)
         h3 Comments to review:
-        for hidden in post.hidden
-           div.comment
-              div
-                 a(href="/publish/comment/#{hidden._id}") Publish
-                 span.divider |
-                 a(href="/edit/comment/#{hidden._id}") Edit
-                 span.divider |
-                 a(href="/remove/comment/#{hidden._id}", onClick="return confirm('Sure about that?')") Delete
-              p!= hidden.body
+        - if (post.comment.status === 0)
+          article.comment
+
+            div
+              a(href="/publish/comment/#{hidden._id}") Publish
+              span.divider |
+              a(href="/edit/comment/#{hidden._id}") Edit
+              span.divider |
+              a(href="/remove/comment/#{hidden._id}", onClick="return confirm('Sure about that?')") Delete
+            
+              != md(hidden.body)  
               p.posted posted #{moment(hidden.created).fromNow()} by #{hidden.name} from #{hidden.from}
-
-
-  h3 Comments, please:
+            hr
+section.commentform
+  
   form(name="add-comment",method="post",action="/save/comment")
+    legend Comments, please:
     fieldset
+
       input(type="hidden",name="postid",value="#{post._id}")
+      input(type="hidden",name="postsubject",value="#{post.subject}")
+      
       label(for="site") Website
       input(type="text", name="site", required)
+      
       label(for="name") Name
       input(type="text", name="name", required)  
+      
       label(for="email") Email(not released)
       input(type="email", name="email", class="email", required)
+    
     fieldset
+      
       label(for="subject") Comment title
       input(type="text", name="subject", required)
+      
       label(for="body") Comment
       textarea(placeholder="You can use github flavored markdown", name="body", maxlength="550", id="commentcontent")
+      
       input(type="hidden", class="for-bots", name="address", value="", required)
+    
     div#submit-slider
+    
     p.disclaimer all fields required<br>
       | note that your ip is recorded upon submit, please do not spam<br>
       | comments will be reviewed before publishing

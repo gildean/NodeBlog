@@ -3,6 +3,8 @@ NodeBlog
 
 A blog engine made with node.js and mongodb database
 
+View live demo here [Too Many Mangos][Too Many Mangos]
+
 NodeBlog is built on:
 ---------------------
 * [Node.js][NodeJS]
@@ -47,3 +49,4 @@ Unless stated elsewhere, file headers or otherwise, the license as stated in the
 [bcrypt]: https://github.com/ncb000gt/node.bcrypt.js
 [jade]: http://jade-lang.com
 [moment]: http://momentjs.com/
+[Too Many Mangos]: http://toomanymangos.nodester.com
