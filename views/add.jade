@@ -1,21 +1,20 @@
-h1 Add a new blog post
+h1 #{title}
+
 -if (flash)
   -if (flash.error)
     p.flash.error #{flash.error}
   -if (flash.info)
     p.flash.info #{flash.info} 
-form(name="add-post",method="post",action="/add/posts")
-  p
-    label Subject:
+    
+form(name="add-post",method="post",action="/save/post")
+  fieldset.details
+    label(for="subject") Subject:
     input(type="text",name="subject", required)
-  p
-    label Subtitle:
+    label(for="subtitle") Subtitle:
     input(type="text",name="subtitle", required)
-  p
-    label Content
-    textarea.rte-zone(name="body", rows="20", cols="95")
-  p
-    label Tags (comma-separated)
+    label(for="tags") Tags (comma-separated)
     input(type="text",name="tags")
-  p
+ fieldset.textcontent   
+    label(for="body") Content
+    textarea.rte-zone(name="body", rows="20", cols="95")
     input(type="submit", class="button", name="post",value="Post")

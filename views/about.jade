@@ -1,21 +1,23 @@
-h1.main About - #{title}
-h2.indexheader #{aboutinfo.about}
 -if (flash)
   -if (flash.error)
-    p.flash.error #{flash.error}
+    p#flash.error #{flash.error}
   -if (flash.info)
-    p.flash.info #{flash.info} 
+    p#flash.info #{flash.info}
+
 - if (user)
    div.edit
-      a(href="/edit/about") Edit this page
-article
-   div.aboutpage      
+      a(href="/edit/about") Edit
+
+div.aboutpage
+   h1.main About - #{title}
+   article
+      h2.indexheader #{aboutinfo.about}
       p
          i Who?
-         h3 #{aboutinfo.author.name} <i>alias</i> #{aboutinfo.author.nick}
+      h3 #{aboutinfo.author.name} <i>alias</i> #{aboutinfo.author.nick}
       p  
          i What?
-         h3 #{aboutinfo.author.what}
+      h3 #{aboutinfo.author.what}
       p
          i Where?
       div.externallinks
