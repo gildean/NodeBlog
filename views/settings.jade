@@ -1,32 +1,31 @@
-h1 Blog and user settings
+h1 #{title}
 
-p Last modified: #{blogsettings.modified}
+-if (flash)
+  -if (flash.error)
+    p.flash.error #{flash.error}
+  -if (flash.info)
+    p.flash.info #{flash.info}
+
+i Last modified: #{moment(blogsettings.modified).fromNow()} 
 
 h3 Main settings
 
 form(name="blogsettings",method="post",action="/save/settings")
-  p
-    label Title:
-  p  
-    textarea(name="title", rows="1", cols="45", resize="none") #{blogsettings.title}
-  p
-    label Header
-  p  
-    textarea(name="header", rows="1", cols="45",resize="none") #{blogsettings.header}
-  p  
+  fieldset
+    label(for="title") Title:
+    input(type="text", name="title", value="#{blogsettings.title}", required)
+    label(for="header") Header
+    input(type="text", name="header", resize="none", value="#{blogsettings.header}", required) 
     input(type="submit", class="button", name="post", value="Save")
 
 h3 User settings
 
 form(name="usersettings",method="post",action="/save/usersettings")
-  p  
-    label Username:
+  fieldset
+    label(for="username") Username:
     input(type="text", name="username", value="#{user.user}", required)
-  p  
-    label Password:
+    label(for="password") NEW Password:
     input(type="password", name="password", required)
-  p  
-    label Confirm :
+    label(for="passwordconf") Confirm :
     input(type="password", name="passwordconf", required)
-  p  
-    input(type="submit", class="button", name="submit", value="Save", onClick="return confirm('Are you sure?');")
+    input(type="submit", class="button", name="submit", value="Save", onClick="return confirm('Are you sure you want to change your password?');")

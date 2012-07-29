@@ -5,6 +5,7 @@ var express = require('express')
   , moment = require('moment')
   , jade = require('jade')
   , routes = require('./routes')
+  , ghm = require('ghm')
   , dbaccess = require('./dbaccess');
 var app = module.exports = express.createServer();
 
@@ -15,7 +16,9 @@ var config = require('./config').config(app, express);
 
 // helpful helper is helpful
 app.helpers({
-  moment: moment
+  moment: moment,
+  md : function(text){
+   return ghm.parse(text);}
 });
 
 app.dynamicHelpers({
@@ -40,7 +43,6 @@ function checkLogin(req, res, next) {
 // gets
 app.get('/login', dbaccess.anyoneThere);
 app.get('/logout', checkLogin, routes.logout);
-app.get('/loginpage', dbaccess.settings, routes.loginPage);
 
 
 // post the user authentication
@@ -54,16 +56,18 @@ app.post('/initialsetup', dbaccess.initCheck);
 app.get('/', dbaccess.settings, dbaccess.index);
 app.get('/posts', routes.posts);
 app.get('/about', dbaccess.settings, routes.about);
+app.get('/kudos/:postid', dbaccess.addKudos);
 app.get('/edit/about', checkLogin, dbaccess.settings, routes.editAbout);
 app.get('/settings', checkLogin, dbaccess.blogSettings);
-app.get('/posts/add', checkLogin, dbaccess.settings, routes.newPost);
-app.get('/posts/edit/:postid', checkLogin, dbaccess.settings, routes.editPost);
-app.get('/posts/remove/:postid', checkLogin, dbaccess.settings, dbaccess.deletePost);
-app.get('/comments/edit/:coid', checkLogin, dbaccess.settings, routes.editComment);
-app.get('/comments/publish/:coid', checkLogin, dbaccess.settings, dbaccess.publishComment);
-app.get('/comments/hide/:coid', checkLogin, dbaccess.settings, dbaccess.hideComment);
-app.get('/comments/remove/:coid', checkLogin, dbaccess.settings, dbaccess.deleteComment);
+app.get('/add/post', checkLogin, dbaccess.settings, routes.newPost);
+app.get('/edit/post/:postid', checkLogin, dbaccess.settings, routes.editPost);
+app.get('/remove/post/:postid', checkLogin, dbaccess.settings, dbaccess.deletePost);
+app.get('/edit/comment/:coid', checkLogin, dbaccess.settings, routes.editComment);
+app.get('/publish/comment/:coid', checkLogin, dbaccess.settings, dbaccess.publishComment);
+app.get('/hide/comment/:coid', checkLogin, dbaccess.settings, dbaccess.hideComment);
+app.get('/remove/comment/:coid', checkLogin, dbaccess.settings, dbaccess.deleteComment);
 app.get('/posts/:postid/*', dbaccess.settings, routes.showPost);
+app.get('/posts/:postid', dbaccess.settings, routes.showPost);
 
 // searchs
 app.get('/search/tags/:tag', dbaccess.settings, dbaccess.postsByTag);
@@ -71,7 +75,7 @@ app.get('/search/tags/:tag', dbaccess.settings, dbaccess.postsByTag);
 
 // posts
 app.post('/save/about', checkLogin, dbaccess.saveAbout);
-app.post('/add/post', checkLogin, dbaccess.addNewPost);
+app.post('/save/post', checkLogin, dbaccess.addNewPost);
 app.post('/edit/post', checkLogin, dbaccess.savePostEdit);
 app.post('/save/comment', dbaccess.checkIP, dbaccess.addComment);
 app.post('/edit/comment', checkLogin, dbaccess.saveCommentEdit);

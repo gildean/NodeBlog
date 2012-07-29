@@ -1,15 +1,20 @@
-h1 Editing comment:
+h1 #{title}
+
+-if (flash)
+  -if (flash.error)
+    p.flash.error #{flash.error}
+  -if (flash.info)
+    p.flash.info #{flash.info}
 
 form(name="edit-post",method="post",action="/edit/comment")
-  input(type="hidden",name="id",value="#{comment._id}")
-  input(type="hidden",name="postid",value="#{comment.postid}")
-  p Name: #{comment.name}
-  p email: #{comment.email}
-  p From: #{comment.from}
-  p At: #{comment.created}
-  p
-    label Content
+  fieldset
+    input(type="hidden",name="id",value="#{comment._id}")
+    input(type="hidden",name="postid",value="#{comment.postid}")
+    label Site: #{comment.website}
+    label Name: #{comment.name}
+    label email: #{comment.email}
+    label From: #{comment.from}
+    label At: #{comment.created}
+    label(for="body") Content
     textarea.rte-zone(name="body", rows="15", cols="95", wrap="hard") #{comment.body}
-  p
     input(type="submit", class="button", name="post",value="Save")
-

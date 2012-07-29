@@ -1,6 +1,6 @@
-h2 Create a new user
+h1 #{title}
 
-p  Set a username and a password (you can change these settings later).<br>
+p  Set a username and a password (you can change these settings later)
 
 -if (flash)
   -if (flash.error)
@@ -9,14 +9,11 @@ p  Set a username and a password (you can change these settings later).<br>
     p.flash.info #{flash.info}
 
 form(name="user-form",method="post",action="/adduser")
-  p  
-    label Username:
+  fieldset
+    label(for="username") Username:
     input(type="text",name="username", required)
-  p  
-    label Password:
+    label(for="password") Password:
     input(type="password",name="password", required)
-  p  
-    label Confirm :
+    label(for="passwordconf") Confirm :
     input(type="password",name="passwordconf", required)
-  p  
     input(type="submit", class="button", name="submit", value="Submit", onClick="return confirm('Are you sure?');")

@@ -1,16 +1,18 @@
-h1 Login user
+h1 #{title}
+
 -if (flash)
   -if (flash.error)
     p.flash.error #{flash.error}
   -if (flash.info)
-    p.flash.info #{flash.info} 
-form(name="login-form",method="post",action="/login")
-  p
-  label Username:
-  input(type="text",name="username", required)
-  p
-  label Password:
-  input(type="password",name="password", required)
-  p
-  input(type="submit", class="button", name="login", value="Login")
-   
+    p.flash.info #{flash.info}
+
+section.loginsection
+  form(name="login-form",method="post",action="/login")
+    fieldset.loginform
+      label(for="username") Username:
+      input(type="text",name="username", required)
+      label(for="password") Password:
+      input(type="password",name="password", required)
+      input(type="submit", class="button", name="login", value="Login")
+
+  i enter username and password for login

@@ -1,5 +1,6 @@
 // ROUTES TO MAIN VIEWS
 
+
 // logout
 exports.logout = function(req, res) {
   req.session.destroy();
@@ -19,6 +20,7 @@ exports.about = function(req, res) {
     title: req.settings.title
   , aboutinfo: req.settings
   , flash: req.flash()
+  , author: req.settings.author.nick
   });
 };
 
@@ -29,6 +31,7 @@ exports.editAbout = function(req, res) {
     title: 'Editing about'
   , aboutinfo: req.settings
   , flash: req.flash()
+  , author: req.settings.author.nick
   }); 
 };
 
@@ -38,6 +41,7 @@ exports.newPost = function(req, res) {
   res.render('add.jade', {
     title: req.settings.title + ' - New Post'
   , flash: req.flash()
+  , author: req.settings.author.nick
   });
 };
 
@@ -48,6 +52,7 @@ exports.editPost = function(req, res) {
      title: req.settings.title + ' - Editing post:' + ' ' + req.post.subject
    , post: req.post
    , flash: req.flash()
+   , author: req.settings.author.nick
    });
  };
 
@@ -55,10 +60,11 @@ exports.editPost = function(req, res) {
 // show one post
 exports.showPost = function(req, res) {
     res.render('show.jade', {
-     title: req.settings.title + ' - ' + req.post.subject
-   , post: req.post
+     post: req.post
+   , title: req.settings.title + ' - ' + req.post.subject
    , settings: req.settings
    , flash: req.flash()
+   , author: req.settings.author.nick
    });
 };
 
@@ -69,6 +75,7 @@ exports.editComment = function(req, res) {
     title: req.settings.title + ' - Editing comment from:' + ' ' + req.comment.name
   , comment: req.comment
   , flash: req.flash()
+  , author: req.settings.author.nick
   });
 };
 
@@ -78,6 +85,7 @@ exports.notFound = function(req, res) {
   res.render('404.jade', {
     status: 404
   , title: '404 Not Found'
+  , author: 'NodeBlog'
   });
 };
 

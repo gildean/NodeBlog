@@ -1,18 +1,15 @@
 h1 Editing post: #{post.subject}
 
-form(name="edit-post",method="post",action="/edit/posts")
+form(name="edit-post",method="post",action="/edit/post")
   input(type="hidden",name="id",value="#{post._id}")
-  p
-    label Subject:
+  fieldset.details
+    label(for="subject") Subject:
     input(type="text",name="subject",value="#{post.subject}", required)
-  p
-    label Subtitle:
+    label(for="subtitle") Subtitle:
     input(type="text",name="subtitle", required, value="#{post.subtitle}")
-  p
-    label Content
-    textarea.rte-zone(name="body", rows="15", cols="115", resize="both") #{post.body}
-  p
-    label Tags (comma-separated)
+    label(for="tags") Tags (comma-separated)
     input(type="text",name="tags",value="#{post.tags}")
-  p  
+  fieldset.textcontent
+    label(for="body") Content
+    textarea.rte-zone(name="body", rows="15", cols="115", resize="both") #{post.body}
     input(type="submit", class="button", name="post", value="Save")
