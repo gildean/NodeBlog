@@ -51,9 +51,13 @@ section#comments
               a(href="/edit/comment/#{comment._id}") Edit
               span.divider |
               a(href="/remove/comment/#{comment._id}", onClick="return confirm('Sure about that?')") Delete
-          p.link #{comment.website}
+          p.link 
+            a(href="#{'/comments/' + comment._id + '/' + comment.subject}") #{comment.subject}
+
           p!= comment.body
           p.posted posted #{moment(comment.created).fromNow()} by #{comment.name}
+          p from:         
+            a(href="#{comment.website}") #{comment.website} 
 
   - if (user) 
     - if (post.hidden)
@@ -78,7 +82,7 @@ section#comments
       input(type="text", name="site", required)
       label(for="name") Name
       input(type="text", name="name", required)  
-      label(for="email") Email
+      label(for="email") Email(not released)
       input(type="email", name="email", class="email", required)
     fieldset
       label(for="subject") Comment title

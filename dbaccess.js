@@ -314,6 +314,7 @@ exports.addComment = function(req, res) {
         _id: new db.bson.ObjectID.createPk()
       , postid: req.body.postid
       , website: req.body.site
+      , subject: req.body.subject
       , name: req.body.name
       , email: req.body.email
       , body: req.body.body

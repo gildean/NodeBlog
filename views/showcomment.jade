@@ -1,0 +1,25 @@
+-if (flash)
+  -if (flash.error)
+    p.flash.error #{flash.error}
+  -if (flash.info)
+    p.flash.info #{flash.info} 
+
+section#blogpost
+  article(id="#{post._id}", title="#{post.subject}")
+    - if (user)
+      div.edit
+        a(href="/edit/post/#{post._id}") Edit 
+        a(href="/remove/post/#{post._id}", onClick="return confirm('Sure about that? All comments will also be removed.')") Delete
+    hgroup
+      h1 #{post.subject}
+    div.body!= post.body
+    div.author 
+      time(datetime="#{post.created}", pubdate="pubdate")
+      span 
+        i posted:
+        = (moment(post.created).fromNow())
+      span 
+        i by:
+        = (post.name)
+    p.backlink
+      a(href="#{post.website}") #{post.website}

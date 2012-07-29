@@ -68,6 +68,8 @@ app.get('/hide/comment/:coid', checkLogin, dbaccess.settings, dbaccess.hideComme
 app.get('/remove/comment/:coid', checkLogin, dbaccess.settings, dbaccess.deleteComment);
 app.get('/posts/:postid/*', dbaccess.settings, routes.showPost);
 app.get('/posts/:postid', dbaccess.settings, routes.showPost);
+app.get('/comments/:coid/*', dbaccess.settings, routes.showComment);
+app.get('/comments/:coid', dbaccess.settings, routes.showComment);
 
 // searchs
 app.get('/search/tags/:tag', dbaccess.settings, dbaccess.postsByTag);
