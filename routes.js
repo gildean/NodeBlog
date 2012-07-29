@@ -68,6 +68,17 @@ exports.showPost = function(req, res) {
    });
 };
 
+// show one comment
+exports.showComment = function(req, res) {
+    res.render('showcomment.jade', {
+     post: req.comment
+   , title: req.settings.title + ' - ' + req.comment.subject
+   , settings: req.settings
+   , flash: req.flash()
+   , author: req.comment.name
+   });
+};
+
 
 // edit a comment
 exports.editComment = function(req, res) {
