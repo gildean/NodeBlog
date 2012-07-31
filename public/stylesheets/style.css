@@ -2,7 +2,7 @@
 /*-------------------------------------------------------------------*/
 /*___________________________________________________________________*/
 /*                                                                   */
-/*       Oh, no more mangos - a style for NodeBlog by: gildean       */
+/*         Cool NeoClassic - a style for NodeBlog by: gildean        */
 /*___________________________________________________________________*/
 /*                                                                   */
 /*-------------------------------------------------------------------*/
@@ -17,7 +17,7 @@
 /*___________________________________________________________________*/
 /*                                                                   */
 /*             check for the media queries at the bottom             */
-/* othewise rules affect devices with screenwidth of at least 1220.22em */
+/* othewise rules affect devices with screenwidth of at least 1224px */
 /*___________________________________________________________________*/
 /*                                                                   */
 /*-------------------------------------------------------------------*/
@@ -64,62 +64,14 @@ html, body {
 	width: 100%;
 	top:0;
 	left: 0;
-	font-family: "Arimo", "Helvetica", sans-serif;
-	font-size: 108.5%;
+	font-family: "Helvetica", sans-serif;
+	font-size: 102.5%;
 }
 
 section, article, header, footer, nav, aside {display: block;}
 
-html:hover {
-	cursor: url('/images/cursor.png'), auto;
-}
-
-@font-face {
-	font-family: Roman;
-	font-weight: normal;
-	src: url('../lmroman10-regular.otf');
-}
-
-@font-face {
-	font-family: Roman;
-	font-weight: bold;
-	src: url('../lmromandemi10-regular.otf');
-}
-
-@font-face {
-	font-family: Roman;
-	font-style: italic;
-	src: url('../lmroman10-italic.otf');
-}
-
-@font-face {
-	font-family: Arimo;
-	font-weight: normal;
-	src: url('../Arimo-Regular-Latin.ttf');
-}
-
-@font-face {
-	font-family: Arimo;
-	font-weight: bold;
-	src: url('../Arimo-Bold-Latin.ttf');
-}
-
-@font-face {
-	font-family: Arimo;
-	font-style: italic;
-	src: url('../Arimo-Italic-Latin.ttf');
-}
-
-@font-face {
-	font-family: Arimo;
-	font-style: italic;
-	font-weight: bold;
-	src: url('../Arimo-BoldItalic-Latin.ttf');
-}
-
 a, .deletebutton, .editbutton, .tag {
 	padding: 0.12em;
-	color: #FD9702;
 	text-decoration: none;
 	transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -128,24 +80,19 @@ a, .deletebutton, .editbutton, .tag {
 }
 
 a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover, button:hover, .kudosbutton:hover {
-	text-shadow: 0 0.1em 0 rgba(10,5,0,0.5);
+	text-shadow: 0 0.05em 0.1 rgba(10,5,0,0.4);
 	text-decoration: underline;
-	cursor: url('/images/pointer.png') 10 0, auto;
 }
 
 h1, h2, h3, h4, h5 {
-	font-family: "Arimo", "Verdana", sans-serif;
+	text-shadow: 0.03 0.03 0.1em rgba(10,5,0,0.4);
 	font-weight: normal;
-	text-shadow: 0.02em 0.02em 0.08em rgba(10,5,0,0.2), -0.02em -0.02em 0.02em rgba(10,5,0,0.8), 0.02em 0.02em 0.7em rgba(10,5,0,0.2);
 	clear: both;
 	margin: 3% 0 2% 0;
-	color:rgba(10,5,0,0.4);
 }
 
 h1 {
-	color:rgba(10,5,0,0.4);
-	font: 2em "Roman", "Georgia", serif;
-	text-decoration: underline;
+	font: "Georgia", serif;
 	font-weight: bold;
 }
 
@@ -161,8 +108,6 @@ h1.main {
 .indexheader {
 	font-size: 1.5em;
 	padding: 0 0 2% 0;
-	color:rgba(10,5,0,0.6);
-	text-shadow: 0.04em 0.04em 0.15em rgba(10,5,0,0.2), -0.04em -0.04em 0.04em rgba(10,5,0,0.8), 0.04em 0.04em 0.1em rgba(10,5,0,0.4);
 }
 
 header {
@@ -170,7 +115,6 @@ header {
 	position: fixed;
 	top: 0;
 	right: 0;
-	color: #FFF000;
 	width: 14vw;
 	width: 14%;
 	height: 100%;
@@ -216,7 +160,7 @@ summary {
 	text-align: center;
 	text-shadow: -0.1em -0.1em 0.1em rgba(255,255,255,0.5), 0.1em 0.1em 0.1em rgba(0,0,0,0.5);
     color:rgba(10,5,0,0.4);
-	font: 1em "Roman", "Georgia", serif;
+	font: 1em "Georgia", serif;
 	line-height: 0.8em;
 }
 
@@ -243,17 +187,19 @@ hr {
 }
 
 .headertext {
-	font: 1.2em "Roman", "Georgia", serif;
+	display: inline;
+	font: 1.2em "Georgia", serif;
 	text-shadow: 0.04em 0.04em 0.15em rgba(10,5,0,0.2), -0.04em -0.04em 0.04em rgba(10,5,0,0.8), 0.04em 0.04em 0.1em rgba(10,5,0,0.4);
 }
 
 .headerheader {
-	text-shadow: 0.02em 0.02em 0.08em rgba(10,5,0,0.2), -0.02em -0.02em 0.02em rgba(10,5,0,0.8), 0.02em 0.02em 0.7em rgba(10,5,0,0.2);
+	text-shadow: 0.03em 0.03em 0.08em rgba(10,5,0,0.2), -0.03em -0.03em 0.03em rgba(10,5,0,0.8), 0.03em 0.03em 0.7em rgba(10,5,0,0.2);
 	color:rgba(10,5,0,0.3);
-	font: 1.7em "Roman", "Georgia", serif;
+	font: 1.7em "Georgia", serif;
 	text-decoration: underline;
 	line-height: 0.7em;
 	font-weight: bold;
+	display: inline;
 }
 
 .logo {
@@ -326,7 +272,7 @@ hr {
 .login  {
 	text-align: center;
 	width: 100%;
-	margin: 5.8em auto 0;
+	margin: 5.1em auto 0;
 	z-index: 1000;
 }
 
@@ -334,7 +280,7 @@ hr {
 	overflow: hidden;
 	letter-spacing: -0.1em;
 	text-align: center;
-	font: 1.2em "Roman", "Georgia", serif;
+	font: 1.2em "Georgia", serif;
 	width: 76%;
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
 	color: rgba(10,5,0,0.6);
@@ -349,9 +295,9 @@ hr {
 .login a:hover, .edit a:hover {
 	text-shadow: 0 0.1em 0.22em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
 	color: rgba(10,5,0,0.6);
-	cursor: url('/images/pointer.png') 10 0, auto;
     box-shadow: 0.1em 0.1em 0.22em rgba(0,0,0,0.3), inset 0 0 0.44em rgba(0,0,0,0.2);
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .edit a {
@@ -361,7 +307,7 @@ hr {
 	overflow: hidden;
 	letter-spacing: -0.1em;
 	text-align: center;
-	font: 1.2em "Roman", "Georgia", serif;
+	font: 1.2em "Georgia", serif;
 	width: 15%;
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
 	color: rgba(10,5,0,0.6);
@@ -399,8 +345,8 @@ hr {
 
 .fpposted, .fpkudos {
 	margin: 0.5em 0;
-	font: 1.2em "Roman", "Georgia", serif;
-	color:rgba(10,5,0,0.5);
+	font: 1.2em "Georgia", serif;
+	color:rgba(10,5,0,0.6);
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
 	position: relative;
 	top: 0;
@@ -469,10 +415,10 @@ hr {
 
 .tag {
 	color: #0e0e0e;
-	font: 0.83em "Roman", "Georgia", serif;
+	font: 0.83em "Georgia", serif;
 	padding: 0 2%;
 	margin: 0 0 0 1%;
-	border-right: 0.17em solid #FFB700;
+	border-right: 0.17em solid #17F2FE;
 	font-style: italic;
 	display: inline-block;
 }
@@ -485,15 +431,13 @@ hr {
 	overflow: hidden;
 	text-overflow: ellipsis;
     white-space: nowrap;
-    color:rgba(253,151,2,0.9);
-	text-shadow: 0.02em 0.02em 0.03em rgba(10,5,0,0.2), -0.02em -0.02em 0.03em rgba(10,5,0,0.8), 0 0 0.1em rgba(10,5,0,0.4);
 }
 
 .items h2 {
 	color:rgba(10,5,0,0.9);
 	padding: 1% 0;
 	text-decoration: underline;
-	font: 1.44em "Roman", "Georgia", serif;
+	font: 1.44em "Georgia", serif;
 }
 
 pre {
@@ -514,10 +458,10 @@ pre {
 	z-index: 900;
 	position: fixed;
 	right: 0;
-	top: 11.7em;
+	top: 10.2em;
 	width: 14vw;
 	width: 14%;
-	font: 1em "Roman", "Georgia", serif;	
+	font: 1em "Georgia", serif;	
 	font-weight: normal;
 }
 
@@ -562,11 +506,11 @@ pre {
 }
 
 .commentheader {
-	font: "Roman", "Georgia", serif;
+	font: "Georgia", serif;
 }
 
 .posted {
-	font: 0.9em "Roman", "Georgia", serif;
+	font: 0.9em "Georgia", serif;
 	font-style: italic;
 }
 
@@ -601,7 +545,7 @@ pre {
 }
 
 .deletebutton:hover, .editbutton:hover {
-	cursor: url('/images/pointer.png') 10 0, auto;
+	cursor: pointer
 }
 
 .disclaimer {
@@ -629,8 +573,8 @@ pre {
 input, textarea {
 	padding: .5em .7em;
 	font-size: 0.99em; 
-	width: 50%;
-	min-width: 12.17em;
+	width: 55%;
+	min-width: 12em;
     border:0.1em solid rgba(0,0,0,0.2);
 	background: #F2F2F2;
     box-shadow: inset 0.1em 0.1em 0.278em rgba(0,0,0,0.2);
@@ -641,13 +585,9 @@ input, textarea {
 }
 
 textarea {
-	min-width: 14em;
+	min-width: 17.5em;
 	min-height: 15em;
-}
-
-#commentcontent {
-	height: 45%;
-	width: 35em;
+	width: 85%
 }
 
 .button {
@@ -663,7 +603,7 @@ textarea {
 }
 
 .button:hover {
-	cursor: url('/images/pointer.png') 10 0, auto;
+	cursor: pointer;
 	box-shadow: inset 0.17em 0.17em 0.44em rgba(0,0,0,0.2);
 }
 
@@ -714,7 +654,7 @@ form {
 
 .aboutpage h3 {
 	padding: 0 0 0 4%;
-	font: 1.1em "Roman", "Georgia", serif;;
+	font: 1.1em "Georgia", serif;;
 }
 
 .aboutpage i {
@@ -752,7 +692,7 @@ form {
 }
 
 .notfound h2, .notfound h3 {
-	font: 1.4em "Roman", "Georgia", serif;
+	font: 1.4em "Georgia", serif;
 }
 
 .notfound b {
@@ -792,7 +732,7 @@ a.kudos.animate div.circle div.filled{-webkit-animation-name:hoverPulse;-moz-ani
 
 a.kudos.completed div.circle div.filled{margin-left:-1.14em;margin-top:-1.14em;background: url('/images/mangos.png') center center no-repeat;background-size:50%;-moz-background-size:50%;box-shadow: 0 0 0.28em rgba(0,0,0,0.2)}
 
-a.kudos p{width:auto;text-decoration: underline;line-height:1.2em;font-family:"Roman",serif;font-weight:normal;font-size:1.21em;color:rgba(0,0,0,0.7);}
+a.kudos p{width:auto;text-decoration: underline;line-height:1.2em;font-family:"Georgia",serif;font-weight:normal;font-size:1.21em;color:rgba(0,0,0,0.7);}
 
 a.kudos p,a.kudos p span{display:block;margin-top: 0.15em;}
 
@@ -908,7 +848,7 @@ footer{bottom:.8em;right:0.5em}
 
 .login{position:fixed;bottom:0;left:0;margin:0}
 
-.login a{margin:0;border-right:0;color:rgba(10,5,0,.8);font:"Roman","Georgia",serif;float:left;text-transform:uppercase;width:27%;padding:.28em 0 .28em}
+.login a{margin:0;border-right:0;color:rgba(10,5,0,.8);float:left;text-transform:uppercase;width:27%;padding:.28em 0 .28em}
 
 .login a:last-of-type{border-right:0.06em solid rgba(0,0,0,.4)}
 

@@ -2,10 +2,10 @@ h1 #{title}
 
 p  Set a username and a password (you can change these settings later)
 
--if (flash)
-  -if (flash.error)
+if (flash)
+  if (flash.error)
     p.flash.error #{flash.error}
-  -if (flash.info)
+  if (flash.info)
     p.flash.info #{flash.info}
 
 form(name="user-form",method="post",action="/adduser")
