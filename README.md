@@ -33,7 +33,7 @@ Features:
 
 How to use:
 -----------
-Make sure that mongodb is running somewhere and set your database-info in `dbinfo.js` (if mongo is running on localhost, you don't need to).
+Make sure that mongodb is running somewhere and set your database-info in `dbinfo.js`.
 
 Install dependencies:
 ``` 
