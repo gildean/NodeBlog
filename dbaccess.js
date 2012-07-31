@@ -208,7 +208,10 @@ exports.checkPostId = function(req, res, next, id) {
         if (!err && post) {
           commentdb.find({postid: id},
             function(err, comments) {
-              if (!err) {
+              if (!comments) {
+                req.post = post;
+                next();
+              } else if (!err && comments) {
                 req.post = post;
                 post.comments = comments;
                 next();
