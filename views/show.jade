@@ -44,11 +44,11 @@ section#blogpost
         i by:
         = (settings.author.nick)
 hr
-if (post.comments)
+- if (post.comments)
   section#comments.commentsection
     h3 Comments
     for comment in post.comments
-      if (comment.status === 1)
+     - if (comment.status === 1)
         article.comment(title="#{comment.subject}")
         
           - if (user)
@@ -67,21 +67,24 @@ if (post.comments)
           p backlink:         
           a(href="#{comment.website}") #{comment.website} 
         hr
-      - if (user)
-        h3 Comments to review:
-        - if (post.comment.status === 0)
+    
+    - if (user)
+      h3 Comments to review:
+      for comment in post.comments
+        - if (comment.status === 0)
           article.comment
 
             div
-              a(href="/publish/comment/#{hidden._id}") Publish
+              a(href="/publish/comment/#{comment._id}") Publish
               span.divider |
-              a(href="/edit/comment/#{hidden._id}") Edit
+              a(href="/edit/comment/#{comment._id}") Edit
               span.divider |
-              a(href="/remove/comment/#{hidden._id}", onClick="return confirm('Sure about that?')") Delete
+              a(href="/remove/comment/#{comment._id}", onClick="return confirm('Sure about that?')") Delete
             
-              != md(hidden.body)  
-              p.posted posted #{moment(hidden.created).fromNow()} by #{hidden.name} from #{hidden.from}
-            hr
+            != md(comment.body)  
+            p.posted posted #{moment(comment.created).fromNow()} by #{comment.name} from #{comment.from}
+          hr
+
 section.commentform
   
   form(name="add-comment",method="post",action="/save/comment")

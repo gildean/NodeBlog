@@ -641,9 +641,7 @@ input, textarea {
 }
 
 textarea {
-	width: 95%;
-	min-width: 13.889em;
-	height: 95%;
+	min-width: 14em;
 	min-height: 15em;
 }
 
