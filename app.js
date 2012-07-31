@@ -186,9 +186,9 @@ app.param('tag', dbaccess.findTag);
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
-// for nodester
-var PORT = process.env['app_port'] || 19968;
+
+var PORT = 3030;
 // Run, you fool!
-app.listen( PORT, function(){
+app.listen(PORT, function(){
   console.log("server listening");
 });

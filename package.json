@@ -1,28 +1,23 @@
 {
-  "author": "gildean",
-  "name": "toomanymangos",
-  "description": "Too many mangos.",
-  "version": "0.0.1",
-  "private": true,
-  "homepage": "http://toomanymangos.nodester.com",
-  "node": "0.8.1",
+  "name": "NodeBlog",
+  "version": "0.3.0",
+  "description": "Blog engine with express frontend and mongodb as the database",
+  "author": "Olli Kankare",
   "repository": {
-    "url": "defaultapp"
+    "type": "git",
+    "url": "git://github.com/gildean/NodeBlog.git"
   },
-  "main": "app.js",
-  "dependencies": {
-    "express": "2.5.11",
-    "moment": "1.6.2",
-    "bcrypt": "0.7.0",
-    "mongojs": "0.4.3",
-    "jade": "0.26.3"
-  },
-  "devDependencies": {},
-  "optionalDependencies": {},
   "engines": {
-    "node": "*"
+    "node": ">=0.6.0"
   },
-  "scripts": {
-    "start": "node app"
-  }
+  "dependencies": {
+    "express": "=2.5.11",
+    "moment": ">=1.6.2",
+    "bcrypt": ">= 0.7.0",
+    "mongojs": ">=0.4.3",
+    "jade": ">=0.26.3",
+    "ghm": "1.0.0-2"    
+      },
+  "devDependencies": {},
+  "optionalDependencies": {}
 }

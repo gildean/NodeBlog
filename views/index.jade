@@ -2,20 +2,22 @@ h1.main #{title}
 
 h3.indexheader #{header}
 
--if (flash)
-  -if (flash.error)
+if (flash)
+  if (flash.error)
     p#flash.error #{flash.error}
-  -if (flash.info)
+  if (flash.info)
     p#flash.info #{flash.info} 
 
 for post in blogPosts
-  -if (post.status === 1)
+  if (post.status === 1)
     article(title="#{post.subject}", lang="en")
       div.items
         figure.fpkudos #{post.kudos}<br> kudos
         - link = post._id + '/' + post.subject.split(' ').join('-');
         a.postlink(href="/posts/#{link}")
-          p.fpposted!= moment(post.created).format('DD / MM <b>YYYY</b>')
+          p.fpposted
+            time(datetime="#{post.created}", pubdate="pubdate")
+            != moment(post.created).format('DD / MM <b>YYYY</b>')
           hgroup.fpblogpost
             h2 #{post.subject}
             h3 #{post.subtitle}
@@ -23,8 +25,8 @@ for post in blogPosts
           for tag in post.tags
             a.tag(href="/search/tags/#{tag}") #{tag}
     hr
-  -if (user)
-    -if (post.status === 0)
+  if (user)
+    if (post.status === 0)
       article(title="#{post.subject}", lang="en")
         div.items
           figure.fpkudos #{post.kudos}<br> kudos
@@ -37,3 +39,4 @@ for post in blogPosts
           p.tags
             for tag in post.tags
               a.tag(href="/search/tags/#{tag}") #{tag}
+      hr

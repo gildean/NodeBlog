@@ -1,16 +1,16 @@
 h2 viewing comment from: #{post.name}
 
--if (flash)
-  -if (flash.error)
+if (flash)
+  if (flash.error)
     p.flash.error #{flash.error}
-  -if (flash.info)
+  if (flash.info)
     p.flash.info #{flash.info} 
 
 section#blogpost
   article(id="#{post._id}", title="#{post.subject}")
-    - if (user)
+    if (user)
       div.edit
-        - if (post.status === 0)
+        if (post.status === 0)
           a(href="/publish/post/#{post._id}") Publish
         else
           a(href="/hide/post/#{post._id}") Hide 
