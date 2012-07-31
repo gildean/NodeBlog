@@ -4,20 +4,30 @@ h3 Please fill in the name and the header text of the blog, about-page content a
 form(name="blogsettings",method="post",action="/initialsetup")
 
   fieldset
+    legend Blog settings
+    
     label(for="title") Blog Title
     input(type="text", name="title", required)
+    
     label(for="header") Blog Header
     input(type="text", name="header", required)
 
   fieldset
+    legend User settings
+    
     label(for="about") Your motto
     input(type="text",name="about", required)  
+    
     label(for="author") Full name 
     input(type="text",name="author", required)
+    
     label(for="nick") Nickname (shows up as poster)
     input(type="text",name="nick", required)
+    
     label(for="what") Who/what are you? 
     input(type="text",name="what", required)
+    
     label(for="where") Links to you, use full url, separate with commas without spaces 
     input(type="text",name="where", required)
+    
     input(type="submit", class="button", name="post", value="Save")

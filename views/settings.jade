@@ -8,24 +8,29 @@ h1 #{title}
 
 i Last modified: #{moment(blogsettings.modified).fromNow()} 
 
-h3 Main settings
-
 form(name="blogsettings",method="post",action="/save/settings")
   fieldset
+    legend Main settings
+
     label(for="title") Title:
     input(type="text", name="title", value="#{blogsettings.title}", required)
+    
     label(for="header") Header
-    input(type="text", name="header", resize="none", value="#{blogsettings.header}", required) 
+    input(type="text", name="header", resize="none", value="#{blogsettings.header}", required)
+    
     input(type="submit", class="button", name="post", value="Save")
-
-h3 User settings
 
 form(name="usersettings",method="post",action="/save/usersettings")
   fieldset
+    legend User settings
+
     label(for="username") Username:
     input(type="text", name="username", value="#{user.user}", required)
+    
     label(for="password") NEW Password:
     input(type="password", name="password", required)
+    
     label(for="passwordconf") Confirm :
     input(type="password", name="passwordconf", required)
+    
     input(type="submit", class="button", name="submit", value="Save", onClick="return confirm('Are you sure you want to change your password?');")

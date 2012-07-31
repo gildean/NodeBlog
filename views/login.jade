@@ -9,10 +9,13 @@ h1 #{title}
 section.loginsection
   form(name="login-form",method="post",action="/login")
     fieldset.loginform
+      legend
+        i enter username and password for login
+      
       label(for="username") Username:
       input(type="text",name="username", required)
+      
       label(for="password") Password:
       input(type="password",name="password", required)
-      input(type="submit", class="button", name="login", value="Login")
-
-  i enter username and password for login
+      
+      input(type="submit", class="button", name="login", value="Login")  
