@@ -64,13 +64,15 @@ html, body {
 	width: 100%;
 	top:0;
 	left: 0;
-	font-family: "Helvetica", sans-serif;
+	font-family: "Droid sans", "Helvetica", sans-serif;
 	font-size: 102.5%;
 }
 
 section, article, header, footer, nav, aside {display: block;}
 
 a, .deletebutton, .editbutton, .tag {
+	text-shadow: 0 0.08em 0.2em rgba(0,5,10,0.6);
+	color: #17F2FE;
 	padding: 0.12em;
 	text-decoration: none;
 	transition: all 0.3s ease-in-out;
@@ -80,24 +82,24 @@ a, .deletebutton, .editbutton, .tag {
 }
 
 a:hover, .deletebutton:hover, .editbutton:hover, .tag:hover, button:hover, .kudosbutton:hover {
-	text-shadow: 0 0.05em 0.1 rgba(10,5,0,0.4);
+	text-shadow: 0 0.1em 0.1em rgba(0,5,10,0.4);
 	text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5 {
-	text-shadow: 0.03 0.03 0.1em rgba(10,5,0,0.4);
+	text-shadow: 0 0.08em 0.2em rgba(0,5,10,0.6);
 	font-weight: normal;
 	clear: both;
 	margin: 3% 0 2% 0;
 }
 
 h1 {
-	font: "Georgia", serif;
+	font: 1.9em "Droid serif", "Georgia", serif;
 	font-weight: bold;
 }
 
 h1.main {
-	font-size: 2.3em;
+	font: 2.3em "Droid serif", "Georgia", serif;
 	text-decoration: underline;
 }
 
@@ -119,7 +121,7 @@ header {
 	width: 14%;
 	height: 100%;
 	height: 100vh;
-	background: #F2F2F2 url('/images/mangosbgdg.png');
+	background: #F2F2F2 url('/images/bg.png');
     box-shadow: inset 0.15em 0 0.2em rgba(0,0,0,0.2), inset 0 0 5em rgba(0,0,0,0.2);
 	border-left: 0.06em solid rgba(0,0,0,0.4);
 	padding: 0 0 4% 0;
@@ -159,8 +161,8 @@ footer a {
 summary {
 	text-align: center;
 	text-shadow: -0.1em -0.1em 0.1em rgba(255,255,255,0.5), 0.1em 0.1em 0.1em rgba(0,0,0,0.5);
-    color:rgba(10,5,0,0.4);
-	font: 1em "Georgia", serif;
+    color:rgba(0,5,10,0.4);
+	font: 1em "Droid serif", "Georgia", serif;
 	line-height: 0.8em;
 }
 
@@ -180,24 +182,24 @@ hr {
 .blogheader {
 	width: 100%;
 	margin: 0;
-	padding: 1em 0 0;
+	padding: 1.2em 0 0;
 	text-align: center;
-	color:rgba(10,5,0,0.2);
+	line-height: 1.1em;
 	z-index: 900;
 }
 
 .headertext {
+	color:rgba(245,250,255,0.9);
 	display: inline;
-	font: 1.2em "Georgia", serif;
-	text-shadow: 0.04em 0.04em 0.15em rgba(10,5,0,0.2), -0.04em -0.04em 0.04em rgba(10,5,0,0.8), 0.04em 0.04em 0.1em rgba(10,5,0,0.4);
+	font: 1.15em "Droid serif", "Georgia", serif;
+	text-shadow: 0.03em 0.03em 0.08em rgba(0,5,10,0.6), -0.03em -0.03em 0.03em rgba(0,5,10,0.8), 0.03em 0.03em 0.2em rgba(0,5,10,0.6);
 }
 
 .headerheader {
-	text-shadow: 0.03em 0.03em 0.08em rgba(10,5,0,0.2), -0.03em -0.03em 0.03em rgba(10,5,0,0.8), 0.03em 0.03em 0.7em rgba(10,5,0,0.2);
-	color:rgba(10,5,0,0.3);
-	font: 1.7em "Georgia", serif;
+	color:rgba(245,250,255,0.9);
+	text-shadow: 0.03em 0.03em 0.08em rgba(0,5,10,0.6), -0.03em -0.03em 0.03em rgba(0,5,10,0.8), 0.03em 0.03em 0.2em rgba(0,5,10,0.6);
+	font: 1.6em "Droid serif", "Georgia", serif;
 	text-decoration: underline;
-	line-height: 0.7em;
 	font-weight: bold;
 	display: inline;
 }
@@ -211,7 +213,7 @@ hr {
 
 .blogheader a:hover {
 	text-decoration: none;
-	color:rgba(10,5,0,0.5);
+	color:rgba(0,5,10,0.5);
 	text-shadow: 0 0.1em 0.22em rgba(0,0,0,0.5);
 }
 
@@ -280,12 +282,12 @@ hr {
 	overflow: hidden;
 	letter-spacing: -0.1em;
 	text-align: center;
-	font: 1.2em "Georgia", serif;
+	font: 1.2em "Droid serif", "Georgia", serif;
 	width: 76%;
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
-	color: rgba(10,5,0,0.6);
+	color: rgba(0,5,10,0.6);
 	display: block;
-	margin: 15% auto;
+	margin: 12% auto;
 	padding: 2% 2% 4%;
     border:0.06em solid rgba(0,0,0,0.3);
 	background: #FFF;
@@ -294,7 +296,7 @@ hr {
 
 .login a:hover, .edit a:hover {
 	text-shadow: 0 0.1em 0.22em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
-	color: rgba(10,5,0,0.6);
+	color: rgba(0,5,10,0.6);
     box-shadow: 0.1em 0.1em 0.22em rgba(0,0,0,0.3), inset 0 0 0.44em rgba(0,0,0,0.2);
 	text-decoration: none;
 	cursor: pointer;
@@ -307,10 +309,10 @@ hr {
 	overflow: hidden;
 	letter-spacing: -0.1em;
 	text-align: center;
-	font: 1.2em "Georgia", serif;
+	font: 1.2em "Droid serif", "Georgia", serif;
 	width: 15%;
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
-	color: rgba(10,5,0,0.6);
+	color: rgba(0,5,10,0.6);
 	padding: 0.28em 0.28em 0.56em;
     border:0.06em solid rgba(0,0,0,0.2);
 	background: #F2F2F2;
@@ -345,8 +347,8 @@ hr {
 
 .fpposted, .fpkudos {
 	margin: 0.5em 0;
-	font: 1.2em "Georgia", serif;
-	color:rgba(10,5,0,0.6);
+	font: 1.2em "Droid serif", "Georgia", serif;
+	color:rgba(0,5,10,0.6);
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
 	position: relative;
 	top: 0;
@@ -393,7 +395,7 @@ hr {
 }
 
 .postlink:hover {
-	color:rgba(10,5,0,0.6);
+	color:rgba(0,5,10,0.6);
 	text-decoration: underline;
 	text-shadow: 0 0.1em 1em rgba(0,0,0,0.5), 0 0 0.5em rgba(0,0,0,0.4);
 }
@@ -415,7 +417,7 @@ hr {
 
 .tag {
 	color: #0e0e0e;
-	font: 0.83em "Georgia", serif;
+	font: 0.83em "Droid serif", "Georgia", serif;
 	padding: 0 2%;
 	margin: 0 0 0 1%;
 	border-right: 0.17em solid #17F2FE;
@@ -434,10 +436,10 @@ hr {
 }
 
 .items h2 {
-	color:rgba(10,5,0,0.9);
+	color:rgba(0,5,10,0.9);
 	padding: 1% 0;
 	text-decoration: underline;
-	font: 1.44em "Georgia", serif;
+	font: 1.44em "Droid serif", "Georgia", serif;
 }
 
 pre {
@@ -458,15 +460,15 @@ pre {
 	z-index: 900;
 	position: fixed;
 	right: 0;
-	top: 10.2em;
+	top: 11em;
 	width: 14vw;
 	width: 14%;
-	font: 1em "Georgia", serif;	
+	font: 0.9em "Droid serif", "Georgia", serif;	
 	font-weight: normal;
 }
 
 .author span {
-	color:rgba(10,5,0,0.5);
+	color:rgba(0,5,10,0.5);
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
 	text-align: center;
 	margin: 0 0.1em;
@@ -474,7 +476,7 @@ pre {
 }
 
 .author i {
-	font-size: 0.8em;
+	font-size: 0.7em;
 	font-style: italic;
 }
 
@@ -506,11 +508,11 @@ pre {
 }
 
 .commentheader {
-	font: "Georgia", serif;
+	font: "Droid serif", "Georgia", serif;
 }
 
 .posted {
-	font: 0.9em "Georgia", serif;
+	font: 0.9em "Droid serif", "Georgia", serif;
 	font-style: italic;
 }
 
@@ -646,7 +648,7 @@ form {
 
 
 .aboutpage h2, .aboutpage h3 {
-	color:rgba(10,5,0,0.4);
+	color:rgba(0,5,10,0.4);
 	text-shadow: 0 0.1em 0.17em rgba(0,0,0,0.5), -0.1em 0.1em 0 rgba(255,255,255,0.9), 0.1em -0.1em 0 rgba(255,255,255,0.9) ;
 	text-decoration: none;
 	margin: 0 0 3%;
@@ -654,7 +656,7 @@ form {
 
 .aboutpage h3 {
 	padding: 0 0 0 4%;
-	font: 1.1em "Georgia", serif;;
+	font: 1.1em "Droid serif", "Georgia", serif;;
 }
 
 .aboutpage i {
@@ -692,14 +694,14 @@ form {
 }
 
 .notfound h2, .notfound h3 {
-	font: 1.4em "Georgia", serif;
+	font: 1.4em "Droid serif", "Georgia", serif;
 }
 
 .notfound b {
 	text-decoration: underline;
 	font-size: 2.2em;
 	text-shadow: 0 0.04em 0.17em rgba(0,0,0,0.5), -0.04em 0.04em 0 rgba(255,255,255,0.9), 0.04em -0.04em 0 rgba(255,255,255,0.9) , 0.04em 0.04em 0 rgba(255,255,255,0.9);
-	color:rgba(10,5,0,0.4);
+	color:rgba(0,5,10,0.4);
 }
 
 
@@ -730,7 +732,7 @@ figure.filling.kudo{height:8.15em}
 
 a.kudos.animate div.circle div.filled{-webkit-animation-name:hoverPulse;-moz-animation-name:hoverPulse;-webkit-animation-duration:5s;-moz-animation-duration:5s;-webkit-animation-iteration-count:infinite;-moz-animation-iteration-count:infinite;-webkit-animation-timing-function:linear;-moz-animation-timing-function:linear;-webkit-transform:translateZ(0)}
 
-a.kudos.completed div.circle div.filled{margin-left:-1.14em;margin-top:-1.14em;background: url('/images/mangos.png') center center no-repeat;background-size:50%;-moz-background-size:50%;box-shadow: 0 0 0.28em rgba(0,0,0,0.2)}
+a.kudos.completed div.circle div.filled{margin-left:-1.14em;margin-top:-1.14em;background: url('/favicon.ico') center center no-repeat;background-size:30%;-moz-background-size:30%;box-shadow: 0 0 0.28em rgba(0,0,0,0.2)}
 
 a.kudos p{width:auto;text-decoration: underline;line-height:1.2em;font-family:"Georgia",serif;font-weight:normal;font-size:1.21em;color:rgba(0,0,0,0.7);}
 
@@ -848,7 +850,7 @@ footer{bottom:.8em;right:0.5em}
 
 .login{position:fixed;bottom:0;left:0;margin:0}
 
-.login a{margin:0;border-right:0;color:rgba(10,5,0,.8);float:left;text-transform:uppercase;width:27%;padding:.28em 0 .28em}
+.login a{margin:0;border-right:0;color:rgba(0,5,10,.8);float:left;text-transform:uppercase;width:27%;padding:.28em 0 .28em}
 
 .login a:last-of-type{border-right:0.06em solid rgba(0,0,0,.4)}
 

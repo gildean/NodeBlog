@@ -1,6 +1,10 @@
 h1 #{title}
 h3 Please fill in the name and the header text of the blog, about-page content and some author info
-
+if (flash)
+  if (flash.error)
+    p#flash.error #{flash.error}
+  if (flash.info)
+    p#flash.info #{flash.info}
 form(name="blogsettings",method="post",action="/initialsetup")
 
   fieldset
