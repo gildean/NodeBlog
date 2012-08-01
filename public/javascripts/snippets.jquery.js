@@ -1,5 +1,4 @@
 $(document).ready(function() {
-<<<<<<< HEAD
   $("#submit-slider").addClass("nosubmit");
     $(".email").blur(function(){
       if ($(this).val() != "") {
@@ -17,6 +16,7 @@ $(document).ready(function() {
   });
    
 });
+<<<<<<< HEAD
 =======
    $(".rte-zone").rte({
       media_url: "",
@@ -28,3 +28,6 @@ $(document).ready(function() {
    });
  });
 >>>>>>> 4a3b8aa... Clien side js
+=======
+
+>>>>>>> 8299a42... Remove excess styles etc
