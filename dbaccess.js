@@ -129,6 +129,7 @@ exports.settings = function(req, res, next) {
         res.render('initdb.jade', {
             title: 'Initial setup'
           , author: 'NodeBlog'
+          , flash: req.flash()
         });
       }
    });
