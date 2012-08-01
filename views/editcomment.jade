@@ -24,6 +24,6 @@ form(name="edit-post",method="post",action="/edit/comment")
     input(type="text", name="subject", value="#{comment.subject}") 
     
     label(for="body") Content
-    textarea.rte-zone(name="body", rows="15", cols="95", wrap="hard") #{comment.body}
+    textarea.postarea(name="body", resize="both") #{comment.body}
     
     input(type="submit", class="button", name="post",value="Save")

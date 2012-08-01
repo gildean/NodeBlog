@@ -21,6 +21,9 @@ form(name="add-post",method="post",action="/save/post")
   fieldset.textcontent   
     
     label(for="body") Content
-    textarea.rte-zone(name="body", rows="20", cols="95")
+    textarea.postarea(name="body", resize="both")
+
+    label(for="bodyrefs") Markdown link references
+    textarea.postrefs(name="bodyrefs", resize="both")
     
     input(type="submit", class="button", name="post", value="Post")

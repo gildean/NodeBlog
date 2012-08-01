@@ -31,7 +31,7 @@ section#blogpost
     hgroup
       h1 #{post.subject}
       h2.indexheader #{post.subtitle}
-    != post.body
+    != md(post.body +'\r\n'+ post.bodyrefs)
     p.tags
       for tag in post.tags
         a.tag(href="/search/tags/#{tag}") #{tag}

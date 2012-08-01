@@ -11,9 +11,9 @@ $(document).ready(function() {
       form_wrap: false,
       hidden_field: '.for-bots'
    });
-  $("#volup").mouseclick(function() {
-    $(document.body).css( "font-size", "+=2.5%");
-  });
+  //$("#volup").onmouseClick(function() {
+  //  $(document.body).css( "font-size", "+=2.5%");
+  //});
    
 });
 <<<<<<< HEAD

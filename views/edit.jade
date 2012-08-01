@@ -18,6 +18,9 @@ form(name="edit-post",method="post",action="/edit/post")
   fieldset.textcontent
     
     label(for="body") Content
-    textarea.rte-zone(name="body", rows="15", cols="115", resize="both") #{post.body}
+    textarea.postarea(name="body", resize="both") #{post.body}
+    
+    label(for="bodyrefs") Markdown link references
+    textarea.postrefs(name="bodyrefs", resize="both") #{post.bodyrefs}
     
     input(type="submit", class="button", name="post", value="Save")

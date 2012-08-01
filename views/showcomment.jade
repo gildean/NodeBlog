@@ -11,11 +11,11 @@ section#blogpost
     if (user)
       div.edit
         if (post.status === 0)
-          a(href="/publish/post/#{post._id}") Publish
+          a(href="/publish/comment/#{post._id}") Publish
         else
-          a(href="/hide/post/#{post._id}") Hide 
-        a(href="/edit/post/#{post._id}") Edit 
-        a(href="/remove/post/#{post._id}", onClick="return confirm('Sure about that? There is no undo on delete')") Delete
+          a(href="/hide/comment/#{post._id}") Hide 
+        a(href="/edit/comment/#{post._id}") Edit 
+        a(href="/remove/comment/#{post._id}", onClick="return confirm('Sure about that? There is no undo on delete')") Delete
     
     h1.commentheader #{post.subject}
     div.ghmcomment!= md(post.body)

@@ -42,6 +42,10 @@
 
 
 
+
+
+
+
 //////////////////////////////////////////////////////////////////
 //|************************************************************|//
 //|                                                            |//
@@ -59,24 +63,18 @@
 
 
 
-var dbinfo = require('./dbinfo').dbinfo;
-var db = require('mongojs').connect(dbinfo);
-var setupdb = db.collection('setup');
-var userdb = db.collection('user');
-var postdb = db.collection('post');
-var commentdb = db.collection('comment');
-var bcrypt = require('bcrypt');
+var dbinfo = require('./dbinfo').dbinfo
+  , db = require('mongojs').connect(dbinfo)
+  , setupdb = db.collection('setup')
+  , userdb = db.collection('user')
+  , postdb = db.collection('post')
+  , commentdb = db.collection('comment')
+  , bcrypt = require('bcrypt');
 
 
 
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 
 
@@ -154,15 +152,8 @@ exports.checkIP = function(req, res, next) {
 
 
 
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 
 
@@ -193,16 +184,28 @@ exports.checkIP = function(req, res, next) {
 
 
 
+// list all posts
+exports.index = function(req, res, next) {
+  postdb.find().sort( { created : -1 }, function(err, posts) {
+    if (!err && posts) {
+      req.posts = posts;
+      next();
+    } else {
+      req.status = 501;
+      req.title = 'Database error';
+      errorpage(req, res);
+    }
+  });
+};
+
+
+
 // validating the post id to get a post and all linked comments
 exports.checkPostId = function(req, res, next, id) {
   if (id.length != 24) {
-    return next(
-      res.render('404.jade', {
-          status: 418
-        , title: 'No coffee...'
-        , author: 'NodeBlog'
-      })
-    );
+    req.status = 418;
+    req.title = 'No coffee...';
+    errorpage(req, res);
   } else {
     postdb.findOne({_id: db.ObjectId(id)},
       function(err, post) {
@@ -218,15 +221,11 @@ exports.checkPostId = function(req, res, next, id) {
                 next();
               }
           });
-        } else {
-          return next(
-            res.render('404.jade', {
-                status: 501
-              , title: 'Error'
-              , author: 'NodeBlog'
-            })
-          );
-        }
+      } else {
+        req.status = 501;
+        req.title = 'You just caused some errors...';
+        errorpage(req, res);
+      }
     });
   } 
 };
@@ -236,13 +235,9 @@ exports.checkPostId = function(req, res, next, id) {
 // validating the comment id to get a comment
 exports.checkCId = function(req, res, next, id) {
   if (id.length != 24) {
-    return next(
-      res.render('404.jade', {
-          status: 404
-        , title: 'No comments...'
-        , author: 'NodeBlog'
-      })
-    );
+    req.status = 418;
+    req.title = 'Stop asking for coffee, please...';
+    errorpage(req, res);
   } else {
     commentdb.findOne({_id: db.ObjectId(id)},
       function(err, comment) {
@@ -250,13 +245,9 @@ exports.checkCId = function(req, res, next, id) {
           req.comment = comment;
           next();
         } else {
-          return next(
-            res.render('404.jade', {
-                status: 404
-              , title: 'No comments...'
-              , author: 'NodeBlog'
-            })
-          );
+          req.status = 404;
+          req.title = 'No comments...';
+          errorpage(req, res);
         }
     });
   }
@@ -272,13 +263,9 @@ exports.findTag = function(req, res, next, tag) {
         req.postsbytag = foundtags;
         next();
       } else {
-        return next(
-          res.render('404.jade', {
-              status: 404
-            , title: 'No tag in sight...'
-            , author: 'NodeBlog'
-          })
-        );
+        req.status = 404;
+        req.title = 'No tag in sight...';
+        errorpage(req, res);
       }
   });
 };
@@ -296,16 +283,19 @@ exports.addKudos = function (req, res) {
 
 
 
+// helper function to render errorpages
+var errorpage = function(req, res) {
+  res.render('404.jade', {
+      status: req.status
+    , title: req.title
+    , author: 'NodeBlog'  
+  });
+};
 
 
 
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 
 
@@ -432,16 +422,8 @@ exports.logout = function(req, res) {
 
 
 
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 
 
@@ -472,29 +454,13 @@ exports.logout = function(req, res) {
 
 
 
-// list all posts
-exports.index = function(req, res) {
-  postdb.find().sort( { created : -1 }, function(err, posts) {
-    if (!err) {
-        res.render('index.jade', {
-          title: req.settings.title
-        , header: req.settings.header
-        , blogPosts: posts
-        , flash: req.flash()
-        , author: req.settings.author.nick
-      });
-    }
-  });
-};
-
-
-
 // save a new post
 exports.addNewPost = function(req, res) {
   var values = {
       subject: req.body.subject
     , subtitle: req.body.subtitle
     , body: req.body.body
+    , bodyrefs: req.body.bodyrefs
     , kudos: 0
     , tags: req.body.tags.split(',')
     , status: 0
@@ -520,6 +486,7 @@ exports.savePostEdit = function(req, res) {
         subject: req.body.subject
       , subtitle: req.body.subtitle
       , body: req.body.body
+      , bodyrefs: req.body.bodyrefs
       , tags: req.body.tags.split(',')
       , modified: new Date()
       }
@@ -572,16 +539,8 @@ exports.deletePost = function(req, res) {
 
 
 
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 
 
@@ -687,16 +646,8 @@ exports.deleteComment = function(req, res) {
 
 
 
-
-
-
-
-
-
-
-
-
-
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 
 
 
@@ -814,3 +765,8 @@ exports.saveUserSettings = function(req, res) {
     });
   }
 };
+
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////

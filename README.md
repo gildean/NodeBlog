@@ -50,7 +50,7 @@ You can change these settings when logged in.
 
 https
 -----
-For https, you just need to copy a cert public key `cert.crt` and a private key `key.key` as files to the root of the app-folder, and change that in `app.js` at `require('express')` ,  [express][check here for more info]
+For https, you just need to copy a cert public key `cert.crt` and a private key `key.key` as files to the root of the app-folder, and change that in `app.js` at `require('express')` , [check here for more info](http://expressjs.com/)
 
 Credits:
 --------
