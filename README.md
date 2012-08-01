@@ -39,7 +39,6 @@ Install dependencies:
 ``` 
 npm install
 ```
-You need to copy a cert public key `cert.crt` and a private key `key.key` as files to the root of the app-folder, or change that in `app.js`.
 
 You can then start the server with:
 ``` 
@@ -48,6 +47,10 @@ node app
 When trying to log in, if no users are detected, a initial setup is presented.
 
 You can change these settings when logged in.
+
+https
+-----
+For https, you just need to copy a cert public key `cert.crt` and a private key `key.key` as files to the root of the app-folder, and change that in `app.js` at `require('express')` ,  [express][check here for more info]
 
 Credits:
 --------

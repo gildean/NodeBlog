@@ -41,6 +41,7 @@
 
 
 // module dependencies.
+var nodetime = require('nodetime').profile();
 var express = require('express')
   , moment = require('moment')
   , jade = require('jade')

@@ -13,14 +13,13 @@
 // note that we offer all the reuirements from the main app
 exports.config = function(app, express, moment, ghm){
   
-
-  // helpful helper is helpful (these can be used when rendering the views etc.)
   app.helpers({
     moment: moment,
     md: function(text){
-      return ghm.parse(text);}
+    return ghm.parse(text);
+    }
   });
-  
+  // helpful helper is helpful (these can be used when rendering the views etc.)
   app.dynamicHelpers({
     user: function(req, res) {
       return req.session.user;
